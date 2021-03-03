@@ -1,0 +1,112 @@
+// ==========================================================================
+// Spacing-specific utilities
+// ==========================================================================
+//
+// /**
+ // * Used to adjust the default spacing between components
+ // * Use with great care!
+ // *
+ // * u-<type><direction><size>
+ // *
+ // * A = all
+ // * T = top
+ // * R = right
+ // * B = bottom
+ // * L = left
+ // * H = horizontal
+ // * V = vertical
+ // *
+ // * n = none
+ // * s = small
+ // * m = medium
+ // * l = large
+ // */
+//
+// /* All */
+
+$space-small  : $box-spacing-small;
+$space-medium : $box-spacing;
+$space-large  : $box-spacing * $f-line-height-ratio;
+
+.u-paddingAn { padding: 0 !important; }
+.u-paddingAs { padding: $space-small !important; }
+.u-paddingAm { padding: $space-medium !important; }
+.u-paddingAl { padding: $space-large !important; }
+
+.u-marginAn { margin: 0 !important; }
+.u-marginAs { margin: $space-small !important; }
+.u-marginAm { margin: $space-medium !important; }
+.u-marginAl { margin: $space-large !important; }
+
+/* Vertical */
+
+.u-paddingVn { padding-top: 0 !important; padding-bottom: 0 !important; }
+.u-paddingVs { padding-top: $space-small !important; padding-bottom: $space-small !important; }
+.u-paddingVm { padding-top: $space-medium !important; padding-bottom: $space-medium !important; }
+.u-paddingVl { padding-top: $space-large !important; padding-bottom: $space-large !important; }
+
+.u-marginVn { margin-top: 0 !important; margin-bottom: 0 !important; }
+.u-marginVs { margin-top: $space-small !important; margin-bottom: $space-small !important; }
+.u-marginVm { margin-top: $space-medium !important; margin-bottom: $space-medium !important; }
+.u-marginVl { margin-top: $space-large !important; margin-bottom: $space-large !important; }
+
+/* Horizontal */
+
+.u-paddingHn { padding-left: 0 !important; padding-right: 0 !important; }
+.u-paddingHs { padding-left: $space-small !important; padding-right: $space-small !important; }
+.u-paddingHm { padding-left: $space-medium !important; padding-right: $space-medium !important; }
+.u-paddingHl { padding-left: $space-large !important; padding-right: $space-large !important; }
+
+.u-marginHa, .u-center { margin-left: auto !important; margin-right: auto !important; }
+.u-marginHn { margin-left: 0 !important; margin-right: 0 !important; }
+.u-marginHs { margin-left: $space-small !important; margin-right: $space-small !important; }
+.u-marginHm { margin-left: $space-medium !important; margin-right: $space-medium !important; }
+.u-marginHl { margin-left: $space-large !important; margin-right: $space-large !important; }
+
+/* Top */
+
+.u-paddingTn { padding-top: 0 !important; }
+.u-paddingTs { padding-top: $space-small !important; }
+.u-paddingTm { padding-top: $space-medium !important; }
+.u-paddingTl { padding-top: $space-large !important; }
+
+.u-marginTn { margin-top: 0 !important; }
+.u-marginTs { margin-top: $space-small !important; }
+.u-marginTm { margin-top: $space-medium !important; }
+.u-marginTl { margin-top: $space-large !important; }
+
+/* Bottom */
+
+.u-paddingBn { padding-bottom: 0 !important; }
+.u-paddingBs { padding-bottom: $space-small !important; }
+.u-paddingBm { padding-bottom: $space-medium !important; }
+.u-paddingBl { padding-bottom: $space-large !important; }
+
+.u-marginBn { margin-bottom: 0 !important; }
+.u-marginBs { margin-bottom: $space-small !important; }
+.u-marginBm { margin-bottom: $space-medium !important; }
+.u-marginBl { margin-bottom: $space-large !important; }
+
+/* Left */
+
+.u-paddingLn { padding-left: 0 !important; }
+.u-paddingLs { padding-left: $space-small !important; }
+.u-paddingLm { padding-left: $space-medium !important; }
+.u-paddingLl { padding-left: $space-large !important; }
+
+.u-marginLn { margin-left: 0 !important; }
+.u-marginLs { margin-left: $space-small !important; }
+.u-marginLm { margin-left: $space-medium !important; }
+.u-marginLl { margin-left: $space-large !important; }
+
+/* Right */
+
+.u-paddingRn { padding-right: 0 !important; }
+.u-paddingRs { padding-right: $space-small !important; }
+.u-paddingRm { padding-right: $space-medium !important; }
+.u-paddingRl { padding-right: $space-large !important; }
+
+.u-marginRn { margin-right: 0 !important; }
+.u-marginRs { margin-right: $space-small !important; }
+.u-marginRm { margin-right: $space-medium !important; }
+.u-marginRl { margin-right: $space-large !important; }

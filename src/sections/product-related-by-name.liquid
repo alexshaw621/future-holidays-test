@@ -1,0 +1,62 @@
+
+{% assign number_of_products_to_show = section.settings.products_per_row %}
+{% if number_of_products_to_show == 1 %}
+  {% assign loop_class = 'Loop--1' %}
+{% elsif number_of_products_to_show == 2 %}
+  {% assign loop_class = 'Loop--2' %}
+{% elsif number_of_products_to_show == 3 %}
+  {% assign loop_class = 'Loop--3' %}
+{% elsif number_of_products_to_show == 4 %}
+  {% assign loop_class = 'Loop--4' %}
+{% endif %}
+
+<section class="Section Section--relatedProducts"
+  data-section-id="{{ section.id }}"
+  data-section-type="section-product-related-by-name"
+  data-product-related-key="{{ product.title | split: ' - ' | last }}"
+  data-related-products-by-name
+  style="background-color: {{ section.settings.bg_color }}">
+  <div class="Container">
+    <header class="Section__header">
+      <h2>{{ section.settings.section_title | escape }}</h2>
+    </header>
+    <div class="Loop {{ loop_class }}" data-related-section-content>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Related Products",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "frequently purchased together"
+      },
+      {
+        "type": "range",
+        "id": "products_per_row",
+        "label": "Products per row",
+        "min": 2,
+        "max": 4,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "checkbox",
+        "id": "show_prices",
+        "label": "Show Product Prices",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#f8f8f8"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,182 @@
+// .Main__hero {
+//   background-size: cover;
+//   background-position: center;
+//   margin-bottom: 2rem;
+//   &:before {
+//     content: '';
+//     display: block;
+//     width: 100%;
+//     padding-top: 60vw;
+//     @include mq($from: desktop) {
+//       padding-top: 40vw;
+//     }
+//     @include mq($from: desktopLarge) {
+//       padding-top: 40%;
+//     }
+//   }
+// }
+
+.Main__header {
+  // These values are the minimum and maximum viewport sizes to apply the font scaling
+  $min_width: 400;
+  $max_width: 2400;
+
+  // These values represent the range of fon-tsize to apply
+  // These values effect the base font-size, headings and other elements will scale proportionally
+  $title_min_font: 30;
+  $title_max_font: 54;
+
+  padding-top: 1rem;
+  text-align: center;
+  @include mq($from: tablet) {
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+  }
+  @include mq($from: desktop) {
+    padding-top: 4vh;
+    padding-bottom: 2vh;
+  }
+  h1 {
+    font-size: calc(
+      #{$title_min_font}px + (#{$title_max_font} - #{$title_min_font}) *
+        ((100vw - #{$min_width}px) / (#{$max_width} - #{$min_width}))
+    );
+    line-height: 1.2;
+    margin: 0;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  p {
+    margin-top: 0;
+    &:last-child {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+// .Main__banner {
+//   position: relative;
+// }
+
+// .Main__banner__figure {
+//   position: relative;
+//   &:before {
+//     content: '';
+//     display: block;
+//     width: 100%;
+//     padding-top: 35%;
+//     background: gc(muted);
+//   }
+//   img {
+//     @include absolute(top 0 right 0 bottom 0 left 0);
+//     width: 100%;
+//     height: 100%;
+//     @include object-fit(cover, center);
+//   }
+// }
+
+// .Main__banner__details {
+//   // These values are the minimum and maximum viewport sizes to apply the font scaling
+//   $min_width: 400;
+//   $max_width: 1900;
+
+//   // These values represent the range of fon-tsize to apply
+//   // These values effect the base font-size, headings and other elements will scale proportionally
+//   $title_min_font: 22;
+//   $title_max_font: 34;
+
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-end;
+//   align-items: flex-end;
+//   z-index: 2;
+
+//   @include mq($from: desktop) {
+//     @include absolute(top 0 right 0 bottom 0 left 0);
+//   }
+
+//   .wrapper {
+//     max-width: 36em;
+//     background: white;
+//     text-align: center;
+//     padding: 3em;
+//     margin-left: auto;
+//     margin-right: auto;
+//     @include mq($from: desktop) {
+//       margin-right: 0;
+//     }
+//   }
+
+//   h1 {
+//     margin-top: 0;
+//     font-size: calc(
+//       #{$title_min_font}px + (#{$title_max_font} - #{$title_min_font}) *
+//         ((100vw - #{$min_width}px) / (#{$max_width} - #{$min_width}))
+//     );
+//   }
+//   p {
+//     max-width: 85%;
+//     margin-left: auto;
+//     margin-right: auto;
+//     &:last-of-type {
+//       margin-bottom: 0;
+//     }
+//   }
+
+//   .wrapper {
+//     position: relative;
+//   }
+
+//   .icon {
+//     font-size: ms(12);
+//     filter: drop-shadow(0 0 0.45rem hsla(230, 20%, 14%, 0.2));
+//     @include absolute(top 100% left 50%);
+//     transform: translate(-50%, -50%);
+//   }
+// }
+
+// .Main__content {
+//   margin-top: 3rem;
+//   margin-bottom: 3rem;
+//   @include mq($from: desktop) {
+//     margin-top: 3vh;
+//     margin-bottom: 3vh;
+//   }
+// }
+
+.Main__aside {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.Main--asideContent {
+  // @include border(red);
+  @include mq($from: desktop) {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 3rem;
+  }
+  .Main__content {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .Main__aside {
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
+
+.template-404 {
+  .MainContent {
+    text-align: center;
+  }
+}

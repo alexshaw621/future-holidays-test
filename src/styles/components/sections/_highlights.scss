@@ -1,0 +1,67 @@
+.Section--highlights {
+  $spacing: 1rem;
+
+  .Loop {
+    width: calc(100% + #{$spacing * 2});
+    margin-left: -$spacing;
+    margin-right: -$spacing;
+  }
+
+  .highlight {
+    margin: $spacing;
+    flex-basis: calc(100% - #{$spacing * 2});
+    @include mq($from: tablet) {
+      flex-basis: calc(33.333% - #{$spacing * 2});
+    }
+  }
+  .highlight {
+    text-align: center;
+    padding: 3em 0;
+    background: url('~images/brushstroke1.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+    margin-bottom: 6em;
+  }
+  h6 {
+    line-height: 1.8;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: ms(0);
+    color: gc(text);
+    max-width: 10em;
+    margin: 1em auto 2em;
+  }
+  .figure {
+    @include absolute(top 100% left 50%);
+    @include size(8em);
+    transform: translate(-50%, -50%);
+    // background-image: url('~images/highlights_icon_love.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  @include mq($until: tabletLarge) {
+    h6 {
+      margin: 1em auto;
+    }
+    .figure {
+      @include size(6em);
+    }
+  }
+  @include mq($until: tablet) {
+    .highlight {
+      padding: 3.5em 0 5.5em;
+      margin-bottom: 4.5em;
+    }
+
+    h6 {
+      font-size: 1.5rem;
+    }
+
+    .figure {
+      @include size(12em);
+    }
+  }
+}

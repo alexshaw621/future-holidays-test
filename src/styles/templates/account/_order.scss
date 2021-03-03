@@ -1,0 +1,23 @@
+// Displays the order details on the customer account area
+table.table-order-details {
+  tbody {
+    tr {
+      border-bottom: 2px solid gc(muted);
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+  .small--hide {
+    @include mq($until: tablet) {
+      display: none;
+    }
+  }
+  tfoot {
+    tr:last-of-type {
+      font-weight: bold;
+      font-size: ms(1);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+}

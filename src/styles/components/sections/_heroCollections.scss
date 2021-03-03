@@ -1,0 +1,384 @@
+// These values are the minimum and maximum viewport sizes to apply the font scaling
+$min_width: 400;
+$max_width: 1900;
+// These values represent the range of fon-tsize to apply
+// These values effect the base font-size, headings and other elements will scale proportionally
+$h2_min_font: 24;
+$h2_max_font: 144px;
+
+.Section--heroCollections {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 20vw 30rem 1fr;
+  @include mq($from: tablet) {
+    grid-template-rows: 10vw 20rem 1fr;
+  }
+  .Section__cover {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include mq($from: tablet) {
+      background-size: contain;
+      grid-row: 1 / span 3;
+    }
+  }
+  .Container {
+    grid-column: 1;
+    grid-row: 2 / span 2;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 8vw;
+  }
+
+  .Section__content {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    padding-bottom: 6vw;
+  }
+  .Section__header {
+    grid-column: 1 / span 2;
+    @include mq($from: desktop) {
+      &.Section__cover--right {
+        grid-column: 2;
+      }
+      &.Section__cover--left {
+        grid-column: 1;
+      }
+    }
+  }
+
+  .Card--review {
+    background: white;
+    color: gc(text);
+    padding: 2em;
+    box-shadow: hsla(228, 22%, 11%, 0.1) 0 2px 9px;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 400ms ease-out, opacity 400ms ease-out;
+    transition-delay: 800ms;
+    margin-top: 2rem;
+
+    &.aos-animate {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+    blockquote {
+      @include rfs(1rem);
+    }
+
+    img {
+      position: absolute;
+      left: 4px;
+      width: 93%;
+      height: 95%;
+    }
+
+    @include mq($until: tablet) {
+      display: none;
+    }
+  }
+
+  h2 {
+    @include rfs(8rem);
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    margin: 0;
+  }
+  .intro {
+    @include rfs(2.8rem);
+    line-height: 1.3;
+    margin: 0 0 2rem 0;
+  }
+  .Card__figure {
+    img {
+      @include object-fit(cover, center);
+    }
+  }
+  h2,
+  .intro {
+    color: white;
+    text-shadow: hsla(196, 26%, 12%, 0.3) 0 0 49px;
+  }
+
+  .Loop {
+    &.flickity-enabled {
+      width: 100%;
+      margin: 0 auto;
+
+      .Card {
+        flex-basis: auto;
+        max-width: none;
+        width: calc(33.33% - 1em);
+
+        @include mq($until: desktop) {
+          width: calc(50% - 1em);
+        }
+        @include mq($until: tablet) {
+          width: calc(100% - 1em);
+        }
+      }
+    }
+
+    img {
+      @include object-fit(cover, center);
+    }
+  }
+  // Mobile Flickity styles
+  .flickity-prev-next-button {
+    background-color: $color-white;
+    cursor: pointer;
+  }
+  .flickity-prev-next-button.next {
+    right: 1rem;
+  }
+  .flickity-prev-next-button.previous {
+    left: 1rem;
+  }
+  @include mq($from: desktop) {
+    // Enable Animation from Tablet
+    .Card {
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 900ms cubic-bezier(0.1, 0.82, 0.41, 1.11), opacity 900ms cubic-bezier(0.1, 0.82, 0.41, 1.11);
+
+      &:nth-child(2) {
+        transition-delay: 300ms;
+      }
+      &:nth-child(3) {
+        transition-delay: 600ms;
+      }
+    }
+    .aos-animate {
+      .Card {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.Section--heroCollections1 {
+  position: relative;
+  z-index: 2;
+
+  // Grid Settings --------------------
+  .Container {
+    display: grid;
+    grid-gap: 1.8em;
+    grid-template-rows: 12vw 1fr 3vh auto 6vw;
+    grid-template-columns: repeat(3, 1fr);
+    @include border(red);
+
+    @include mq($until: desktop) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq($until: tablet) {
+      grid-row-gap: 0.8em;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: 16vw 1fr 0 auto 6vw;
+    }
+  }
+
+  .Section__header {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .Section__content {
+    grid-row: 4;
+    grid-column: 1 / span 3;
+    @include mq($until: tablet) {
+      padding: $gutter / 2;
+    }
+  }
+
+  .Section__cover--left {
+    grid-column: 1;
+  }
+
+  .Section__cover--right {
+    grid-column: 3;
+    @include mq($until: desktop) {
+      grid-column: 2;
+    }
+    @include mq($until: tablet) {
+      text-align: right;
+    }
+  }
+
+  // Elements --------------------
+  .Section__cover {
+    @include absolute(top 0 right 0 bottom 30% left 0);
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &:before {
+      content: ''; // we will use the bg has gradient, safa
+      @include absolute(top 0 right 0 bottom 0 left 0);
+      display: block;
+      background-image: linear-gradient(transparent 65%, white);
+    }
+
+    @include mq($until: tablet) {
+      background-size: contain;
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  .Section__header {
+    color: white;
+  }
+
+  h2 {
+    color: white;
+    text-transform: lowercase;
+    font-size: $h2_max_font; // max-font-size: 144px;
+    letter-spacing: 11.4px;
+    line-height: 1;
+    margin: 0;
+    font-weight: normal;
+
+    @include mq($until: tabletLarge) {
+      font-size: 80px;
+      letter-spacing: 6px;
+    }
+    @include mq($until: tablet) {
+      font-size: 55px;
+      letter-spacing: 4.3px;
+    }
+  }
+
+  .intro {
+    font-size: ms(2);
+    font-size: 34px;
+    line-height: 1.62;
+    letter-spacing: 2.7px;
+    margin-top: 1rem;
+    @include mq($until: tabletLarge) {
+      font-size: 25px;
+      line-height: 1.3;
+    }
+    @include mq($until: tablet) {
+      font-size: 21px;
+      line-height: 1.29;
+      letter-spacing: 1.7px;
+    }
+  }
+
+  .Button {
+    margin-bottom: $gutter;
+  }
+
+  // Animations
+  h2,
+  p {
+    &[data-aos='custom'] {
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 400ms ease-out, opacity 400ms ease-out;
+      &.aos-animate {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+      @include mq($until: tablet) {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+    }
+  }
+
+  .Card--review {
+    background: white;
+    color: gc(text);
+    padding: 2em;
+    box-shadow: hsla(228, 22%, 11%, 0.1) 0 2px 9px;
+    font-size: ms(-1);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 400ms ease-out, opacity 400ms ease-out;
+    transition-delay: 800ms;
+    &.aos-animate {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+
+    img {
+      position: absolute;
+      left: 4px;
+      width: 93%;
+      height: 95%;
+    }
+
+    @include mq($until: tablet) {
+      display: none;
+    }
+  }
+
+  .Loop {
+    &.flickity-enabled {
+      width: 100%;
+      margin: 0 auto;
+
+      .Card {
+        flex-basis: auto;
+        max-width: none;
+        width: calc(33.33% - 1em);
+
+        @include mq($until: desktop) {
+          width: calc(50% - 1em);
+        }
+        @include mq($until: tablet) {
+          width: calc(100% - 1em);
+        }
+      }
+    }
+
+    img {
+      @include object-fit(cover, center);
+    }
+  }
+  // Mobile Flickity styles
+  .flickity-prev-next-button {
+    background-color: $color-white;
+    cursor: pointer;
+  }
+  .flickity-prev-next-button.next {
+    right: 1rem;
+  }
+  .flickity-prev-next-button.previous {
+    left: 1rem;
+  }
+  @include mq($from: desktop) {
+    // Enable Animation from Tablet
+    .Card {
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 900ms cubic-bezier(0.1, 0.82, 0.41, 1.11), opacity 900ms cubic-bezier(0.1, 0.82, 0.41, 1.11);
+
+      &:nth-child(2) {
+        transition-delay: 300ms;
+      }
+      &:nth-child(3) {
+        transition-delay: 600ms;
+      }
+    }
+    .aos-animate {
+      .Card {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+    }
+  }
+
+  @include mq($until: tablet) {
+    .Card__title {
+      font-size: ms(5);
+    }
+  }
+}

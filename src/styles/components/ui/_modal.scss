@@ -1,0 +1,136 @@
+.Modal {
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  z-index: 100;
+
+  .backdrop {
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0.8) 100%);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    will-change: opacity;
+  }
+}
+
+.Modal--no-frame .Modal__box {
+  padding: 0;
+}
+
+.Modal__content {
+  flex: 1 1 auto;
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}
+
+.Modal__box {
+  width: 40rem;
+  max-height: 95%;
+  max-width: 90%;
+  background: white;
+  border-radius: 3px;
+  padding: 2.6rem;
+  box-shadow: hsla(37, 6%, 17%, 0.1) 0 0 4px, hsla(37, 6%, 17%, 0.1) 0 4px 22px;
+  display: flex;
+  flex-direction: column;
+  // overflow: auto;
+  z-index: 91 !important; // @TODO: In some case, inline z-index applied.
+
+  button.closeModal {
+    @include absolute(top 0 right 0);
+    font-size: ms(4);
+    line-height: 1;
+    outline: none;
+    svg {
+      width: 1em !important;
+      color: $color-black;
+    }
+  }
+}
+
+.Modal--big .Modal__box {
+  width: 60rem;
+}
+
+.Modal--large .Modal__box {
+  width: 70rem;
+}
+
+.Modal {
+  .js-closeModal {
+    @include absolute(top 2rem right 2rem);
+    font-size: ms(4);
+    color: gc(text);
+    cursor: pointer;
+  }
+
+  h5 {
+    color: gc(brand);
+    padding-right: ms(4);
+  }
+}
+
+.Modal__header {
+  color: gc(text, neutral);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: ms(-1);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid gc(muted);
+  justify-content: space-between;
+
+  .Button {
+    font-size: ms(3);
+    padding: 0;
+    margin-left: auto;
+  }
+}
+
+.Modal__header--noLayout {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border: none;
+}
+
+.Modal__contentSidebar {
+  .Modal__content {
+    flex: 1 1 65%;
+  }
+  .Modal__sidebar {
+    flex: 0 1 35%;
+  }
+
+  @include mq($from: tablet) {
+    display: flex;
+    .Modal__content {
+      padding-right: 1rem;
+      margin-right: 1rem;
+    }
+    .Modal__sidebar {
+      padding-left: 1rem;
+      padding-top: 2rem;
+    }
+  }
+}
+
+
+.Modal--CartSuccess {
+  .Modal__header {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-align: center;
+    text-transform: none;
+  }
+}

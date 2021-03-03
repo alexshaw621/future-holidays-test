@@ -1,0 +1,109 @@
+.Drawer {
+  @include fixed(top 0 right 0 bottom 0 left 0);
+  display: none;
+  z-index: 100;
+
+  .backdrop {
+    background: hsla(180, 3%, 6%, 0.35);
+    @include absolute(top 0 right 0 bottom 0 left 0);
+  }
+
+  hr {
+    border: none;
+    margin: 1.5rem 0;
+  }
+
+  a {
+    font-weight: 500;
+    display: block;
+    width: 100%;
+  }
+
+  .icon-closeDrawer {
+    @include absolute(top 1rem right 1rem);
+    font-size: ms(4);
+  }
+
+  .Nav {
+    width: 100%;
+    .divider {
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+    }
+  }
+
+  .button--block {
+    line-height: 2.5em;
+  }
+}
+
+.Drawer__box {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  max-width: 90%;
+  min-height: 100vh;
+  background: white;
+  overflow: hidden;
+  box-shadow: hsla(240, 6%, 3%, 0.1) 0 0 35px;
+  overflow: auto;
+  align-items: center;
+
+  .Drawer--left & {
+    left: 0;
+    right: auto;
+    transform: translateX(-100%);
+  }
+
+  .Drawer--right & {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+  }
+}
+
+.Drawer__header {
+  position: relative;
+  z-index: 5;
+  text-transform: uppercase;
+  padding: 1.5rem 2rem;
+  font-weight: bold;
+  font-size: ms(-1);
+  letter-spacing: 0.2em;
+  text-align: center;
+  border-bottom: 2px solid gc(muted);
+}
+
+.Drawer__content {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  padding: 4rem 3rem;
+  margin-top: 3rem;
+  width: 100%;
+
+  .btn-close-drawer {
+    position: absolute;
+    right: 2em;
+    top: 2em;
+    outline: none;
+    box-shadow: none;
+    @include size(2em);
+    transform: rotate(45deg);
+
+    .icon {
+      @include size(2em);
+    }
+  }
+}
+
+.has-modalOpen {
+  overflow-y: hidden !important;
+}

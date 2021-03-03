@@ -1,0 +1,772 @@
+{
+  "current": {
+    "color_accent": "#35d8cf",
+    "color_body_text": "#000000",
+    "color_main_bg": "#ffffff",
+    "font_heading": "helvetica_n4",
+    "font_body": "helvetica_n4",
+    "share_image": "",
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "https:\/\/www.facebook.com\/copperpearl\/",
+    "social_pinterest_link": "https:\/\/www.pinterest.com\/copperpearl\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/copperpearl\/",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "cart_notes_enable": true,
+    "favicon": "shopify:\/\/shop_images\/icon.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1564934985227": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "New",
+              "link": "shopify:\/\/collections\/new",
+              "image": "shopify:\/\/shop_images\/MaxSwaddleMobile.jpg"
+            }
+          },
+          "1564934996723": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "Bibs",
+              "link": "shopify:\/\/collections\/bibs",
+              "image": "shopify:\/\/shop_images\/noah_bib.jpg"
+            }
+          },
+          "1564935038976": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "Covers",
+              "link": "shopify:\/\/collections\/multi-use-covers",
+              "image": "shopify:\/\/shop_images\/KaiCover.jpg"
+            }
+          },
+          "1564935047172": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "Blankets",
+              "link": "shopify:\/\/collections\/blankets",
+              "image": "shopify:\/\/shop_images\/Bitmap_831cd627-2c51-44d1-bd2d-c330c2438d95.jpg"
+            }
+          },
+          "1564935060917": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "Hats",
+              "link": "shopify:\/\/collections\/top-knot-hats",
+              "image": "shopify:\/\/shop_images\/EnchantedHat.jpg"
+            }
+          },
+          "1564935076203": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "Burp cloths",
+              "link": "shopify:\/\/collections\/premium-burp-cloths",
+              "image": "shopify:\/\/shop_images\/KaiBurpCloth.jpg"
+            }
+          },
+          "1564935085716": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "Bath time",
+              "link": "shopify:\/\/collections\/bath-time",
+              "image": "shopify:\/\/shop_images\/Featured_Collections_01_cover.jpg"
+            }
+          },
+          "1564935109628": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "Nursery",
+              "link": "shopify:\/\/collections\/nursery",
+              "image": "shopify:\/\/shop_images\/GraceChangingPad.jpg"
+            }
+          },
+          "1564935118944": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "Bundles",
+              "link": "shopify:\/\/collections\/bundles",
+              "image": "shopify:\/\/shop_images\/scout_1f411df5-9fde-445d-8a9e-2a84cf344c89.jpg"
+            }
+          },
+          "1564935128730": {
+            "type": "mobile_second_menu",
+            "settings": {
+              "text": "Collections",
+              "link": "shopify:\/\/collections",
+              "image": "shopify:\/\/shop_images\/LunarSwaddle1.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "1564934985227",
+          "1564934996723",
+          "1564935038976",
+          "1564935047172",
+          "1564935060917",
+          "1564935076203",
+          "1564935085716",
+          "1564935109628",
+          "1564935118944",
+          "1564935128730"
+        ],
+        "settings": {
+          "announcement_bar_enabled": false,
+          "announcement_bar_home_page_only": false,
+          "announcement_bar_text": "free shipping on orders over $50",
+          "announcement_bar_link": "",
+          "menu": "main-menu-2019"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_linklist": "footer-rebuild"
+        }
+      },
+      "1554115108489": {
+        "type": "hero-collections",
+        "blocks": {
+          "1558478511250": {
+            "type": "collection",
+            "settings": {
+              "collection": "premium-fitted-crib-sheets",
+              "image_desktop": "shopify:\/\/shop_images\/Newedit-17_1.jpg"
+            }
+          },
+          "1554125946447": {
+            "type": "collection",
+            "settings": {
+              "collection": "multi-use-covers",
+              "image_desktop": "shopify:\/\/shop_images\/EmmyLowePhotoKristinJune18-126.jpg"
+            }
+          },
+          "1554125967823": {
+            "type": "collection",
+            "settings": {
+              "collection": "top-knot-hats",
+              "image_desktop": "shopify:\/\/shop_images\/LunarSwaddle1.jpg"
+            }
+          },
+          "1558478610121": {
+            "type": "collection",
+            "settings": {
+              "collection": "premium-diaper-changing-pad-covers",
+              "image_desktop": "shopify:\/\/shop_images\/Copy_of_CP-4_1.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "1558478511250",
+          "1554125946447",
+          "1554125967823",
+          "1558478610121"
+        ],
+        "settings": {
+          "cover_image": "shopify:\/\/shop_images\/comfort.jpg",
+          "title": "cover",
+          "intro": "Products that help you and your baby cover up.",
+          "btn_text": "Shop Now",
+          "btn_link": "shopify:\/\/collections\/cover",
+          "content_placement": "left",
+          "show_testimonial": true,
+          "testimonial_image": "shopify:\/\/shop_images\/topknot_testimonial.jpg",
+          "testimonial_author": "Sarah H.",
+          "testimonial_text": "I was given this swaddle blanket and matching top knot hat from my mother in law because she knows how much I love sloths! It’s BEAUTIFUL! The fabric is so soft and stretchy making it amazing for wrapping up your little baby in. I can’t wait to look through all the prints and find another few to love!"
+        }
+      },
+      "1554115121774": {
+        "type": "hero-collections",
+        "blocks": {
+          "1558478669162": {
+            "type": "collection",
+            "settings": {
+              "collection": "muslin-hooded-towels",
+              "image_desktop": "shopify:\/\/shop_images\/EmmyLowePhotoKristinJune18-189.jpg"
+            }
+          },
+          "1554126656418": {
+            "type": "collection",
+            "settings": {
+              "collection": "premium-burp-cloths",
+              "image_desktop": "shopify:\/\/shop_images\/EmmyLowePhotoKristinJune18-96.jpg"
+            }
+          },
+          "1554126602312": {
+            "type": "collection",
+            "settings": {
+              "collection": "bamboo-wash-cloths",
+              "image_desktop": "shopify:\/\/shop_images\/EmmyLowePhotoCopperPearlAug17-127_1600x_0c9aab36-654d-41df-aafc-a50f9fd083ff.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "1558478669162",
+          "1554126656418",
+          "1554126602312",
+        ],
+        "settings": {
+          "cover_image": "shopify:\/\/shop_images\/clean_flip.jpg",
+          "title": "clean",
+          "intro": "Prevent unwanted leaks, spills, and stains.",
+          "btn_text": "Shop Now",
+          "btn_link": "shopify:\/\/collections\/clean",
+          "content_placement": "left",
+          "show_testimonial": true,
+          "testimonial_image": "shopify:\/\/shop_images\/archer_clean_lifestyle.jpg",
+          "testimonial_author": "Kari E.",
+          "testimonial_text": "Our son has acid reflux and we would soak a regular burp cloth with one spit up. With our new Copper Pearl cloths, we are able to use one much longer!!!"
+        }
+      },
+      "1554115129963": {
+        "type": "hero-collections",
+        "blocks": {
+          "1554126766311": {
+            "type": "collection",
+            "settings": {
+              "collection": "three-layer-quilts",
+              "image_desktop": "shopify:\/\/shop_images\/Bitmap_e9f5a9d7-0906-4ed4-a0ae-4f12de2339bf.jpg"
+            }
+          },
+          "1554126733787": {
+            "type": "collection",
+            "settings": {
+              "collection": "swaddle-blankets",
+              "image_desktop": "shopify:\/\/shop_images\/Bitmap_831cd627-2c51-44d1-bd2d-c330c2438d95.jpg"
+            }
+          },
+          "1558478840119": {
+            "type": "collection",
+            "settings": {
+              "collection": "baby-bandana-bibs",
+              "image_desktop": "shopify:\/\/shop_images\/EmmyLowePhotoKristinJune18-102.jpg"
+            }
+          },
+          "1570024662113": {
+            "type": "collection",
+            "settings": {
+              "collection": "security-blankets",
+              "image_desktop": "shopify:\/\/shop_images\/Copy_of_CopperPearl_BeckyKimballPhoto_149.JPG"
+            }
+          }
+        },
+        "block_order": [
+          "1554126766311",
+          "1558478840119",
+          "1554126733787",
+          "1570024662113"
+        ],
+        "settings": {
+          "cover_image": "shopify:\/\/shop_images\/Copy_of_CopperPearl_BeckyKimballPhoto_268.jpeg",
+          "title": "comfort",
+          "intro": "Snuggle up with one of these huggable products.",
+          "btn_text": "Shop Now",
+          "btn_link": "shopify:\/\/collections\/comfort",
+          "content_placement": "right",
+          "show_testimonial": true,
+          "testimonial_image": "shopify:\/\/shop_images\/quilt_testimonial.jpg",
+          "testimonial_author": "Brittany S.",
+          "testimonial_text": "We love copper pearl! The swaddles were the best, beautiful designs and big enough to actually wrap around a baby, just the right amount of stretch and so so soft! Now my daughter is 1 and we’ve been loving our 3-layer quilts! We’ve had to buy another quilt (aw bummer 😉) because it’s the only one she sleeps with! ❤️"
+        }
+      },
+      "1554127879963": {
+        "type": "in-the-press",
+        "blocks": {
+          "1554127930133": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_5.png"
+            }
+          },
+          "1554127978507": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_4.png"
+            }
+          },
+          "1554127932134": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_2.png"
+            }
+          },
+          "1554127934103": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_3.png"
+            }
+          },
+          "1554127931335": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_1.png"
+            }
+          }
+        },
+        "block_order": [
+          "1554127930133",
+          "1554127978507",
+          "1554127932134",
+          "1554127934103",
+          "1554127931335"
+        ],
+        "settings": {
+        }
+      },
+      "1554129197115": {
+        "type": "rich-text",
+        "settings": {
+          "title": "behind the brand",
+          "text": "<p>We create unique custom baby accessories that are trendy and fashion-forward. We stand behind each of the products in our collection, delivering the highest quality fabrics and designs with a 100% money back guarantee.<\/p>"
+        }
+      },
+      "1554815725768": {
+        "type": "highlights-grid",
+        "blocks": {
+          "1554815735935": {
+            "type": "highlight",
+            "settings": {
+              "title": "Soft on Sensitive Skin",
+              "image": "shopify:\/\/shop_images\/icon-soft-skin.png"
+            }
+          },
+          "1554815744292": {
+            "type": "highlight",
+            "settings": {
+              "title": "Money Back Guarantee",
+              "image": "shopify:\/\/shop_images\/icon-money-back.png"
+            }
+          },
+          "1554815752820": {
+            "type": "highlight",
+            "settings": {
+              "title": "Five Star Products",
+              "image": "shopify:\/\/shop_images\/icon-five-star-products.png"
+            }
+          }
+        },
+        "block_order": [
+          "1554815735935",
+          "1554815744292",
+          "1554815752820"
+        ],
+        "settings": {
+        }
+      },
+      "template-collection": {
+        "type": "template-collection",
+        "blocks": {
+          "1560440042144": {
+            "type": "filter_by_tag",
+            "settings": {
+              "collection": "bath-time",
+              "filter_title": "Type",
+              "filter_tags": "Ultra Soft Washcloth, Muslin Hooded Towel,"
+            }
+          },
+          "1560505242907": {
+            "type": "filter_by_tag",
+            "settings": {
+              "collection": "blankets",
+              "filter_title": "Type",
+              "filter_tags": "Knit Swaddle Blanket,          Three-layer quilt, Security Blanket"
+            }
+          },
+          "1560505278307": {
+            "type": "filter_by_tag",
+            "settings": {
+              "collection": "bibs",
+              "filter_title": "Type",
+              "filter_tags": "Bandana Bib,\n         Fashion Bib"
+            }
+          },
+          "1555603163878": {
+            "type": "filter_by_tag",
+            "settings": {
+              "collection": "",
+              "filter_title": "Style",
+              "filter_tags": "graphic, stripes, solids, floral"
+            }
+          },
+          "1555603189952": {
+            "type": "filter_by_tag",
+            "settings": {
+              "collection": "",
+              "filter_title": "Color",
+              "filter_tags": "black, white, gray, brown, red, pink, purple, blue, green, yellow, orange"
+            }
+          },
+          "1557164165001": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "multi-use-covers",
+              "collection_banner": "shopify:\/\/shop_images\/c-multi-use-covers.jpg",
+              "video_banner": ""
+            }
+          },
+          "1557164401846": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "baby-bandana-bibs",
+              "collection_banner": "shopify:\/\/shop_images\/c-baby-bandana-bibs.jpg",
+              "video_banner": ""
+            }
+          },
+          "1557164422478": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "bundles",
+              "collection_banner": "shopify:\/\/shop_images\/c-bundles.jpg",
+              "video_banner": ""
+            }
+          },
+          "1557164439493": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "premium-diaper-changing-pad-covers",
+              "collection_banner": "",
+              "video_banner": "<iframe width=\"560\" height=\"315\" src=\"https:\/\/www.youtube.com\/embed\/AoqsH6Xwc9w\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"><\/iframe>"
+            }
+          },
+          "1557164449741": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "premium-fitted-crib-sheets",
+              "collection_banner": "",
+              "video_banner": "<iframe width=\"560\" height=\"315\" src=\"https:\/\/www.youtube.com\/embed\/AoqsH6Xwc9w\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"><\/iframe>"
+            }
+          },
+          "1557164497494": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "muslin-hooded-towels",
+              "collection_banner": "shopify:\/\/shop_images\/c-muslin-hooded-towels.jpg",
+              "video_banner": ""
+            }
+          },
+          "1557164513924": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "new",
+              "collection_banner": "shopify:\/\/shop_images\/new.jpg",
+              "video_banner": ""
+            }
+          },
+          "1557164551077": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "top-knot-hats",
+              "collection_banner": "shopify:\/\/shop_images\/c-top-knot-hats.jpg",
+              "video_banner": ""
+            }
+          },
+          "1557164582380": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "premium-burp-cloths",
+              "collection_banner": "shopify:\/\/shop_images\/c-premium-burp-cloths.jpg",
+              "video_banner": ""
+            }
+          },
+          "1557164625324": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "swaddle-blankets",
+              "collection_banner": "shopify:\/\/shop_images\/c-swaddle-blankets.jpg",
+              "video_banner": ""
+            }
+          },
+          "1557164650628": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "three-layer-quilts",
+              "collection_banner": "shopify:\/\/shop_images\/c-three-layer-quilts.jpg",
+              "video_banner": ""
+            }
+          },
+          "1557164666428": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "bamboo-wash-cloths",
+              "collection_banner": "shopify:\/\/shop_images\/c-bamboo-wash-cloths.jpg",
+              "video_banner": ""
+            }
+          },
+          "1562180348318": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "bath-time",
+              "collection_banner": "shopify:\/\/shop_images\/c-bath-time.jpg",
+              "video_banner": ""
+            }
+          },
+          "1562180352515": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "bibs",
+              "collection_banner": "shopify:\/\/shop_images\/c-bibs.jpg",
+              "video_banner": ""
+            }
+          },
+          "1562180354528": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "blankets",
+              "collection_banner": "shopify:\/\/shop_images\/c-blankets.jpg",
+              "video_banner": ""
+            }
+          },
+          "1562180356161": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "fashion-bibs",
+              "collection_banner": "shopify:\/\/shop_images\/c-fashion-bibs.jpg",
+              "video_banner": ""
+            }
+          },
+          "1564525680179": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "nursery",
+              "collection_banner": "",
+              "video_banner": "<iframe width=\"560\" height=\"315\" src=\"https:\/\/www.youtube.com\/embed\/AoqsH6Xwc9w\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"><\/iframe>"
+            }
+          },
+          "1570024223415": {
+            "type": "collection_banner",
+            "settings": {
+              "collection": "security-blankets",
+              "collection_banner": "",
+              "video_banner": "<iframe width=\"560\" height=\"315\" src=\"https:\/\/www.youtube.com\/embed\/wqW5BwdoJ34\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"><\/iframe>"
+            }
+          }
+        },
+        "block_order": [
+          "1560440042144",
+          "1560505242907",
+          "1560505278307",
+          "1555603163878",
+          "1555603189952",
+          "1557164165001",
+          "1557164401846",
+          "1557164422478",
+          "1557164439493",
+          "1557164449741",
+          "1557164497494",
+          "1557164513924",
+          "1557164551077",
+          "1557164582380",
+          "1557164625324",
+          "1557164650628",
+          "1557164666428",
+          "1562180348318",
+          "1562180352515",
+          "1562180354528",
+          "1562180356161",
+          "1564525680179",
+          "1570024223415"
+        ],
+        "settings": {
+          "products_per_page": 24,
+          "show_product_quick_views": false,
+          "show_price": true
+        }
+      },
+      "in-the-press": {
+        "type": "in-the-press",
+        "blocks": {
+          "1555603222355": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_5.png"
+            }
+          },
+          "1555603252403": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_4.png"
+            }
+          },
+          "1555603258084": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_2.png"
+            }
+          },
+          "1555603266177": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_3.png"
+            }
+          },
+          "1555603262118": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/Press_1.png"
+            }
+          }
+        },
+        "block_order": [
+          "1555603222355",
+          "1555603252403",
+          "1555603258084",
+          "1555603266177",
+          "1555603262118"
+        ],
+        "settings": {
+        }
+      },
+      "rich-text": {
+        "type": "rich-text",
+        "settings": {
+          "title": "behind the brand",
+          "text": "<p>We create unique custom baby accessories that are trendy and fashion-forward. We stand behind each of the products in our collection, delivering the highest quality fabrics and designs with a 100% money back guarantee.<\/p>"
+        }
+      },
+      "highlights-grid": {
+        "type": "highlights-grid",
+        "blocks": {
+          "1555594071100": {
+            "type": "highlight",
+            "settings": {
+              "title": "Soft on Sensitive Skin",
+              "image": "shopify:\/\/shop_images\/icon-soft-skin.png"
+            }
+          },
+          "1555594076650": {
+            "type": "highlight",
+            "settings": {
+              "title": "Money Back Guarantee",
+              "image": "shopify:\/\/shop_images\/icon-money-back.png"
+            }
+          },
+          "1555594081137": {
+            "type": "highlight",
+            "settings": {
+              "title": "Five Star Products",
+              "image": "shopify:\/\/shop_images\/icon-five-star-products.png"
+            }
+          }
+        },
+        "block_order": [
+          "1555594071100",
+          "1555594076650",
+          "1555594081137"
+        ],
+        "settings": {
+        }
+      },
+      "product": {
+        "type": "product",
+        "settings": {
+          "share_buttons_title": "share the love",
+          "show_share_buttons": true
+        }
+      },
+      "product-related-by-name": {
+        "type": "product-related-by-name",
+        "settings": {
+          "section_title": "frequently purchased together",
+          "products_per_row": 2,
+          "show_prices": true,
+          "bg_color": "#f8f8f8"
+        }
+      },
+      "product-related-by-collection": {
+        "type": "product-related-by-collection",
+        "settings": {
+          "section_title": "related products",
+          "products_per_row": 2,
+          "show_prices": true,
+          "bg_color": "#f8f8f8"
+        }
+      },
+      "1568710621099": {
+        "type": "InstagramFeed",
+        "settings": {
+          "show_instagram_feeds": true,
+          "instagram_feeds_title": ""
+        }
+      }
+    },
+    "content_for_index": [
+      "1554115129963",
+      "1554115121774",
+      "1554115108489",
+      "1554127879963",
+      "1568710621099",
+      "1554129197115",
+      "1554815725768"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "collection-list": {
+          "type": "collection-list",
+          "blocks": {
+            "collection-list-0": {
+              "type": "collection",
+              "settings": {
+              }
+            },
+            "collection-list-1": {
+              "type": "collection",
+              "settings": {
+              }
+            },
+            "collection-list-2": {
+              "type": "collection",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "collection-list-0",
+            "collection-list-1",
+            "collection-list-2"
+          ],
+          "settings": {
+          }
+        },
+        "featured-collection": {
+          "type": "featured-collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "featured-product": {
+          "type": "featured-product",
+          "settings": {
+          }
+        }
+      },
+      "content_for_index": [
+        "collection-list",
+        "featured-collection",
+        "featured-product"
+      ]
+    }
+  }
+}

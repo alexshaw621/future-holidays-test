@@ -1,0 +1,107 @@
+// ----------------------------------------------------------------------------
+// {{TEXT UTILITIES}}
+// ----------------------------------------------------------------------------
+
+
+// TRUNCATION -----------------------------------------------------------------
+//  Text truncation
+//
+//  Prevent text from wrapping onto multiple lines, and truncate with an
+//  ellipsis.
+//
+//  1. Ensure that the node has a maximum width after which truncation can
+//     occur.
+//  2. Fix for IE 8/9 if `word-wrap: break-word` is in effect on ancestor
+//     nodes.
+
+
+.u-textTruncate {
+  max-width: 100%; /* 1 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal; /* 2 */
+}
+
+
+
+.u-textNoWrap{
+  white-space: nowrap;
+}
+
+
+// ALIGNMENT ------------------------------------------------------------------
+
+.u-textCenter {
+  text-align: center !important;
+}
+
+.u-textLeft {
+  text-align: left !important;
+}
+
+.u-textRight {
+  text-align: right !important;
+}
+
+
+// WEIGHT ---------------------------------------------------------------------
+.u-textBold{
+  font-weight: bold !important;
+}
+
+
+// TYPOGRAPHY STATES ----------------------------------------------------------
+// Utilitário para forçar cor do texto de acordo com a importância da mensagem
+// apresentada
+
+// .u-textNegative{
+//   color: $f-text-negative !important;
+// }
+// .u-textWarning{
+//   color: $f-text-warning !important;
+// }
+// .u-textInfo{
+//   color: $f-text-info !important;
+// }
+// .u-textPositive{
+//   color: $f-text-positive !important;
+// }
+// .u-textMuted{
+//   color: $f-text-neutral !important;
+// }
+
+
+
+// // {{$TEXT SIZE}} {{$ICON SIZE}} ----------------------------------------------
+// // As classes utilitárias são declaradas com !important para que possam sobrepor-se
+// // as definições dos components.
+// // Todas as classes aumentam manipulam o texto em função do contexto do elemento
+// // onde está a ser aplicada a classe de manipulação
+
+// .u-text-h1 { font-size: $f-size-h1 !important; }
+// .u-text-h2 { font-size: $f-size-h2 !important; }
+// .u-text-h3 { font-size: $f-size-h3 !important; }
+// .u-text-h4 { font-size: $f-size-h4 !important; }
+// .u-text-h5 { font-size: $f-size-h5 !important; }
+// .u-text-h6 { font-size: $f-size-h6 !important; }
+// .u-icon-h1 [class*="icon-"] { font-size: $f-size-h1 !important; line-height: 1; }
+// .u-icon-h2 [class*="icon-"] { font-size: $f-size-h2 !important; line-height: 1; }
+// .u-icon-h3 [class*="icon-"] { font-size: $f-size-h3 !important; line-height: 1; }
+// .u-icon-h4 [class*="icon-"] { font-size: $f-size-h4 !important; line-height: 1; }
+// .u-icon-h5 [class*="icon-"] { font-size: $f-size-h5 !important; line-height: 1; }
+// .u-icon-h6 [class*="icon-"] { font-size: $f-size-h6 !important; line-height: 1; }
+
+// [class*="u-iconH"] [class*="icon-"] {
+//   line-height: 1;  // faz reset ao line-height do icon para que o icon respeite o lineheight do elemento onde está contido
+//   vertical-align: middle;
+// }
+
+// // TODO: Renomear estas classes
+// .u-text-xxs { font-size: $f-size-xxs !important; }
+// .u-text-xs { font-size: $f-size-xs !important; }
+// .u-text-s { font-size: $f-size-s !important; }
+// .u-text-n { font-size: $f-size !important; }
+// .u-text-l { font-size: $f-size-l !important; }
+// .u-text-xl { font-size: $f-size-xl !important; }
+// .u-text-xxl { font-size: $f-size-xxl !important; }

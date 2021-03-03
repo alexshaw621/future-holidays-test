@@ -1,0 +1,37 @@
+<div class="Main">
+  <div class="Main__hero Container Container--wider lazyload" data-bgset="{{ page.metafields.gwm.header_image }}">
+  </div>
+  <div class="Container">
+    <div class="Main__content lazyload"
+      data-bgset="
+      {{ 'bg-early-birds-signup.jpg' | file_img_url: '200x' }} 200w,
+      {{ 'bg-early-birds-signup.jpg' | file_img_url: '400x' }} 400w,
+      {{ 'bg-early-birds-signup.jpg' | file_img_url: '800x' }} 800w,
+      {{ 'bg-early-birds-signup.jpg' | file_img_url: '1600x' }} 1600w,
+      {{ 'bg-early-birds-signup.jpg' | file_img_url: '2400x' }} 2400w"
+    data-sizes="auto">
+
+      <form id="email_signup_MaMGtm" class="klaviyo_standard_embed_MaMGtm" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+          <input type="hidden" name="g" value="MaMGtm">
+          <label for="early_bird_subscribe_email">Get a 25% off discount code to use on <strong>Thanksgiving!</strong></label>
+          <div class="FormRow">
+              <input type="email" value="" name="email" id="early_bird_subscribe_email" placeholder="Email Address" />
+              <button type="submit" class="klaviyo_submit_button klaviyo_form_actions Button Button--primary Button--huge">Subscribe</button>
+          </div>
+
+          <h5>Sign up now for our <strong>Thanksgiving Early Bird Special!</strong><br>This will be the biggest discount of the weekend, but you need to be on this email list to get it!</h5>
+
+          <div class="klaviyo_messages">
+              <div class="success_message" style="display:none;"></div>
+              <div class="error_message" style="display:none;"></div>
+          </div>
+      </form>      
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  KlaviyoSubscribe.attachToForms('#email_signup_MaMGtm', {
+      hide_form_on_success: true
+  });
+</script>

@@ -1,0 +1,51 @@
+<div class="SubscribeModal" data-component="SubscribeModal">
+  <div class="SubscribeModal__modal">
+    <figure>
+      <img
+        data-src="{{ 'newsletter_modal_cover.jpg' | file_img_url : '400px' }}"
+        data-srcset="
+            {{ 'newsletter_modal_cover.jpg' | file_img_url: '400x' }} 400w,
+            {{ 'newsletter_modal_cover.jpg' | file_img_url: '800x' }} 800w,
+            {{ 'newsletter_modal_cover.jpg' | file_img_url: '1200x' }} 1200w
+            "
+        alt="{{ collection.title | escape }}"
+        class="lazyload fade-up">
+    </figure>
+    <div class="SubscribeNews">
+      <form id="email_signup2" class="klaviyo_standard_embed_JRdX56" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+        <h4>Get the latest on new releases and special offers</h4>
+        <input type="hidden" name="g" value="JRdX56">
+        <input type="hidden" name="$fields" value="baby's birthday"/>
+        
+        <div class="FormRow">
+          <div class="Form__grid">
+            <div class="Form__input Grid-medium-1-2">
+              <input type="email" value="" name="email" id="k_id_email" placeholder="Your email" />
+            </div>
+            <div class="Form__input Grid-medium-1-2">
+              <!-- <input type="date" name="baby's birthday" value="" placeholder="baby's birthday" /> -->
+              <input type="text" name="baby's birthday" placeholder="baby's birthday" onfocus="(this.type='date')">
+            </div>
+          </div>
+
+          <button type="submit" class="klaviyo_submit_button button button--primary">Subscribe</button>
+        </div>
+        <div class="klaviyo_messages">
+          <div class="success_message" style="display:none;"></div>
+          <div class="error_message" style="display:none;"></div>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript">
+      KlaviyoSubscribe.attachToForms('#email_signup2', {
+          hide_form_on_success: true
+      });
+    </script>
+    <button class="button button--nolayout js-closeModal">
+      <svg viewBox='0 0 20 20' class='icon icon-close' width='1em' height='1em'>
+        <use xlink:href='#icon-close'></use>
+      </svg>
+    </button>
+  </div>
+  <div class="SubscribeModal__backdrop"></div>
+</div>

@@ -1,0 +1,117 @@
+$layout: (
+  max-width: 93.75rem,
+  max-width-narrow: 70rem,
+  max-width-narrower: 60rem,
+  max-width-wide: 110rem,
+  max-width-wider: 120rem,
+  max-width-widest: 140rem
+);
+
+$forms: (
+  input: (
+    background: hsla(123, 0%, 95%, 1),
+    height: 2.8em,
+    radius: 0em,
+    padding: 0 1.25em,
+    font-size: ms(0),
+    border: none
+  )
+);
+
+$buttons: (
+  default: (
+    font-size: 1rem,
+    height: 2.85em,
+    padding: 0 2.6em,
+    radius: 0
+  ),
+  small: (
+    font-size: ms(-2),
+    height: 2.2em,
+    padding: 0 2.2em,
+    radius: 0
+  ),
+  compact: (
+    font-size: ms(-2),
+    height: 2.8em,
+    padding: 0 2em,
+    radius: 0
+  ),
+  big: (
+    font-size: ms(1),
+    height: 5em,
+    padding: 0 4.6em,
+    radius: 0
+  ),
+  huge: (
+    font-size: 1.55rem,
+    height: 3em,
+    padding: 0 2.6em,
+    radius: 0
+  )
+);
+
+$spacing: (
+  trim: (
+    base: 30px,
+    small: 15px
+  ),
+  box: (
+    base: 2rem,
+    large: 4rem,
+    small: 1.5rem
+  ),
+  el: (
+    base: 1rem,
+    large: 1.5rem,
+    small: 0.5rem
+  )
+);
+
+// Breakpoints ----------------------------------------------------------------
+// These should be used with the bp (max-width, xx) mixin
+// where a min-width is used, remember to +1 to break correctly.
+// If these are changed, they must also be updated in app.js
+
+$bp-phone: 0px;
+$bp-phone-l: 470px;
+$bp-tablet: 768px;
+$bp-tablet-l: 900px;
+$bp-desktop: 1024px;
+$bp-desktop-l: 1590px;
+// $bp-desktop-xl : 1590px;
+
+// To enable support for browsers that do not support @media queries,
+// (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
+// Create a separate stylesheet served exclusively to these browsers,
+// meaning @media queries will be rasterized, relying on the cascade itself
+$mq-responsive: true;
+
+// Name your breakpoints in a way that creates a ubiquitous language
+// across team members. It will improve communication between
+// stakeholders, designers, developers, and testers.
+$mq-breakpoints: (
+  mobile: $bp-phone,
+  mobileLarge: $bp-phone-l,
+  tablet: $bp-tablet,
+  tabletLarge: $bp-tablet-l,
+  desktop: $bp-desktop,
+  desktopLarge: $bp-desktop-l
+);
+
+// Define the breakpoint from the $mq-breakpoints list that should
+// be used as the target width when outputting a static stylesheet
+// (i.e. when $mq-responsive is set to 'false').
+// $mq-static-breakpoint: desktop;
+
+// If you want to display the currently active breakpoint in the top
+// right corner of your site during development, add the breakpoints
+// to this list, ordered by width, e.g. (mobile, tablet, desktop).
+$mq-show-breakpoints: (
+  mobile,
+  mobile large,
+  tablet,
+  tablet large,
+  desktop,
+  desktop large
+);

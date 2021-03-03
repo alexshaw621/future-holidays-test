@@ -1,0 +1,79 @@
+<div class="Main">
+  <div class="Container Container--narrow">
+    <header class="Main__header">
+      <h1>
+        {% if search.performed %}
+          {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
+        {% else %}
+          {{ 'general.search.title' | t }}
+        {% endif %}
+      </h1>
+    </header>
+    <main class="Main__content">
+      {% paginate search.results by 9 %}
+
+        <form action="/search" method="get" role="search" class="SearchBar">
+          <input type="hidden" name="type" value="product" />
+          <label for="Search" class="label-hidden">
+            {{ 'general.search.placeholder' | t }}
+          </label>
+          <input type="search"
+                name="q"
+                id="Search"
+                value="{{ search.terms | escape }}"
+                placeholder="{{ 'general.search.placeholder' | t }}">
+          <button type="submit" class="button">
+            <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+              <use xlink:href='#icon-search'></use>
+            </svg>
+            <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+          </button>
+        </form>
+
+        {% if search.performed %}
+          {% if search.results_count == 0 %}
+            <p class="u-textCenter">{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+          {% else %}
+            <div data-component="LazyLoader" data-search-results>
+              <div class="Loop js-lazyload">
+                {% for item in search.results %}
+                  {% if item.object_type == 'product' %}
+                    {% assign product = item %}
+                    {% include 'product-card', showPreview: false %}
+                  {% else %}
+                    <div class="Card">
+                      <div class="Card__details">
+                        <h4 class="Card__title"><a href="{{ item.url | within: collection }}">{{ item.title }}</a></h4>
+                        <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <div class="js-pageNav">
+                {% if paginate.next.url %}
+                  <a href="{{ paginate.next.url }}" class="nextPageLink"></a>
+                {% endif %}
+              </div>
+
+              <div class="page-load-status">
+                <p class="infinite-scroll-request">Loading...</p>
+                <p class="infinite-scroll-last"></p>
+                <p class="infinite-scroll-error"></p>
+              </div>
+
+            </div>
+
+            {% comment %} {% if paginate.pages > 1 %}
+              {% include 'pagination' %}
+            {% endif %} {% endcomment %}
+          {% endif %}
+        {% endif %}
+
+      {% endpaginate %}
+    </main>
+  </div>
+</div>
+
+

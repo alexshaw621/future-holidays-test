@@ -1,0 +1,14 @@
+
+
+@mixin increase-specificity( $depth: 1 ) {
+    $sel : '';
+
+    @while($depth > 0) {
+        $sel   : $sel + ':nth-child(n)';
+        $depth : $depth - 1;
+    }
+
+    &#{$sel} {
+        @content;
+    }
+}

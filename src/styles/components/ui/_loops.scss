@@ -1,0 +1,152 @@
+/**
+* ----------------------------------------------------------------------------
+* LOOP
+* ----------------------------------------------------------------------------
+*/
+
+$item-spacing: 1em;
+
+.Loop {
+  margin-left: $item-spacing * -1;
+  margin-right: $item-spacing * -1;
+  margin-bottom: space(box);
+
+  display: flex;
+  flex-flow: row wrap;
+  width: calc(100% + #{$item-spacing * 2});
+
+  p {
+    word-wrap: break-word;
+    margin: 0;
+  }
+
+  // For slider loops that rely on Flickity, we need to revert the flexbox layout
+  // to avoid conflicts with Flickity
+  &.Slider {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  .Section & {
+    margin-bottom: 0;
+  }
+
+  .Card {
+    flex-basis: calc(100% - #{$item-spacing * 2});
+    max-width: calc(100% - #{$item-spacing * 2});
+    margin: $item-spacing;
+    @include mq($from: tablet) {
+      flex-basis: calc(50% - #{$item-spacing * 2});
+      max-width: calc(50% - #{$item-spacing * 2});
+    }
+    @include mq($from: desktop) {
+      flex-basis: calc(33.333% - #{$item-spacing * 2});
+      max-width: calc(33.333% - #{$item-spacing * 2});
+    }
+  }
+
+
+  // Flickity carousel on phone device.
+  &.flickity-enabled {
+    .flickity-viewport {
+      width: 100%;
+    }
+  }
+}
+
+
+// ============================================================================
+// Loop
+// ============================================================================
+.Loop--1 {
+  $spacing: 1rem;
+  .Card {
+    flex-basis: calc(100% - #{$spacing * 2});
+    max-width: calc(100% - #{$spacing * 2});
+    @include mq($from: desktopLarge) {
+      padding: 0 #{$spacing * 3};
+    }
+  }
+}
+
+.Loop--2 {
+  $spacing: 1rem;
+  .Card {
+    flex-basis: calc(100% - #{$spacing * 2});
+    max-width: calc(100% - #{$spacing * 2});
+    @include mq($from: tablet) {
+      flex-basis: calc(50% - #{$spacing * 2});
+      max-width: calc(50% - #{$spacing * 2});
+    }
+    @include mq($from: desktopLarge) {
+      padding: 0 #{$spacing * 3};
+    }
+  }
+
+  // Flickity carousel on phone device.
+  &.flickity-enabled {
+    .Card {
+      flex-basis: 50%;
+      max-width: 50%;
+      width: 50%;
+      @include mq($from: tablet) {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+    }
+  }
+}
+
+
+.Loop--4 {
+  $spacing: 1rem;
+  .Card {
+    flex-basis: calc(100% - #{$spacing * 2});
+    max-width: calc(100% - #{$spacing * 2});
+    @include mq($from: tablet) {
+      flex-basis: calc(50% - #{$spacing * 2});
+      max-width: calc(50% - #{$spacing * 2});
+    }
+    @include mq($from: desktop) {
+      flex-basis: calc(25% - #{$spacing * 2});
+      max-width: calc(25% - #{$spacing * 2});
+    }
+    @include mq($from: desktopLarge) {
+      padding: 0 #{$spacing * 3};
+    }
+  }
+}
+
+
+/**
+* ----------------------------------------------------------------------------
+* CARD
+* ----------------------------------------------------------------------------
+*/
+
+// .Card{}
+.Card__figure {
+  position: relative;
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 70%;
+  }
+  img {
+    @include absolute(top 0 right 0 bottom 0 left 0);
+    width: 100%;
+    height: 100%;
+    @include object-fit(contain, center);
+  }
+}
+.Card__details {
+  padding: 1em 1.6em;
+}
+.Card__title {
+  margin-top: 0;
+  margin-bottom: 0;
+}

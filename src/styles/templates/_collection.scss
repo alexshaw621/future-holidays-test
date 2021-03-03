@@ -1,0 +1,260 @@
+// These values are the minimum and maximum viewport sizes to apply the font scaling
+$min_width: 400;
+$max_width: 2400;
+
+// These values represent the range of fon-tsize to apply
+// These values effect the base font-size, headings and other elements will scale proportionally
+$title_min_font: 30;
+$title_max_font: 64;
+
+.Collection__cover {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+  }
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+    color: white;
+    padding: 3rem 4rem;
+    min-height: 25vh;
+    h1 {
+      color: white;
+      margin-bottom: 0;
+      line-height: 1;
+    }
+    p {
+      font-size: ms(2);
+      font-style: italic;
+      max-width: 38em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.Collection__header {
+  text-align: center;
+
+  @include mq($until: tablet) {
+    // Video banner
+    iframe {
+      max-width: 100%;
+      height: 60vw;
+    }
+  }
+}
+
+.Collection__description {
+  background: #f7f7f7;
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+  text-align: center;
+
+  h1 {
+    text-transform: lowercase;
+    font-size: 30px;
+    &:first-child {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  p {
+    max-width: 40em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.Collection__cover {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 2rem;
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 30%;
+  }
+}
+
+// .Collection__banner {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-rows: minmax(max-content, 30vh);
+//   grid-gap: 2rem;
+//   margin-bottom: 3rem;
+//   .cover {
+//     background: gc(muted);
+//   }
+//   .details {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     text-align: center;
+//     background: gc(muted, base2);
+//   }
+//   h2 {
+//     font-style: italic;
+//     color: darken(gc(muted, base2), 45%);
+//     font-size: ms(5);
+//   }
+//   p {
+//     color: darken(gc(muted, base2), 30%);
+//     max-width: 34em;
+//   }
+// }
+
+.Collection__navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.75rem;
+  margin-bottom: 1rem;
+  font-size: 14px;
+
+  .mobile-nav {
+    flex-basis: 100%;
+    border-bottom: 1px solid gc(muted);
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    grid-column: 1 / span 3;
+  }
+  .status {
+    color: gc(text, black);
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .filters {
+    text-align: center;
+    .Nav {
+      justify-content: center;
+    }
+  }
+  .options {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    a {
+      color: gc(brand);
+    }
+    .icon {
+      margin-right: $gutter-sm / 4;
+    }
+    svg {
+      fill: gc(brand);
+    }
+  }
+
+  .Nav--vertical {
+    align-items: center;
+    line-height: 2.5;
+  }
+
+  @include mq($until: tablet) {
+    .options,
+    .status {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+}
+
+.page-load-status {
+  text-align: center;
+  display: none;
+}
+
+// Collection__filters
+.Collection__filters {
+  padding-top: $gutter;
+  padding-bottom: $gutter * 2;
+
+  @include mq($until: desktop) {
+    padding-top: $gutter-sm;
+    padding-bottom: $gutter-sm * 2;
+  }
+}
+.filter__tags {
+  padding: 0 $gutter / 2;
+}
+.filter__header {
+  margin-left: -1em;
+  margin-right: -1em;
+}
+.filter__header__label {
+  font-size: 12px;
+  color: gc(text, muted);
+  padding: 0 1em;
+}
+.filter__title {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+
+  .icon {
+    margin-bottom: -2px;
+  }
+}
+
+.filter__content {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.filter__content__options {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  li {
+    padding: 0 $gutter / 2;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: lowercase;
+    letter-spacing: 1.1px;
+  }
+
+  @include mq($until: tablet) {
+    li {
+      padding: .2em 1em;
+      text-align: left;
+    }
+
+    label {
+      padding-left: 1.7em;
+    }
+  }
+}
+
+[data-filter-tag-reset] {
+  font-size: $font-size-xs;
+  letter-spacing: 0.9px;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  a {
+    color: $color-accent;
+  }
+}

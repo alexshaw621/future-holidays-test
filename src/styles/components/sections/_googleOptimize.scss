@@ -1,0 +1,90 @@
+body.ABTest--FlashCart {
+  .MiniCart__dropdown {
+    display: none !important;
+    transform: none !important;
+    opacity: 0 !important;
+  }
+}
+
+// body.ABTest--SuppressBoldUpsell {
+//   .bold_hidden[data-add-to-cart] {
+//     display: inline-block !important;
+//     margin: 0 auto;
+//   }
+
+//   .bold_clone[data-add-to-cart] {
+//     display: none !important;
+//   }
+// }
+
+
+.Loop--collections--new {
+  display: none !important;
+}
+
+// body.ABTest--LessLifestyleImagery {
+//   .Loop--collections-original {
+//     display: none !important;
+//   }
+
+//   .Loop--collections--new {
+//     display: flex !important;
+
+//     .Card {
+//       display: flex;
+//       flex-flow: column;
+//       box-shadow: none;
+//     }
+//     .Card__figure:before {
+//       padding-top: 80%;
+//     }
+//     .Card__details {
+//       order: -1;
+//       text-align: left;
+//     }
+//     .Card__title {
+//       line-height: 1.2;
+
+//       a {
+//         align-items: flex-start;
+//       }
+//       svg {
+//         font-size: 3rem;
+//       }
+//     }
+
+
+//     .Card__figure img {
+//       object-fit: contain;
+//     }
+
+//     @include mq($from: 1280px) {
+//       .Card__title {
+//         font-size: 1.9rem;
+
+//         svg {
+//           margin-left: 1.3em;
+//         }
+//       }
+//     }
+
+//     @include mq($until: tablet) {
+//       display: block !important;
+//     }
+//   }
+// }
+
+.ABTest--OnelineGiftNote {
+  .MiniCart__dropdown .cart-notes {
+    textarea {
+      height: 2.5rem;
+      min-height: 0;
+      padding: 0.5rem 1.25em;
+      transition: all ease 0.3s;
+    }
+    textarea:focus {
+      min-height: 6rem;
+      padding: 1em 1.25em;
+    }
+  }
+}

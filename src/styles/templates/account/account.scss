@@ -1,0 +1,70 @@
+// Order Details View
+.order-details {
+  h2 {
+    margin-bottom: 0;
+  }
+  p {
+    margin: 0;
+    color: gc(text, neutral);
+  }
+}
+
+.orders-list-table,
+.order-details-table {
+  @include mq($from: tablet) {
+    td,
+    th {
+      padding: 0.5em;
+    }
+    thead {
+      th {
+        text-transform: uppercase;
+        font-size: ms(-3);
+        letter-spacing: 0.2em;
+      }
+    }
+    tfoot,
+    tbody {
+      td:last-child {
+        text-align: center;
+      }
+    }
+    tfoot {
+      tr:first-of-type {
+        td,
+        th {
+          padding-top: 1.5rem;
+        }
+      }
+      td:first-child {
+        text-transform: uppercase;
+        font-size: ms(-3);
+        letter-spacing: 0.2em;
+        font-weight: 600;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.orders-list-table {
+  td,
+  th {
+    text-align: center;
+  }
+}
+
+.order-details-cancellation {
+  margin: 2rem 0;
+  background: hsla(47, 100%, 46%, 0.11);
+  padding: 1.5rem;
+  p {
+    color: hsla(47, 60%, 46%, 1);
+    margin: 0;
+  }
+}
+
+// Shipping and Payment have status outline in order details view
+.order-step-status {
+  font-weight: bold;
+}

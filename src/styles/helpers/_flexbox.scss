@@ -1,0 +1,72 @@
+
+// ----------------------------------------------------------------------------
+// {{FLEX}}
+// ^flexbox ^layout
+// ----------------------------------------------------------------------------
+// Utilitários para construção de layout com flexbox
+
+// D = direction (u-flex-Dcolumn)
+// A = alignment (u-flex-Acenter)
+// J = justify (u-flex-Jstart)
+// G = grow (u-flex-G1)
+// S = shrink (u-flex-S1)
+// SA = self align (u-flex-SAstart)
+// W = wrap (u-flex-W)
+
+.u-flex{
+  @include display(flex);
+}
+
+// ----------------------------------------------------------------------------
+// FLEX CONTAINERS
+// ----------------------------------------------------------------------------
+
+// FLEX DIRECTION -------------------------------------------------------------
+.u-flex-Dcolumn{ @include flex-direction(column); }
+.u-flex-Drow{ @include flex-direction(row); }
+
+
+// FLEX ALIGNMENT -------------------------------------------------------------
+.u-flex-Astart{ @include align-items(flex-start); }
+.u-flex-Aend{ @include align-items(flex-end); }
+.u-flex-Acenter{ @include align-items(center); }
+.u-flex-Astretch{ @include align-items(flex-stretch); }
+
+
+// FLEX JUSTIFICATION ---------------------------------------------------------
+.u-flex-Jstart{ @include justify-content(flex-start); }
+.u-flex-Jend{ @include justify-content(flex-end); }
+.u-flex-Jcenter{ @include justify-content(center); }
+.u-flex-JspaceBetween{ @include justify-content(space-between); }
+.u-flex-JspaceAround{ @include justify-content(space-around); }
+
+
+// FLEX WRAP ------------------------------------------------------------------
+.u-flex-W{ @include flex-wrap(wrap);}
+.u-flex-Wno{ @include flex-wrap(nowrap);}
+
+
+// ----------------------------------------------------------------------------
+// FLEX ITEMS
+// ----------------------------------------------------------------------------
+
+// FLEX GROW ------------------------------------------------------------------
+.u-flex-G0{ @include flex-grow(0); }
+.u-flex-G1{ @include flex-grow(1); }
+.u-flex-G2{ @include flex-grow(2); }
+.u-flex-G3{ @include flex-grow(3); }
+
+// FLEX SHRINK ----------------------------------------------------------------
+.u-flex-S0{ @include flex-shrink(0); }
+.u-flex-S1{ @include flex-shrink(1); }
+.u-flex-S2{ @include flex-shrink(2); }
+.u-flex-S3{ @include flex-shrink(3); }
+
+
+// FLEX SELF ALIGN ------------------------------------------------------------
+.u-flex-SAstart{ @include align-self(flex-start); }
+.u-flex-SAend{ @include align-self(flex-end); }
+.u-flex-SAcenter{ @include align-self(center); }
+.u-flex-SAbaseline{ @include align-self(baseline); }
+.u-flex-SAstretch{ @include align-self(stretch); }
+

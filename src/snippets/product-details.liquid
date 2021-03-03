@@ -1,0 +1,82 @@
+{% comment %}
+  PRODUCT DETAILS
+    - Add to baby list
+    - Vendor
+    - Title
+    - Price
+    - Form
+    - Social Links
+{% endcomment %}
+
+  <a href="javascript:
+      bl.addToRegistry({
+          images: '{{ product.featured_image.src | img_url: '880x' }}',
+          price: '{{ current_variant.price | money_without_currency }}',
+          title: '{{ product.title }}',
+          url: 'https://www.copperpearl.com{{ product.url | within: collection }}'
+      });">
+      <svg viewBox='0 0 20 20' class='icon icon--heart'>
+        <use xlink:href='#icon-heart'></use>
+      </svg>
+  </a>
+
+  <div class="product__reviews-count">
+    <a href="#product__reviews" data-reviews-count><div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div></a>
+  </div>
+
+
+  {% assign title_parts = product.title | split: ' - ' %}
+  {% if title_parts.size > 1 %}
+    <div class="product__title">{{ title_parts[1] }}</div>
+    <h1 class="product__type">{{ title_parts[0]}}</h1>
+  {% else %}
+    {% if product.title contains 'bundle' or product.title contains 'Bundle' %}
+      <div class="product__title">{{ product.title | remove: 'bundle' | remove: 'Bundle' }}</div>
+      <h1 class="product__type">bundle</h1>
+    {% else %}
+      {% if product.handle contains 'gift-card' %}
+        <div class="product__title">gift card</div>
+        <h1 class="product__type">{{ product.title | remove: 'Gift Card' | remove: 'gift card' }}</h1>
+      {% else %}
+        <h1 class="product__type">{{ product.title }}</h1>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+    <!-- Product Price -->
+  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+    <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+    <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+    <div data-price-wrapper>
+      <span class="product__price" data-product-price>
+        {{ current_variant.price | money }}
+      </span>
+
+      {% if product.compare_at_price_max > product.price %}
+        <div class="price-comparison">
+          <span data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+          <span data-compare-price>
+            {% if current_variant.compare_at_price > current_variant.price %}
+              {{ current_variant.compare_at_price | money }}
+            {% endif %}
+          </span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if main_description != blank %}
+    <div class="product__description">
+      {{ main_description }}
+    </div>
+  {% endif %}
+
+  {% include 'product-form' %}
+
+  
+
+  {% if section.settings.show_share_buttons %}
+    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+  {% endif %}

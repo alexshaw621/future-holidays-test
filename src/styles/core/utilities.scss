@@ -1,0 +1,37 @@
+.visually-hidden {
+  visibility: hidden !important;
+}
+
+// [aria-hidden],
+.label-hidden,
+.icon-fallback-text,
+.u-hidden,
+.hide {
+  display: none !important;
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * FADE-UP
+ * Utility classed used by the lazy-loading plugin, to animate entrance of
+ * high-resolution lazy-loaded images
+ * ----------------------------------------------------------------------------
+ */
+
+.fade-up {
+  opacity: 0;
+  transition: opacity 400ms;
+}
+
+.fade-up.lazyloaded {
+  opacity: 1;
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * JS UTILITIES
+ * ----------------------------------------------------------------------------
+ */
+.js-clickBlock {
+  cursor: pointer;
+}

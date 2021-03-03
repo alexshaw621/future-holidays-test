@@ -1,0 +1,134 @@
+<header class="Collection__header">
+  <!-- Collection Banner -->
+  {% for block in section.blocks %}
+    {% if block.type == 'collection_banner' %}
+      {% assign main_collection_handle = block.settings.collection %}
+      {% if main_collection_handle == collection.handle %}
+        {% assign banner_image = block.settings.collection_banner %}
+        {% assign banner_video = block.settings.video_banner %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  
+  {% if banner_image != blank %}
+    <figure
+      class="Collection__cover lazyload Container"
+      data-bgset="
+        {{ banner_image | img_url: '200x' }} 200w,
+        {{ banner_image | img_url: '400x' }} 400w,
+        {{ banner_image | img_url: '800x' }} 800w,
+        {{ banner_image | img_url: '1600x' }} 1600w,
+        {{ banner_image | img_url: '2400x' }} 2400w"
+      >
+    </figure>
+  {% endif %}
+
+  {% if banner_video != blank %}
+    {{ banner_video }}
+  {% endif %}
+
+  
+  <!-- /Collection Banner -->
+  
+  <div class="Collection__description">
+    <div class="Container">
+      <h1><span>{{ collection.title }}</span></h1>
+    </div>
+  </div>
+
+  <div class="u-show--untilTablet">
+    {% include "collection-navigation-header" %}
+  </div>
+
+  <div class="Container Collection__filters">
+    <div class="filter__header" data-filter-header>
+      <span class="filter__header__label">Filter by:</span>
+      {% for block in section.blocks %}
+        {% if block.type == "filter_by_tag" %}
+          {% assign baseCollection = collections[block.settings.collection] %}
+          {% if block.settings.collection == blank %}
+            <span class="filter__title" data-filter-type="{{ block.settings.filter_title }}">
+              {{ block.settings.filter_title }}
+
+              <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+                <use xlink:href='#icon-plus'></use>
+              </svg>
+            </span>
+          {% else %}
+            {% if baseCollection.handle == collection.handle %}
+              <span class="filter__title" data-filter-type="{{ block.settings.filter_title }}">
+                {{ block.settings.filter_title }}
+
+                <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+                  <use xlink:href='#icon-plus'></use>
+                </svg>
+              </span>
+            {% endif %}  
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% for block in section.blocks %}
+      {% if block.type == "filter_by_tag" %}
+
+        {% assign baseCollection = collections[block.settings.collection] %}
+        {% if block.settings.collection == blank %}
+        
+          <div class="filter__content" data-filter-content-for="{{ block.settings.filter_title }}">
+            {% assign tags_array = block.settings.filter_tags | split: ',' %}
+            {% assign selected_tag = '' %}
+            {% assign selected_tag_label = '' %}
+            <ul class="filter__content__options" data-filter-content-options>
+              {% for tag in tags_array %}
+                {% capture filter_tag %}{{ block.settings.filter_title | handle }}-{{ tag | strip }}{% endcapture %}
+
+                {% if current_tags contains filter_tag %}
+                  {% assign selected_tag = filter_tag %}
+                  {% assign selected_tag_label = tag %}
+                {% endif %}
+
+                <li class="{% if current_tags contains filter_tag %}active{% endif %}">
+                  <label class="custom-radio" data-option-filter><span class="tag">{{ tag }}</span>
+                    <input type="radio" {% if current_tags contains filter_tag %}checked="checked"{% endif %} name="radio-{{ block.id }}" data-filter-tag="{{ block.settings.filter_title | handle }}-{{ tag | handle }}">
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+
+            <div class="filter__content__reset {% if current_tags contains selected_tag %}active{% endif %}" data-filter-tag-reset>showing '<span class="filter__tag__selected" data-filter-tag-selected>{{ selected_tag_label }}</span>' {{ 'reset filter' | link_to_remove_tag: 'reset filter' }}</div>
+          </div>
+        {% else %}
+          {% if baseCollection.handle == collection.handle %}
+            <div class="filter__content" data-filter-content-for="{{ block.settings.filter_title }}">
+              {% assign tags_array = block.settings.filter_tags | split: ',' %}
+              {% assign selected_tag = '' %}
+              {% assign selected_tag_label = '' %}
+              <ul class="filter__content__options" data-filter-content-options>
+                {% for tag in tags_array %}
+                  {% capture filter_tag %}{{ block.settings.filter_title | handle }}-{{ tag | strip }}{% endcapture %}
+
+                  {% if current_tags contains filter_tag %}
+                    {% assign selected_tag = filter_tag %}
+                    {% assign selected_tag_label = tag %}
+                  {% endif %}
+                  <li class="{% if current_tags contains filter_tag %}active{% endif %}">
+                    <label class="custom-radio" data-option-filter><span class="tag">{{ tag }}</span>
+                      <input type="radio" {% if current_tags contains filter_tag %}checked="checked"{% endif %} name="radio-{{ block.id }}" data-filter-tag="{{ block.settings.filter_title | handle }}-{{ tag | handle }}">
+                      <span class="checkmark"></span>
+                    </label>
+                  </li>
+                {% endfor %}
+              </ul>
+
+              <div class="filter__content__reset {% if current_tags contains selected_tag %}active{% endif %}" data-filter-tag-reset>showing '<span class="filter__tag__selected" data-filter-tag-selected>{{ selected_tag_label }}</span>' {{ 'reset filter' | link_to_remove_tag: 'reset filter' }}</div>
+
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</header>

@@ -1,0 +1,149 @@
+
+div.SubscribeNews {
+  background: #f6f7f9;
+  padding: 2rem 2rem;
+  flex: 1 1 35%;
+  margin-bottom: 3rem;
+
+  form{
+    max-width: 100% !important;
+    margin: 0;
+
+    input[type='email'],
+    button.button{
+      height: unset;
+    }
+
+    button.button {
+      border-radius:0;
+      background: gc(brand);
+      padding:0 2em;
+      font-weight:normal;
+    }
+  }
+}
+
+.SubscribeModal {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  transform: translateY(100%);
+  opacity: 0;
+  
+  .SubscribeModal__modal {
+    width: 100%;
+    max-width: 60rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #f6f7f9;
+  }
+
+  .Form__grid {
+    margin-bottom: 0.5rem;
+  }
+
+  figure {
+    flex-basis: 40%;
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-top: 100%;
+    }
+    img {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      font-family: "object-fit: cover; object-position: center"
+    }
+  }
+
+  form {
+    flex-basis: 60%;
+  }
+  .SubscribeNews {
+    width: 100%;
+    align-items: flex-start;
+    margin: 0;
+    background: #f6f7f9;
+    padding: 2rem 2rem;
+    flex: 1 1 35%;
+    margin-bottom: 3rem;
+
+    @media (min-width: 64em) {
+      padding: 2rem 4rem;
+    }
+  }
+
+  .klaviyo_bare_embed_MResWN {
+    position: relative;
+    z-index: 2;
+    padding: 2.5rem 3.5rem;
+  }
+  .klaviyo_messages {
+    margin-top: 15px;
+    text-align: center;
+
+    > div {
+      padding-top: 0.4em;
+    }
+  }
+  input {
+    height: 3rem;
+    border: none;
+    width: 100%;
+    background: white;
+    border: 1px solid black;
+  }
+  input[type='date'] {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  button {
+    width: 100%;
+    padding: 0 1rem;
+    background: black;
+  }
+  p {
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+  }
+  .js-closeModal {
+    width: auto;
+    background: none;
+    padding: 0;
+    top: 0;
+    right: 1.5rem;
+    position: absolute;
+    z-index: 4;
+    font-size: 2rem;
+    color: #000;
+  }
+
+  .success_message {
+    font-size: 1rem;
+  }
+}
+.SubscribeModal__backdrop {
+  position: absolute;
+  top: -6rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0), #fff);
+  z-index: -1;
+}

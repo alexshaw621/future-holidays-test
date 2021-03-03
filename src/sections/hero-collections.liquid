@@ -1,0 +1,172 @@
+
+<div class="Container" data-section-id="{{ section.id }}" data-section-type="hero-collections">
+  <header class="Section__header Section__cover--{{ section.settings.content_placement }}">
+    <h2 data-aos="custom">{{ section.settings.title }}</h2>
+    {% if section.settings.intro != blank %}
+      <p class="intro" data-aos="custom">{{ section.settings.intro }}</p>
+    {% endif %}
+
+    {% if section.settings.btn_text != blank and section.settings.btn_link != blank %}
+      <a href="{{ section.settings.btn_link }}" class="Button Button--primary Button--huge">{{ section.settings.btn_text }}</a>
+    {% endif %}
+
+    {% if section.settings.show_testimonial %}
+      <div class="Card Card--review" data-aos="custom">
+        <figure class="Card__figure">
+          <svg viewBox='0 0 130 130' class='watermark'>
+            <use xlink:href='#watercolor_circle'></use>
+          </svg>
+          <div class="figure">
+            {% if section.settings.testimonial_image != blank %}
+              <img
+                class="lazyload"
+                data-sizes="auto"
+                src="{{ section.settings.testimonial_image | img_url }}"
+                data-src="{{ section.settings.testimonial_image | img_url: '200x' }}"
+                alt="{{ section.settings.testimonial_author }}"
+                />
+            {% endif %}
+          </div>
+        </figure>
+        <div class="Card__details">
+          <blockquote>
+            {% if section.settings.testimonial_text != blank %}
+              {{ section.settings.testimonial_text }}
+            {% endif %}
+
+            {% if section.settings.testimonial_author != blank %}
+              <cite>
+                <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'><use xlink:href='#icon-verified'></use></svg>
+                  <span>{{ section.settings.testimonial_author }}</span><em>&nbsp;Verified Buyer</em>
+              </cite>
+            {% endif %}
+          </blockquote>
+        </div>
+      </div>
+    {% endif %}
+
+  </header>
+  <div class="Section__content">
+    <div class="Loop Loop--collections" data-aos="custom" data-hero-slider>
+      {% for block in section.blocks %}
+        {% if block.type == 'collection' %}
+          {% include 'collection-card', passed_image: block.settings.image_desktop %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div
+  class="Section__cover lazyload"
+  {% if section.settings.cover_image %}
+    data-bgset="
+      {{ section.settings.cover_image | img_url: '200x' }} 200w,
+      {{ section.settings.cover_image | img_url: '400x' }} 400w,
+      {{ section.settings.cover_image | img_url: '800x' }} 800w,
+      {{ section.settings.cover_image | img_url: '1600x' }} 1600w,
+      {{ section.settings.cover_image | img_url: '2400x' }} 2400w
+    "
+    data-sizes="auto"
+  {% endif %}>
+</div>
+
+{% schema %}
+  {
+    "name": "Hero Collections",
+    "class": "Section Section--heroCollections",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cover"
+      },
+      {
+        "type": "image_picker",
+        "id": "cover_image",
+        "label": "Cover Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "intro",
+        "label": "Intro"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text",
+        "default": "Shop Now"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "select",
+        "id": "content_placement",
+        "options": [
+          { "value": "left", "label": "Left"},
+          { "value": "right", "label": "Right"}
+        ],
+        "default": "right",
+        "label": "Cover content placement"
+      },
+      {
+        "type": "header",
+        "content": "Testimonial"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_testimonial",
+        "label": "Show testimonial",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "testimonial_image",
+        "label": "Author Image"
+      },
+      {
+        "type": "text",
+        "id": "testimonial_author",
+        "label": "Author",
+        "default": "Angela P."
+      },
+      {
+        "type": "textarea",
+        "id": "testimonial_text",
+        "label": "Testimonial",
+        "default": "I was debating on purchasing the bibs due to the price, but the quality is worth it! The material is thick, soft, & you obviously cant beat the cute patterns!"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image",
+            "info": "Defaults to collection featured image or first product image if not filled in"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Collections",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

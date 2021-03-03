@@ -1,0 +1,190 @@
+
+// ----------------------------------------------------------------------------
+// {{DIMENSIONS UTILITIES}}
+// ----------------------------------------------------------------------------
+
+// {{GRID CLASSES}} -----------------------------------------------------------
+// Utilitários para dimensionamento de acordo com a grid
+
+[class^="grid"], [class*=" grid"] {
+  margin-right: gutter(12);
+  &:last-child, &.is-last{
+    margin-right: 0;
+  }
+}
+
+// .grid-1{width: columns(1,12);}
+// .grid-2{width: columns(2,12);}
+// .grid-3{width: columns(3,12);}
+// .grid-4{width: columns(4,12);}
+// .grid-5{width: columns(5,12);}
+// .grid-6{width: columns(6,12);}
+// .grid-7{width: columns(7,12);}
+// .grid-8{width: columns(8,12);}
+// .grid-9{width: columns(9,12);}
+// .grid-10{width: columns(10,12);}
+// .grid-11{width: columns(11,12);}
+// .grid-12{width: columns(12,12); margin-right: 0;}
+.grid-1{ @include span(1); }
+.grid-2{ @include span(2); }
+.grid-3{ @include span(3); }
+.grid-4{ @include span(4); }
+.grid-5{ @include span(5); }
+.grid-6{ @include span(6); }
+.grid-7{ @include span(7); }
+.grid-8{ @include span(8); }
+.grid-9{ @include span(9); }
+.grid-10{ @include span(10); }
+.grid-11{ @include span(11); }
+.grid-12{ @include span(12); }
+
+
+// GRID-PUSH -----------------------------------------
+.push-1{@include push(1);}
+.push-2{@include push(2);}
+.push-3{@include push(3);}
+.push-4{@include push(4);}
+.push-5{@include push(5);}
+.push-6{@include push(6);}
+.push-7{@include push(7);}
+.push-8{@include push(8);}
+.push-9{@include push(9);}
+.push-10{@include push(10);}
+.push-11{@include push(11);}
+.push-12{@include push(12);}
+
+
+// CONTAINER ------------------------------------------------------------
+.container{
+  @include container();
+}
+
+[data-columns]{
+  [class*="grid"]{
+    margin-bottom: $box-spacing;
+  }
+}
+
+[data-columns="3"]{
+  [class*="grid"]:nth-child(3n){
+    margin-right: 0;
+  }
+}
+
+
+// Grid -----------------------------------------------------------------------
+// Utilitario para construir grids livremente
+.Grid{
+  display: table;
+  width: 100%;
+}
+
+// Aplica padding aos aos items da grid
+.Grid--padding{
+  $spacing: $box-spacing;
+  margin-left: $spacing * -1;
+  margin-right: $spacing * -1;
+  .Grid-item{
+    padding-left: $spacing;
+    padding-right: $spacing;
+  }
+}
+
+.Grid-item{
+  display: table-cell !important;
+  width: auto;
+}
+
+
+// Table Grids ----------------------------------------------------------------
+// We leave one column free of a class so that column can soak up the
+// effects of any accidental breakage in the table.
+// Estas classes estabelecem um alinhamento arbitrário e sem qualquer
+// relação com a grid de layout
+
+.w5 { width: 5% }
+.w10{ width:10% }
+.w12{ width:12.5% }     //* 1/8 */
+.w15{ width:15% }
+.w20{ width:20% }
+.w25{ width:25% }       //* 1/4 */
+.w30{ width:30% }
+.w33{ width:33.333% }   //* 1/3 */
+.w35{ width:35% }
+.w37{ width:37.5% }     //* 3/8 */
+.w40{ width:40% }
+.w45{ width:45% }
+.w50{ width:50% }       //* 1/2 */
+.w55{ width:55% }
+.w60{ width:60% }
+.w62{ width:62.5% }     //* 5/8 */
+.w65{ width:65% }
+.w66{ width:66.666% }   //* 2/3 */
+.w70{ width:70% }
+.w75{ width:75% }       //* 3/4*/
+.w80{ width:80% }
+.w85{ width:85% }
+.w87{ width:87.5% }     //* 7/8 */
+.w90{ width:90% }
+.w95{ width:95% }
+.w100{ width:100% }
+
+@include mq(0px){
+  .grid-xs-1 {  @include span(1); }
+  .grid-xs-2 {  @include span(2); }
+  .grid-xs-3 {  @include span(3); }
+  .grid-xs-4 {  @include span(4); }
+  .grid-xs-5 {  @include span(5); }
+  .grid-xs-6 {  @include span(6); }
+  .grid-xs-7 {  @include span(7); }
+  .grid-xs-8 {  @include span(8); }
+  .grid-xs-9 {  @include span(9); }
+  .grid-xs-10{  @include span(10); }
+  .grid-xs-11{  @include span(11); }
+  .grid-xs-12{  @include span(12); }
+}
+
+@include mq(mobile){
+  .grid-sm-1 {  @include span(1); }
+  .grid-sm-2 {  @include span(2); }
+  .grid-sm-3 {  @include span(3); }
+  .grid-sm-4 {  @include span(4); }
+  .grid-sm-5 {  @include span(5); }
+  .grid-sm-6 {  @include span(6); }
+  .grid-sm-7 {  @include span(7); }
+  .grid-sm-8 {  @include span(8); }
+  .grid-sm-9 {  @include span(9); }
+  .grid-sm-10{  @include span(10); }
+  .grid-sm-11{  @include span(11); }
+  .grid-sm-12{  @include span(12); }
+}
+
+@include mq(desktop){
+  .grid-md-1 {  @include span(1); }
+  .grid-md-2 {  @include span(2); }
+  .grid-md-3 {  @include span(3); }
+  .grid-md-4 {  @include span(4); }
+  .grid-md-5 {  @include span(5); }
+  .grid-md-6 {  @include span(6); }
+  .grid-md-7 {  @include span(7); }
+  .grid-md-8 {  @include span(8); }
+  .grid-md-9 {  @include span(9); }
+  .grid-md-10{  @include span(10); }
+  .grid-md-11{  @include span(11); }
+  .grid-md-12{  @include span(12); }
+}
+
+@include mq(wide){
+  .grid-lg-1 {  @include span(1); }
+  .grid-lg-2 {  @include span(2); }
+  .grid-lg-3 {  @include span(3); }
+  .grid-lg-4 {  @include span(4); }
+  .grid-lg-5 {  @include span(5); }
+  .grid-lg-6 {  @include span(6); }
+  .grid-lg-7 {  @include span(7); }
+  .grid-lg-8 {  @include span(8); }
+  .grid-lg-9 {  @include span(9); }
+  .grid-lg-10{  @include span(10); }
+  .grid-lg-11{  @include span(11); }
+  .grid-lg-12{  @include span(12); }
+}

@@ -1,0 +1,68 @@
+{%- capture title -%}
+  {% if blog.metafields.gwm.title %}
+    {{ blog.metafields.gwm.title }}
+  {% else %}
+    {{ blog.title }}
+  {% endif %}
+{%- endcapture -%}
+
+<div class="Main">
+  {% if blog.metafields.gwm.header_image %}
+    <div class="Main__banner Container Container--widest">
+      <figure class="Main__banner__figure">
+        <img src="{{ blog.metafields.gwm.header_image }}"/>
+      </figure>
+      <div class="Main__banner__details Container">
+        <div class="wrapper">
+          <h1>{{ title }}</h1>
+          {% if blog.metafields.gwm.blog_intro != blank %}
+            <p>{{ blog.metafields.gwm.blog_intro }}</p>
+          {% endif %}
+          <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+            <use xlink:href='#button-down'></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <div class="Container">
+    <div class="Main__header">
+      {% if current_tags %}
+        {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
+        <h2>{{ blog_title }}</h2>
+      {% else %}
+        <h2>{{ title }}</h2>
+      {% endif %}
+    </div>
+    <div class="Main__content">
+      {% paginate blog.articles by 5 %}
+        {% comment %} {%- assign blog_title = blog.title -%}
+        <h1>{{ blog_title }}</h1> {% endcomment %}
+
+        {% comment %} {% if blog.all_tags.size > 0 %}
+          <h2>{{ 'blogs.general.categories' | t }}</h2>
+          <ul>
+            {% for tag in blog.all_tags %}
+              {% if current_tags contains tag %}
+                <li>{{ tag }}</li>
+              {% else %}
+                <li>{{ tag | link_to_tag: tag }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %} {% endcomment %}
+
+        <div class="Loop Loop--blog">
+          {% for article in blog.articles %}
+            {% include 'blog-card' %}
+          {% endfor %}
+        </div>
+
+        {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
+        {% endif %}
+
+      {% endpaginate %}
+    </div>
+  </div>
+</div>

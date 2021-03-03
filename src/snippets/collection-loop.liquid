@@ -1,0 +1,37 @@
+{% if products_per_page == blank %}
+  {% assign products_per_page = 12 %}
+{% endif %}
+
+{% paginate collection.products by products_per_page %}
+
+  <div class="Container" data-component="LazyLoader" data-collection-products>
+    <div
+      class="Loop Loop--products js-lazyload"
+      data-observe-resizes>
+      {% for product in collection.products %}
+        {% include 'product-card', preview: showPreview, showPrice: showProductPrice %}
+      {% endfor %}
+    </div>
+
+    {% comment %} <div class="pageNav Nav Nav--pagination">
+      {% if paginate.next.url %}
+        <a href="{{ paginate.next.url }}" class="nextPageLink">Next Page</a>
+      {% endif %}
+      {{ paginate | default_pagination }}
+    </div> {% endcomment %}
+
+    <div class="js-pageNav">
+        {% if paginate.next.url %}
+            <a href="{{ paginate.next.url }}" class="nextPageLink"></a>
+        {% endif %}
+    </div>
+
+    <div class="page-load-status">
+      <p class="infinite-scroll-request">Loading...</p>
+      <p class="infinite-scroll-last"></p>
+      <p class="infinite-scroll-error"></p>
+    </div>
+
+  </div>
+
+{% endpaginate %}

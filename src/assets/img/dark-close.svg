@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>Icon / Close / Dark</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="30" height="30"></rect>
+    </defs>
+    <g id="Icon-/-Close-/-Dark" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <g id="Clip"></g>
+        <g id="Container" mask="url(#mask-2)" stroke="#000000" stroke-width="1.5">
+            <g transform="translate(4.000000, 3.000000)" id="Line">
+                <line x1="-4" y1="11.5" x2="26" y2="11.5" transform="translate(11.000000, 11.500000) rotate(-45.000000) translate(-11.000000, -11.500000) "></line>
+                <line x1="-4" y1="11.5" x2="26" y2="11.5" transform="translate(11.000000, 11.500000) rotate(45.000000) translate(-11.000000, -11.500000) "></line>
+            </g>
+        </g>
+    </g>
+</svg>

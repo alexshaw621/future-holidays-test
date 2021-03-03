@@ -1,0 +1,57 @@
+{% comment %}
+  Links are passed to this include
+{% endcomment %}
+{% for link in links %}
+  {% assign child_list_handle = link.title | handleize %}
+  {% if linklists[child_list_handle].links != blank %}
+    {% assign submenu_active = false %}
+    {% for childlink in linklists[child_list_handle].links %}
+        {% if childlink.active %}
+            {% assign submenu_active = true %}
+        {% endif %}
+    {% endfor %}
+    <div class="Nav__item Nav__item--main Nav__item--level1 menu-item has-submenu {% if link.active or submenu_active %} Nav__item--active{% endif %}" aria-haspopup="true" data-target="{{ link.handle }}">
+      <a href="{% if link.url != '#' %}{{ link.url }}{% else %}javascript:void(0);{% endif %}" class="Nav__item--main">
+        <span>{{ link.title }}</span>
+        <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+          <use xlink:href='#icon-down'></use>
+        </svg>
+      </a>
+      <div class="Nav__submenu" data-menu="{{ link.handle }}">
+        <div class="Nav">
+          {% for childlink in linklists[child_list_handle].links %}
+            {% assign child_child_list_handle = childlink.title | handleize %}
+
+            {% if linklists[child_child_list_handle].links != blank %}
+              <div class="Nav__item Nav__item--main Nav__item--level2 has-submenu {% if childlink.active %}is-active{% endif %}">
+                <a href="{% if childlink.url != '#' %}{{ childlink.url }}{% else %}javascript:void(0);{% endif %}">{{ childlink.title | escape }}</a>
+                <div class="Nav__sub__submenu" data-menu="{{ link.handle }}">
+                  <div class="Nav">
+                    {% for sub_childlink in linklists[child_child_list_handle].links %}
+                      <div class="Nav__item Nav__item--main Nav__item--level3 {% if sub_childlink.active %}is-active{% endif %}">
+                        <a href="{% if sub_childlink.url != '#' %}{{ sub_childlink.url }}{% else %}javascript:void(0);{% endif %}">{{ sub_childlink.title | escape }}</a>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <div class="Nav__item Nav__item--main Nav__item--level2 {% if childlink.active %}is-active{% endif %}">
+                <a href="{% if childlink.url != '#' %}{{ childlink.url }}{% else %}javascript:void(0);{% endif %}"
+                  {% if childlink.url contains 'babylist' %}target="_blank"{% endif %}>{{ childlink.title | escape }}</a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="Nav__info">
+          <div class="wrapper">
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="Nav__item Nav__item--main Nav__item--level1 {% if link.active %}selected{% endif %}">
+      <a href="{% if link.url != '#' %}{{ link.url }}{% else %}javascript:void(0);{% endif %}">{{ link.title }}</a>
+    </div>
+  {% endif %}
+{% endfor %}

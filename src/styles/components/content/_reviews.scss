@@ -1,0 +1,56 @@
+.Card--review {
+  display: flex;
+
+  .Card__figure {
+    flex: 0 0 7em;
+    margin-right: 2em;
+    align-self: flex-start;
+    &:before {
+      padding-top: 100%;
+    }
+    .figure {
+      @include absolute(top 3px right 0 bottom 0 left 3px);
+      border-radius: 50%;
+      background: gc(muted);
+    }
+    svg {
+      @include absolute(top 0 right 0 bottom 0 left 0);
+      z-index: 2;
+    }
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  .Card__details {
+    padding: 0;
+  }
+
+  blockquote {
+    font-size: 13px;
+    line-height: 1.62;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    max-width: 100%;
+  }
+  cite {
+    font-style: normal;
+    color: gc(brand);
+    display: block;
+    padding-top: 1rem;
+    font-size: 15px;
+    svg {
+      display: inline;
+      vertical-align: middle;
+      width: 21px;
+      height: 21px;
+    }
+    em {
+      font-style: normal;
+      color: gc(text);
+    }
+  }
+}

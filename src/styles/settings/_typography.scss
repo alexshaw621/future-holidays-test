@@ -1,0 +1,31 @@
+$f-sans: Questrial, Helvetica, Verdana, Arial, sans-serif;
+// $f-sans2: cocogoose, Helvetica, Verdana, Arial, sans-serif;
+// $f-serif: 'ltc-bodoni-175', 'Times New Roman', serif;
+$f-stack-default: $f-sans;
+
+$base-font-size: 1rem !default;
+
+// MODULAR SCALE VARS
+$ms-base: $base-font-size;
+// $ms-base          : 14px;
+// $ms-ratio         : $golden;
+// $ms-ratio: $major-second;
+$ms-ratio: 1.118;
+
+$f-size-h1: ms(10);
+$f-size-h2: ms(8);
+$f-size-h3: ms(6);
+$f-size-h4: ms(4);
+$f-size-h5: ms(2);
+$f-size-h6: ms(0);
+
+$f-size-xxs: ms(-3);
+$f-size-xs: ms(-2);
+$f-size-s: ms(-1);
+$f-size: $base-font-size;
+$f-size-l: ms(1);
+$f-size-xl: ms(3);
+$f-size-xxl: ms(5);
+
+$f-line-height-ratio: 1.65;
+$f-line-height: $f-size * $f-line-height-ratio !default;

@@ -1,0 +1,54 @@
+body#early-birds {
+  .Main__content {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 60rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    form {
+      max-width: 42rem;
+      text-align: center;
+      width: 90%;
+    }
+
+    h5 {
+      color: #fff;
+    }
+
+    label {
+      color: #fff;
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 3rem;  
+    }
+
+    input {
+      display: block;
+      height: auto;
+      line-height: 4.35;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .klaviyo_messages {
+      color: #fff;
+    }
+
+    @include mq($until: tablet) {
+      min-height: 30rem;
+
+      label {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  .Nav.Nav--social {
+    margin-top: 0;
+  }
+}

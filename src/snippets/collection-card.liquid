@@ -1,0 +1,37 @@
+{%- assign collection = collections[block.settings.collection] -%}
+
+<div class="Card Card--collection"
+  {% if bg_color != blank %}style="background-color: {{ bg_color }};"{% endif %}>
+  
+  <div class="Card__figure">
+    <a href="{{ collection.url }}">
+    {% if passed_image != blank or collection.image != blank or collection.products.first != blank %}
+      {% if passed_image %}
+        {%- assign image_object = passed_image -%}
+      {% else %}
+        {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}
+      {% endif %}
+      <img
+        data-sizes="auto"
+        src="{{ image_object | img_url: '200x' }}"
+        data-srcset="
+            {{ image_object | img_url: '200x' }} 200w,
+            {{ image_object | img_url: '400x' }} 400w,
+            {{ image_object | img_url: '800x' }} 800w,
+            {{ image_object | img_url: '1600x' }} 1600w"
+        class="lazyload fadeup mainImg"
+        alt="{{ product.title }}" />
+    {% endif %}
+    </a>
+  </div>
+  <div class="Card__details">
+    <h4 class="Card__title" data-mh="collection-card-title">
+      <a href="{{ collection.url }}">
+        <span>{{ collection.title }}</span>
+        <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+          <use xlink:href='#icon-follow'></use>
+        </svg>
+      </a>
+    </h4>
+  </div>
+</div>

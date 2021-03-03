@@ -1,0 +1,82 @@
+/// Mixin to handle EQCSS Element Queries
+/// @link https://gist.github.com/thejase/d2107285b6e10315dd6bc055115647fe
+// https://codepen.io/tomhodgins/pen/amwKva
+/// @author Jason Featheringham
+///
+/// @param {String} $scope (&) - Optional scope.  Defaults to current context
+/// @param {Map} $conditions (()) - List of Maps of EQCSS conditions
+///
+/// @see https://gist.github.com/tomhodgins/6237039fa07c2e4b7acd1c8b0f9549a9
+///      to understand more about conditions and Element Queries
+///
+/// @example Make .foo background red when element width is larger
+///          than 500px and has at least two children
+///   .foo {
+///     @include element((min-width: 500px), (min-children: 2)) {
+///       eq_this { // current scope
+///         background: red;
+///       }
+///     }
+///   }
+///   //=> @element '.foo' and (min-width: 500px) and (min-children: 2) {
+///   //     eq_this {
+///   //       background: red;
+///   //     }
+///   //   }
+@mixin element($conditions...) {
+  // if a selector (string) wasn't specified at the beginning of the arguments, use the current context
+  @if length($conditions) and type-of(nth($conditions, 1)) != string {
+    $conditions: join(('#{&}'), $conditions, space);
+  }
+
+  // join each condition with 'and'
+  $query: '';
+  @for $i from 1 through length($conditions) {
+    $condition: nth($conditions, $i);
+    // the first item is the selector and needs to stay quoted.
+    $condition: if($i == 1, "'#{$condition}'", inspect($condition));
+
+    $query: unquote(#{$query}#{if($i > 1, unquote(' and '), ' ')}#{$condition});
+  }
+
+  // Needs to be placed outside of current context to work
+  @at-root {
+    // @element syntax doesn't parse with sass, so send as raw string
+    @include _raw('@element #{inspect($query)} {');
+    @content;
+    @include _raw('}');
+  }
+}
+
+@mixin _raw($string) {
+  $string: '*/#{$string}/*';
+  /*#{$string}*/
+}
+
+/* Example without selector */
+// .example {
+//   @include element(
+//     (
+//       min-width: 300px
+//     )
+//   ) {
+//     eq_this {
+//       color: red;
+//     }
+//   }
+// }
+
+/* Example with selector */
+// @include element(
+//   '.example',
+//   (
+//     min-width: 300px
+//   ),
+//   (
+//     max-width: 600px
+//   )
+// ) {
+//   eq_this {
+//     background: dodgerblue;
+//   }
+// }

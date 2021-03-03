@@ -1,0 +1,312 @@
+/**
+ * ----------------------------------------------------------------------------
+ * BUTTONS
+ * 1. Allow us to better style box model properties.
+ * 2. Line different sized buttons up a little nicer.
+ * 3. Stop buttons wrapping and looking broken.
+ * 4. Make buttons inherit font styles.
+ * 5. Force all elements using beautons to appear clickable.
+ * 6. Normalise box model styles.
+ * 7. If the button’s text is 1em, and the button is (3 * font-size) tall, then
+ *    there is 1em of space above and below that text. We therefore apply 1em
+ *    of space to the left and right, as padding, to keep consistent spacing.
+ * 8. Previne que o botão diminua comprima o texto quando dentro de um elemento flexbox
+ * ----------------------------------------------------------------------------
+ */
+
+%button,
+.Button,
+.button,
+button,
+input[type='submit'] {
+  display: inline-block; // [1]
+  vertical-align: middle; // [2]
+  white-space: nowrap; // [3]
+  font-family: $f-sans; // [4]
+  font-size: 100%; // [4]
+  cursor: pointer; // [5]
+  border: none; // [6]
+  margin: 0; // [6]
+  padding-top: 0; // [6]
+  padding-bottom: 0; // [6]
+  border-radius: mg($forms, input, radius);
+  text-transform: lowercase;
+  text-align: center;
+  transition: all 0.18s ease;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  // @include flex-shrink(0);            // [8]
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  // Disabled state
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  svg {
+    vertical-align: middle;
+  }
+}
+
+/**
+ * ============================================================================
+ * BUTTON LAYOUTS
+ * ============================================================================
+ */
+
+%btn-layout--default {
+  $height: mg($buttons, default, height);
+  font-size: mg($buttons, default, font-size);
+  height: calc(#{strip-unit($height)} - 0.3);
+  // line-height   : calc( #{strip-unit( $height )} - 0.1);
+  line-height: strip-unit($height);
+  padding: mg($buttons, default, padding);
+  border-radius: mg($buttons, default, radius);
+}
+
+%btn-layout--small,
+.Button--small {
+  $height: mg($buttons, small, height);
+  font-size: mg($buttons, small, font-size);
+  // height        : $height;
+  line-height: strip-unit($height);
+  padding: mg($buttons, small, padding);
+  border-radius: mg($buttons, small, radius);
+}
+
+%btn-layout--compact,
+.Button--compact {
+  $height: mg($buttons, compact, height);
+  font-size: mg($buttons, compact, font-size);
+  // height        : $height;
+  line-height: strip-unit($height);
+  padding: mg($buttons, compact, padding);
+  border-radius: mg($buttons, compact, radius);
+  text-transform: uppercase;
+}
+
+%btn-layout--big,
+.Button--big {
+  $height: mg($buttons, big, height);
+  font-size: mg($buttons, big, font-size);
+  // height        : $height;
+  line-height: strip-unit($height);
+  padding: mg($buttons, big, padding);
+  border-radius: mg($buttons, big, radius);
+}
+
+%btn-layout--huge,
+.Button--huge {
+  $height: mg($buttons, huge, height);
+  font-size: mg($buttons, huge, font-size);
+  // height        : $height;
+  line-height: strip-unit($height);
+  padding: mg($buttons, huge, padding);
+  border-radius: mg($buttons, huge, radius);
+}
+
+%btn-layout--block,
+.Button--block {
+  @include increase-specificity() {
+    width: 100%;
+  }
+}
+
+%btn-layout--icon,
+.Button--icon {
+  svg {
+    display: inline;
+    max-width: 2.1em;
+    vertical-align: middle;
+  }
+}
+
+/**
+ * ============================================================================
+ * BUTTON STYLES
+ * ============================================================================
+ */
+
+%btn-style--default {
+  $baseColor: gc(dark);
+
+  color: white;
+  background: $baseColor;
+
+  &:hover {
+    color: white;
+    // background-color: darken($baseColor, 6%);
+  }
+}
+
+%btn-style--primary,
+.Button--primary,
+input.Button--primary {
+  $baseColor: gc(brand);
+
+  color: white;
+  background: $baseColor;
+
+  &:hover {
+    // background: darken($baseColor, 5%);
+    color: white;
+  }
+}
+
+%btn-style--invert,
+.Button--invert {
+  $baseColor: white;
+
+  color: gc(link, normal);
+  background: $baseColor;
+
+  &:hover {
+    color: gc(link, hover);
+    background: $baseColor;
+  }
+}
+
+%btn-style--text,
+.Button--text {
+  $baseColor: gc(brand);
+
+  color: $baseColor;
+  background: none;
+  outline: none;
+  position: relative;
+  text-shadow: none;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: 600;
+  border-bottom: 1px solid $baseColor;
+
+  &:hover {
+    background: none;
+    color: gc(link, hover);
+  }
+}
+
+// %btn-style--textInvert,
+// .Button--textInvert {
+//   $baseColor: white;
+
+//   color: $baseColor;
+//   background: none;
+//   outline: none;
+//   position: relative;
+//   text-shadow: none;
+//   box-shadow: none;
+//   padding-left: 0;
+//   padding-right: 0;
+
+//   &:hover {
+//     background: none;
+//     color: gc(link, hover);
+//   }
+// }
+
+%btn-style--outline,
+.Button.Button--outline {
+  $baseColor: hsla(15, 3%, 27%, 1);
+
+  color: gc(text);
+  background: none;
+  box-shadow: $baseColor 0 0 0 1px inset;
+
+  .icon {
+    color: $baseColor;
+  }
+
+  &:hover {
+    background: none;
+    box-shadow: gc(brand) 0 0 0 1px inset;
+    color: gc(brand);
+  }
+}
+
+// %btn-style--outlineInvert,
+// .Button--outlineInvert {
+//   $baseColor: hsla(0, 0%, 100%, 1);
+
+//   color: white;
+//   background: none;
+//   box-shadow: $baseColor 0 0 0 1px inset;
+
+//   .icon {
+//     color: $baseColor;
+//   }
+
+//   &:hover {
+//     // background: $baseColor;
+//     background: none;
+//     box-shadow: gc(brand) 0 0 0 1px inset;
+//     color: gc(brand);
+//   }
+// }
+
+%btn-style--noLayout,
+.Button--noLayout {
+  color: unset;
+  background: none;
+  padding-left: unset;
+  padding-right: unset;
+  line-height: unset;
+  box-shadow: none;
+  padding: 0;
+
+  &:hover {
+    background: none;
+    color: gc(brand);
+  }
+}
+
+.Button--icon {
+  background: none;
+  text-shadow: none;
+
+  .icon {
+    font-size: 1.5em;
+    transform: translateY(-0.05em);
+    &:first-child {
+      margin-right: 0.2em;
+    }
+    &:last-child {
+      margin-left: 0.2em;
+    }
+  }
+
+  &:hover {
+    background: none;
+  }
+}
+
+.Button--isDisabled {
+  &,
+  &:hover {
+    background-color: gc(muted);
+    color: gc(text, muted);
+    cursor: not-allowed;
+  }
+}
+
+/**
+* ============================================================================
+* BUTTON DECLARATIONS
+* Here we extend and assign the styles and layout to each button
+* ============================================================================
+*/
+
+.Button,
+.button,
+input.Button,
+.shopify-challenge__button {
+  @extend %btn-style--default;
+  @extend %btn-layout--default;
+}

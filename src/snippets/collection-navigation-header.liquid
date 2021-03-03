@@ -1,0 +1,59 @@
+<div class="Container Collection__navigation">
+  {% comment %}
+  <div class="mobile-nav u-show--untilDesktop">
+    <button class="Button Button--noLayout Button--icon" data-action="{ type: 'Drawer', target: 'collectionNav', action: 'toggle' }">
+      <span>Shop All</span>
+      <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+        <use xlink:href='#icon-down'></use>
+      </svg>
+    </button>
+  </div>
+  {% endcomment %}
+
+  <div class="status">
+    <span class="results_count" data-products-count>{{ collection.products_count }} Products</span>
+  </div>
+  <div class="options">
+    <div class="Dropdown" data-identifier="sortDropdown" data-component="Dropdown,CollectionSort">
+      <a href="#" class="Dropdown__trigger">
+        <svg viewBox='0 0 20 20' class='icon'>
+          <use xlink:href='#icon-sort'></use>
+        </svg>
+        <span class="">Sort by:</span>
+
+        {% case collection.sort_by %}
+          {% when 'best-selling' %}
+            Best Selling
+          {% when 'price-ascending' %}
+            Price (low to high)
+          {% when 'price-descending' %}
+            Price (high to low)
+          {% when 'created-ascending' %}
+            Oldest first
+          {% when 'created-descending' %}
+            Most Recent
+          {% else %}
+            Default
+        {% endcase %}
+      </a>
+      <div class="DropdownContainer">
+        <div class="Dropdown__contents">
+          <span class="arrow"></span>
+          <nav class="Nav Nav--vertical js-sortBy" data-component="CollectionSort">
+            <a href="#" class="Nav__item" data-value="manual">Featured</a>
+            <a href="#" class="Nav__item" data-value="best-selling">Best Selling</a>
+            <a href="#" class="Nav__item" data-value="price-ascending">Price: Low to High</a>
+            <a href="#" class="Nav__item" data-value="price-descending">Price: High to Low</a>
+            <a href="#" class="Nav__item" data-value="created-ascending">Oldest First</a>
+            <a href="#" class="Nav__item" data-value="created-descending">Most Recent</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    {% comment %}{% endcomment %}
+    {% comment %} <button class="Button Button--text u-show--untilDesktop filter-collection" data-action="{ type: 'Drawer', target: 'collectionFilters', action: 'toggle' }">
+      <span>Filter</span>
+      {% include 'icon-filter' %}
+    </button> {% endcomment %}
+  </div>
+</div>

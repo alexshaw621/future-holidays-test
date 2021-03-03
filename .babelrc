@@ -1,0 +1,4 @@
+{
+  "presets": ["shopify/react", "shopify/web"],
+  "plugins": ["transform-async-to-generator"]
+}

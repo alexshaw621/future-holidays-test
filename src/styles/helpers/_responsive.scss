@@ -1,0 +1,105 @@
+@mixin phone {
+  @include mq($bp-phone) {
+    @content;
+  }
+}
+
+@mixin phoneLarge {
+  @include mq($bp-phone-l) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include mq($bp-tablet) {
+    @content;
+  }
+}
+
+@mixin tabletLarge {
+  @include mq($bp-tablet-l) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include mq($bp-desktop) {
+    @content;
+  }
+}
+
+@mixin desktopLarge {
+  @include mq($bp-desktop-l) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media screen and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media screen and (orientation: portrait) {
+    @content;
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * RESPONSIVE UTILITY CLASSES
+ * ----------------------------------------------------------------------------
+ */
+
+.u-hide--untilPhoneLarge {
+  @include mq($until: mobileLarge) {
+    display: none !important;
+  }
+}
+.u-show--untilPhoneLarge {
+  @include mq($from: mobileLarge) {
+    display: none !important;
+  }
+}
+
+.u-hide--untilTablet {
+  @include mq($until: tablet) {
+    display: none !important;
+  }
+}
+.u-show--untilTablet {
+  @include mq($from: tablet) {
+    display: none !important;
+  }
+}
+
+
+.u-hide--untilTabletLarge {
+  @include mq($until: tabletLarge) {
+    display: none !important;
+  }
+}
+.u-show--untilTabletLarge {
+  @include mq($from: tabletLarge) {
+    display: none !important;
+  }
+}
+
+.u-hide--untilDesktop {
+  @include mq($until: desktop) {
+    display: none !important;
+  }
+}
+
+.u-show--untilDesktop {
+  @include mq($from: desktop) {
+    display: none !important;
+  }
+}
+
+.u-show--fromDesktop {
+  @include mq($until: desktop) {
+    display: none !important;
+  }
+}

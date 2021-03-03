@@ -1,0 +1,35 @@
+// iStock Notify me
+// .iStock-wrapper { background: #F9F9F9; border: 1px solid #E7E7E7; display: none; padding: 20px 20px 10px 20px; margin: 10px 0px 10px 0px; }
+// .iStock-wrapper h2 { font-size:20px; margin: 0 0 10px 0; }
+// .iStock-notifyTxt { margin-bottom:10px; }
+// .iStock-availability { display:none; margin-bottom:10px; }
+// .iStock-availability label { color: #6F0000; font-weight: normal; }
+// .iStock-availability span { color: #6D6D6D; }
+// .iStock-fields { max-width: 480px;}
+// input.iStock-email-id { display: inline-block; vertical-align: top; border: 1px solid #CCCCCC; background: #ffffff; padding: 5px; margin: 0 2% 10px 0; width: 67%; }
+// input.iStock-notify-btn { display: inline-block; vertical-align: top; border: 1px solid #CC244B; background: #F52C5A; padding: 5px 10px; margin: 0 0 10px 0; color: #FFFFFF;  cursor: pointer; }
+// .iStock-msg { display:none; color: #008000; font-size: 14px; }
+// .iStock-msg.iStock-error { color: #E10101; }
+
+
+.iStock-wrapper {
+  margin-top: 2rem;
+  margin-bottom: 2rem
+}
+
+.iStock-wrapper h2 {
+  font-size: 1.39742rem;
+  color: #19aea4;
+  margin-bottom: 0.5em
+}
+
+.iStock-wrapper input[type='email'] {
+}
+
+.iStock-wrapper .Form__grid {
+  margin-bottom: 0;
+}
+
+.iStock-msg {
+  margin-top: 0.5rem;
+}

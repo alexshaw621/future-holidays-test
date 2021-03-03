@@ -1,0 +1,131 @@
+<footer class="Footer">
+
+  {% unless template contains 'email-sign-up' %}
+  <div class="Container">
+    <hr>
+  </div>
+  {% endunless %}
+
+  <div class="Footer__subscribe Container">
+    {% comment %}
+    {% form 'customer' %}
+      {{ form.errors | default_errors }}
+      {% if form.posted_successfully? %}
+        <p>{{ 'general.newsletter_form.confirmation' | t }}</p>
+      {% else %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="FormRow">
+          <input type="email" name="contact[email]" id="footer_subscribe_email" placeholder="email">
+          <button type="submit" class="Button Button--primary Button--huge">join</button>
+        </div>
+      {% endif %}
+    {% endform %}
+    {% endcomment %}
+
+    {% unless template contains 'early-bird' %}
+      <form id="email_signup_footer" class="klaviyo_standard_embed_JRdX56" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+          <input type="hidden" name="g" value="JRdX56">
+          <input type="hidden" name="$fields" value="baby's due date/birthday"/>
+
+          <label for="footer_subscribe_email">Get the latest on new releases and special offers</label>
+          <div class="FormRow">
+            <div class="Form__grid">
+              <div class="Form__input {% unless template contains 'email-sign-up' %}Grid-medium-1-2{% endunless %}">
+                <input type="email" value="" name="email" id="footer_subscribe_email" placeholder="Email Address" />
+              </div>
+              <div class="Form__input {% unless template contains 'email-sign-up' %}Grid-medium-1-2{% endunless %}">
+                <!-- <input type="date" name="baby's due date/birthday" placeholder="baby's due date/birthday" /> -->
+                <input type="text" name="baby's due date/birthday" placeholder="baby's due date/birthday" onfocus="(this.type='date')">
+              </div>
+            </div>
+
+            <button type="submit" class="klaviyo_submit_button klaviyo_form_actions Button Button--primary Button--huge">join</button>
+          </div>
+
+          <div class="klaviyo_messages">
+            <div class="success_message" style="display:none;"></div>
+            <div class="error_message" style="display:none;"></div>
+          </div>
+      </form>
+
+      <script type="text/javascript">
+        KlaviyoSubscribe.attachToForms('#email_signup_footer', {
+            hide_form_on_success: true
+        });
+      </script>
+    {% endunless %}
+
+    {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+    <div class="Nav Nav--social">
+      {% for social in social_accounts %}
+        {%- assign social_handle = social | handleize -%}
+        {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+        {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+
+        {% if settings[social_link] != blank %}
+          <a class="Nav__item" href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}" target="_blank">
+            <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+              <use xlink:href='#{{ social_icon }}'></use>
+            </svg>
+            <span class="icon-fallback-text">{{ social }}</span>
+          </a>
+        {% endif %}
+
+      {% endfor %}
+    </div>
+  </div>
+
+
+  {% comment %} <div class="Footer__subscribe">
+    <div class="Container">
+      <form action="" class="Container Container--narrowest">
+        <h4>Stay in the loop</h4>
+        <div class="Form__grid">
+          <div class="Form__input Grid-medium-1-2">
+            <input type="text" placeholder="Name">
+          </div>
+          <div class="Form__input Grid-medium-1-2">
+            <input type="email" placeholder="Email">
+          </div>
+          <div class="Form__actions">
+            <button type="submit" class="Button Button--outline Button--small">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div> {% endcomment %}
+
+  <div class="Container">
+    <hr>
+  </div>
+
+  {%- assign footer_linklist = section.settings.footer_linklist -%}
+  {% if linklists[footer_linklist].links.size > 0 %}
+    <div class="Footer__nav">
+      <div class="Container">
+        <div class="Nav Nav--footer" role="navigation">
+          {% include "menu-options" links: linklists[section.settings.footer_linklist].links %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="Footer__copyright">
+    <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}.</small>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "footer_linklist",
+        "label": "First menu",
+        "default": "footer"
+      }
+    ]
+  }
+
+{% endschema %}

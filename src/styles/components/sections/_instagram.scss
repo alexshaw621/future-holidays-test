@@ -1,0 +1,37 @@
+.Section--instagram {
+  h3 {
+    text-align: center;
+  }
+  
+  #instafeed {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  figure {
+    flex-basis: 50%;
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-top: 100%;
+    }
+    @include mq($from: tablet) {
+      flex-basis: 25%;
+    }
+
+    img {
+      @include absolute(top 0 right 0 bottom 0 left 0);
+      width: 100%;
+      height: 100%;
+      @include object-fit(cover, center);
+    }
+  }
+
+  .icon {
+    @include absolute(top 1rem right 1rem);
+    font-size: 3rem;
+    color: white;
+  }
+}

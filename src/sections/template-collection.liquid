@@ -1,0 +1,166 @@
+{% assign products_per_page = section.settings.products_per_page %}
+{% assign show_price = section.settings.show_price %}
+{% assign show_product_quick_views = section.settings.show_product_quick_views %}
+
+<div class="Main" data-section-id="{{ section.id }}" data-section-type="template-collection">
+  <main class="Main__content">
+    {% include 'collection-header' %}
+
+    <div class="u-hide--untilTablet">
+      {% include "collection-navigation-header" %}
+    </div>
+    {% include "collection-loop", showPreview : show_product_quick_views, showProductPrice : show_price %}
+
+    {% if collection.description != blank %}
+      <div class="Collection__description">
+        <div class="Container">
+            <p>{{ collection.description }}</p>
+        </div>
+      </div>
+    {% endif %}
+  </main>
+  {% comment %} <aside class="Main__aside u-show--fromDesktop">
+    <h2><span>{{ collection.title }}</span></h2>
+    {% for block in section.blocks %}
+      {%- if block.type == 'menu' -%}
+        <div class="Nav Nav--aside" role="navigation">
+          {% include "menu-options" links: linklists[block.settings.menu].links %}
+        </div>
+      {%- endif -%}
+    {% endfor %}
+  </aside> {% endcomment %}
+</div>
+
+
+{% for block in section.blocks %}
+  {%- if block.type == 'menu' -%}
+    <div class="Drawer Drawer--left" data-component="Drawer" data-options="{position: 'left'}" data-identifier="collectionNav">
+      <div class="Drawer__box">
+        <div class="Drawer__content">
+          <nav class="Nav Nav--aside" role="navigation">
+            {% include "menu-options" links: linklists[block.settings.menu].links %}
+          </nav>
+        </div>
+      </div>
+      <span class="backdrop"></span>
+    </div>
+  {%- endif -%}
+{% endfor %}
+
+{% schema %}
+
+{
+  "name": "Collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_quick_views",
+      "label": "Show Quick view",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show Price",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "filter_by_collection",
+      "name": "Filter by collection",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "filter_by_tag",
+      "name": "Filter by tag",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "filter_title",
+          "label": "Filter Title"
+        },
+        {
+          "type": "textarea",
+          "id": "filter_tags",
+          "label": "Filter Tags",
+          "info": "tag1, tag2, tag3, ..."
+        }
+      ]
+    },
+    {
+      "type": "collection_banner",
+      "name": "Collection Banner",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Main Collection",
+          "info": "This banner will only be shown on this selected collection."
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_banner",
+          "label": "Collection Banner"
+        },
+        {
+          "type": "textarea",
+          "id": "video_banner",
+          "label": "Video_banner Banner",
+          "info": "Embed Video Url"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "filter_by_tag",
+        "settings": {
+          "filter_title": "Style",
+          "filter_tags": "graphic, stripes, solids"
+        }
+      },
+      {
+        "type": "filter_by_tag",
+        "settings": {
+          "filter_title": "Color",
+          "filter_tags": "black, white, red, blue, green, yellow, gray"
+        }
+      }
+    ]
+  }
+}
+
+{% endschema %}

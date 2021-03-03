@@ -1,0 +1,150 @@
+
+<div class="Main">
+  <div class="Press-logos">
+    <div class="Container">
+      {% for block in section.blocks %}
+        {% if block.type == 'press_logo' %}
+          <figure>
+            {%- assign image_object = block.settings.logo -%}
+            <img
+              src="{{ image_object | img_url: '100x' }}"
+              data-sizes="auto"
+              data-srcset="
+                  {{ image_object | img_url: '100x' }} 100w,
+                  {{ image_object | img_url: '200x' }} 200w,
+                  {{ image_object | img_url: '400x' }} 400w,
+                  {{ image_object | img_url: '800x' }} 800w"
+              class="lazyload fadeup" />
+          </figure>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="Container">
+    <header class="Main__header">
+      <h1>{{ page.title }}</h1>
+    </header>
+    <div class="Main__content rte">
+      <div class="Page__content">
+        {{ page.content }}
+      </div>
+
+      {% if section.settings.section_title != blank %}
+        <div class="Section__separator">
+          <img src="{{ 'icon-press-arrow-down.png' | asset_url }}" alt="{{ section.settings.section_title }}">
+        </div>
+        <h3 class="Section__title">{{ section.settings.section_title }}</h3>
+      {% endif %}
+
+      <div class="Loop Loop--2">
+        {% for block in section.blocks %}
+          {% if block.type == 'featured_press' %}
+            <div class="Card Card--press">
+              <figure class="Card__figure">
+                {%- assign image_object = block.settings.image -%}
+                <img
+                  data-sizes="auto"
+                  src="{{ image_object | img_url: '200x' }}"
+                  data-srcset="
+                      {{ image_object | img_url: '200x' }} 200w,
+                      {{ image_object | img_url: '400x' }} 400w,
+                      {{ image_object | img_url: '800x' }} 800w,
+                      {{ image_object | img_url: '1600x' }} 1600w"
+                  class="lazyload fadeup mainImg"
+                  alt="{{ block.settings.title }}" />
+              </figure>
+              <div class="Card__details">
+                {% if block.settings.press_logo != blank %}
+                <img
+                  src="{{ block.settings.press_logo | img_url: '100x' }}"
+                  data-sizes="auto"
+                  data-srcset="
+                      {{ block.settings.press_logo | img_url: '100x' }} 100w,
+                      {{ block.settings.press_logo | img_url: '200x' }} 200w,
+                      {{ block.settings.press_logo | img_url: '400x' }} 400w,
+                      {{ block.settings.press_logo | img_url: '800x' }} 800w"
+                  class="lazyload Card__logo fadeup" />
+                {% else %}
+                  <h3>{{ block.settings.title }}</h3>
+                {% endif %}
+
+                {% if block.settings.intro != blank %}
+                  {{ block.settings.intro }}
+                {% endif %}
+
+                {% if block.settings.btn_label != blank and block.settings.btn_link != blank %}
+                  <a href="{{ block.settings.btn_link }}" class="Button Button--noLayout">{{ block.settings.btn_label }}</a>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Page Press",
+    "class": "Section Section--pagePress",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "recent mentions"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "press_logo",
+        "name": "Press Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+          }
+        ]
+      },
+      {
+        "type": "featured_press",
+        "name": "Featured Press",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "press_logo",
+            "label": "Press Logo"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Press Title"
+          },
+          {
+            "type": "richtext",
+            "id": "intro",
+            "label": "Press intro"
+          },
+          {
+            "type": "url",
+            "id": "btn_link",
+            "label": "Button Link"
+          },
+          {
+            "type": "text",
+            "id": "btn_label",
+            "label": "Button label"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

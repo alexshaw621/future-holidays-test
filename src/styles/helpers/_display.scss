@@ -1,0 +1,83 @@
+
+.clear{
+  flex-basis: 100%; // quando usado em layouts flexbox
+}
+
+
+// ==========================================================================
+// Display utilities
+// ==========================================================================
+
+.u-hidden {
+    visibility: hidden;
+}
+
+.u-inline {
+  display: inline !important;
+}
+
+.u-inlineBlock {
+  display: inline-block !important;
+}
+
+.u-block {
+  display: block !important;
+}
+
+.u-flex {
+  display: flex !important;
+}
+
+.u-none {
+  display: none !important;
+}
+
+.u-table {
+  display: table !important;
+}
+
+.u-tableCell {
+  display: table-cell !important;
+}
+
+
+.u-posRelative{
+  position: relative;
+}
+
+.u-posAbsolute{
+  position: absolute;
+}
+
+
+
+/**
+ * ----------------------------------------------------------------------------
+ * OPPOSITE DIRECTION MIXIN
+ * http://www.sitepoint.com/sass-mixins-kickstart-project/
+ * ----------------------------------------------------------------------------
+ */
+
+@function opposite-direction( $directions ) {
+    $opposite-directions: ();
+    $direction-map: (
+        'top': 'bottom',
+        'right': 'left',
+        'bottom': 'top',
+        'left': 'right',
+        'ltr': 'rtl',
+        'rtl': 'ltr'
+        );
+
+    @each $direction in $directions {
+        $opposite-direction: map-get($direction-map, $direction);
+        @if $opposite-direction != null {
+            $opposite-directions: append($opposite-directions, #{$opposite-direction});
+        }
+        @else {
+            @warn "No opposite direction can be found for `#{$direction}`.";
+        }
+    }
+
+    @return $opposite-directions;
+}

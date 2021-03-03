@@ -1,0 +1,95 @@
+
+// ----------------------------------------------------------------------------
+// {{STATE UTILITIES}}
+// ----------------------------------------------------------------------------
+
+/**
+ * Global states.
+ * JavaScript may add/remove/toggle these classes.
+ * All other states are component-scoped and use the `is-` prefix.
+ */
+
+/**
+ * Completely remove from the flow and screen readers.
+ */
+
+.u-isHidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+
+/**
+ * Despromove elemento visualmente ao torná-lo transparente
+ */
+.u-isMuted{
+  opacity:0.5 !important;
+}
+
+
+
+
+
+/**
+ * Completely remove from the flow but leave available to screen readers.
+ */
+
+.u-isHiddenVisually {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/**
+ * Control visibility without affecting flow.
+ */
+
+.u-isVisible {
+  visibility: visible;
+}
+
+.u-isInvisible {
+  visibility: hidden;
+}
+
+
+/**
+ * Indicate that interaction will result in an (in)action.
+ */
+
+.u-isActionable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.u-isDraggable {
+  cursor: move;
+}
+
+.u-isDisabled {
+  cursor: default;
+}
+
+
+.u-isSortable{
+  user-select: none;
+  .idl-sortable-element,
+  .idl-sortable-option {
+    position: relative;
+    &:hover:not(.sectorBlock){
+      cursor: move;
+    }
+  }
+  .ui-sortable-helper {
+    box-shadow: hsla(220,14%,16%,0.3) 0 0 8px;
+  }
+  .ui-sortable-placeholder{
+    background: none;
+    border: 1px dashed hsla(216,15%,13%,0.1) !important;
+    visibility: visible !important;
+  }
+}

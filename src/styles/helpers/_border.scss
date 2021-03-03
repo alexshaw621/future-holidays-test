@@ -1,0 +1,48 @@
+
+// $BORDER --------------------------------------------------------------------
+//
+
+@mixin border-top($color, $size: 1px, $style: solid){
+  border-top: $size $style $color;
+}
+
+@mixin border-right($color, $size: 1px, $style: solid){
+  border-right: $size $style $color;
+}
+
+@mixin border-bottom($color, $size: 1px, $style: solid){
+  border-bottom: $size $style $color;
+}
+
+@mixin border-left($color, $size: 1px, $style: solid){
+  border-left: $size $style $color;
+}
+
+@mixin border($color, $size: 1px, $style: solid){
+  border: $size $style $color;
+}
+
+
+
+//************************************************************************//
+// Shorthand Border-radius mixins
+//************************************************************************//
+@mixin border-top-radius($radii) {
+  border-top-left-radius: $radii;
+  border-top-right-radius: $radii;
+}
+
+@mixin border-bottom-radius($radii) {
+  border-bottom-left-radius: $radii;
+  border-bottom-right-radius: $radii;
+}
+
+@mixin border-left-radius($radii) {
+  border-top-left-radius: $radii;
+  border-bottom-left-radius: $radii;
+}
+
+@mixin border-right-radius($radii) {
+  border-top-right-radius: $radii;
+  border-bottom-right-radius: $radii;
+}

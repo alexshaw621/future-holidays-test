@@ -1,0 +1,217 @@
+.template-cart {
+  input:focus {
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+  .abTestCartVariant1{
+    .cart-notes{
+      margin: 1rem 0;
+    }
+  }
+  .abTestCartVariant2{
+    @include mq($until: tablet){
+      .cart-line-item{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        
+        > * {
+          border-bottom: none;
+          &:before{
+            display: none;
+          }
+        }
+        >:first-child{
+          flex-basis: 30%;
+        }
+        .product-details{
+          flex-basis: 70%;
+          text-align: left;
+          padding-left: 1em;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+          >:first-child{
+            flex-basis: 100%;
+          }
+          .variant_title{
+            margin-bottom: 0;
+          }
+        }
+        >:nth-child(3){
+          text-align: left;
+        }
+        >:nth-child(4){
+          text-align: center;
+        }
+        >:nth-child(3),>:nth-child(4),>:nth-child(5){
+          flex-basis: calc(100%/3);
+        }
+      }
+    }
+  }
+}
+
+.table-cart-items {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  th {
+    text-transform: uppercase;
+    font-size: ms(-2);
+    color: gc(text, muted);
+    letter-spacing: 0.152em;
+    &:first-child {
+      text-align: left;
+    }
+  }
+}
+
+.cart-line-item {
+  border-bottom: 4px solid gc(muted, lines);
+
+  .product-details {
+    text-align: center;
+    @include mq($from: tablet) {
+      text-align: left;
+      padding-left: 1rem;
+    }
+  }
+
+  td {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid gc(muted);
+    &:before {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: ms(-2);
+      letter-spacing: 0.2em;
+    }
+    @include mq($from: tablet) {
+      text-align: center;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+  
+  .thumbnail {
+    display: block;
+    position: relative;
+    min-width: 6rem;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-top: 70%;
+    }
+    img {
+      @include absolute(top 0 right 0 bottom 0 left 0);
+      width: 100%;
+      height: 100%;
+      @include object-fit(contain, center);
+    }
+    @include mq($from: tablet) {
+      max-width: 12rem;
+      margin-top: 0rem;
+      margin-bottom: 0rem;
+    }
+  }
+  input[type='number'] {
+    width: 100%;
+    text-align: center;
+    max-width: 5rem;
+  }
+
+  h6 {
+    font-size: ms(1);
+    margin: 0 0 0.5em 0;
+    font-weight: 600;
+    a {
+      @include link-colors(gc(text, accent), gc(link, hover));
+      text-decoration: none;
+    }
+  }
+  p{
+    margin: 0 0 0.75em 0;
+  }
+  .variant_title {
+    font-weight: normal;
+    font-style: italic;
+    color: gc(text, neutral);
+  }
+  .price {
+    // font-weight: bold;
+    &.line-price {
+      font-size: 1.2em;
+    }
+  }
+
+  @include mq($from: tablet) {
+    &:last-of-type td {
+      border-bottom: none;
+    }
+  }
+}
+
+
+// Form where user is able to add notes for the merchant
+.cart-notes {
+  label,
+  textarea {
+    resize: vertical;
+    width: 100%;
+  }
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  textarea{
+    min-height: unset;
+  }
+}
+
+.cart-totals {
+  text-align: center;
+  margin: 2.5rem auto;
+  border: 1px solid gc(muted);
+  padding: 2.5rem;
+  h4 {
+    font-size: ms(-1);
+    margin-top: 0;
+    margin-bottom: 0.2em;
+    font-family: $f-sans;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+  .total {
+    font-size: ms(5);
+    margin: 0;
+  }
+  .shipping-note {
+    font-style: italic;
+    color: gc(text, neutral);
+  }
+  .affirm {
+    text-decoration: none;
+    color: gc(brand);
+    font-weight: bold;
+    font-size: ms(1);
+  }
+}
+
+.cart-navigation {
+  justify-content: center;
+  .Nav__item {
+    margin: 0.2em 0.4em;
+    @include mq($until: 600px) {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+  }
+}

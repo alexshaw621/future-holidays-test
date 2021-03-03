@@ -1,0 +1,147 @@
+@charset 'UTF-8';
+
+/**
+ * CopperPearl2019 | Built with Slate
+ */
+
+@import '~modularscale-sass/stylesheets/_modularscale.scss';
+@import '~sass-mq/_mq.scss';
+@import '~family.scss/source/src/_family.scss';
+
+/**
+* ----------------------------------------------------------------------------
+* 00 RESETS
+* ----------------------------------------------------------------------------
+*/
+@import '~normalize.css/normalize';
+
+/**
+* ----------------------------------------------------------------------------
+* 01 SETTINGS
+* Contains the configuration files that holds global variables for the project
+* (for typography, color schemes, and so on).
+* ----------------------------------------------------------------------------
+*/
+@import './variables';
+@import 'settings/colors';
+@import 'settings/typography';
+@import 'settings/layout';
+
+/**
+* ----------------------------------------------------------------------------
+* HELPERS
+* The helpers/ folder (sometimes called utils/) gathers all Sass tools and helpers
+* we’ll use across the project. Got a function? A mixin? Put it in there.
+* ----------------------------------------------------------------------------
+*/
+
+@import 'helpers/utilities';
+@import 'helpers/border';
+@import 'helpers/colors';
+@import 'helpers/layout';
+@import 'helpers/links';
+@import 'helpers/images';
+@import 'helpers/position';
+@import 'helpers/responsive';
+@import 'helpers/specificity';
+@import 'helpers/rfs';
+@import 'helpers/size';
+@import 'helpers/mixins';
+@import 'helpers/display';
+@import 'helpers/text';
+
+/**
+* ----------------------------------------------------------------------------
+* 02 VENDORS
+* Third-party libraries
+* ----------------------------------------------------------------------------
+*/
+@import 'vendor/flickity';
+@import 'vendor/animate';
+@import 'vendor/istock-notify-me';
+
+/**
+* ----------------------------------------------------------------------------
+* 03 CORE
+* ----------------------------------------------------------------------------
+*/
+
+@import 'core/buttons';
+@import 'core/components';
+@import 'core/forms';
+@import 'core/forms-grid';
+@import 'core/helpers';
+@import 'core/layout';
+@import 'core/media';
+@import 'core/responsive-tables';
+@import 'core/typography';
+@import 'core/utilities';
+
+/**
+* ----------------------------------------------------------------------------
+* 04 COMPONENTS
+* ----------------------------------------------------------------------------
+*/
+
+// LAYOUT ---------------------------------------------------------------------
+@import './components/layout/header';
+@import './components/layout/main';
+@import './components/layout/footer';
+
+// UI ELEMENTS ----------------------------------------------------------------
+@import './components/ui/nav';
+@import './components/ui/drawer';
+@import './components/ui/loops';
+@import './components/ui/minicart';
+@import './components/ui/dropdown';
+@import './components/ui/radio';
+@import './components/ui/tab';
+@import './components/ui/accordion';
+@import './components/ui/subscribeModal';
+@import './components/ui/modal';
+
+// CONTENT --------------------------------------------------------------------
+@import './components/content/reviews';
+@import './components/content/collections';
+@import './components/content/products';
+
+// SECTIONS -------------------------------------------------------------------
+@import './components/sections/saleBanner';
+@import './components/sections/heroCollections';
+@import './components/sections/heroText';
+@import './components/sections/inThePress';
+@import './components/sections/highlights';
+@import './components/sections/instagram';
+@import './components/sections/pagePress';
+
+@import './components/sections/googleOptimize';
+
+/**
+* ----------------------------------------------------------------------------
+* 05 STATIC
+* Shopify App Styles
+* ----------------------------------------------------------------------------
+*/
+@import 'static/bold-upsell';
+
+/**
+* ----------------------------------------------------------------------------
+* 06 TEMPLATES
+* ----------------------------------------------------------------------------
+*/
+
+// Templates
+// @import './templates/404';
+// // @import './templates/gift_card';
+@import './templates/cart';
+@import './templates/product';
+@import './templates/page';
+@import './templates/collection';
+@import './templates/search';
+
+// // Customer Account Views
+@import './templates/account/account';
+@import './templates/account/order';
+@import './templates/account/login';
+@import './templates/account/register';
+@import './templates/account/addresses';

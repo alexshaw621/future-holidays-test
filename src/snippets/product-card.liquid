@@ -1,0 +1,135 @@
+{% comment %}
+Check if the product is on sale
+{% endcomment %}
+{% assign showPrice = showPrice | default: true %}
+{% assign showPreview = showPreview | default: true %}
+{% assign on_sale = false %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{% assign title_parts = product.title | split: '(' %}
+
+{% for collect in product.collections %}
+  {% if collect.title == 'On Sale' or collect.title == 'Bundles' %}
+    {% if product.compare_at_price > product.price %}
+      {% assign on_sale = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<div class="Card Card--product js-clickBlock" data-card-handle="{{ product.handle }}">
+  {% if hasPlusIcon == true %}
+    <div>
+  {% endif %}
+  
+  <figure class="Card__figure">
+    <a href="{{ product.url | within: collection }}">
+      <img
+        data-sizes="auto"
+        src="{{ product.featured_image.src | img_url: '200x' }}"
+        data-srcset="
+            {{ product.featured_image.src | img_url: '200x' }} 200w,
+            {{ product.featured_image.src | img_url: '400x' }} 400w,
+            {{ product.featured_image.src | img_url: '800x' }} 800w,
+            {{ product.featured_image.src | img_url: '1600x' }} 1600w"
+        class="lazyload fadeup mainImg"
+        alt="{{ product.title }}" />
+    </a>
+    {% if on_sale %}
+      <div class="Badge Badge--sale">{{ 'products.product.sale' | t }}</div>
+    {% endif %}
+
+    {% unless current_variant.available %}
+      <div class="Badge Badge--soldout">{{ 'products.product.sold_out' | t }}</div>
+    {% endunless %}
+
+    {% if showPreview %}
+      <button data-action="{ type: 'Modal', target: 'product{{ product.id }}', action: 'toggle' }" class="Button Button--noLayout preview" data-iStockProduct="{{ product.title | escape }}" data-iStockProductId="{{ product.id }}" data-iStockVariants='{{ product.variants | json | remove: "'" }}'>preview</button>
+    {% endif %}
+  </figure>
+
+  <div class="Card__details">
+    {% if showVendor %}
+    <h5 class="Card__vendor">{{ product.vendor }}</h5>
+    {% endif %}
+
+    {% assign title_parts = product.title | split: ' - ' %}
+    {% if title_parts.size > 1 %}
+      <h4 class="Card__title">{{ title_parts[1] }}</h4>
+      <div class="Card__type"><a href="{{ product.url | within: collection }}">{{ title_parts[0] }}</a></div>
+    {% else %}
+      {% if product.title contains 'bundle' or product.title contains 'Bundle' %}
+        <h4 class="Card__title">{{ product.title | remove: 'bundle' | remove: 'Bundle'}}</h4>
+        <div class="Card__type"><a href="{{ product.url | within: collection }}">bundle</a></div>
+      {% else %}
+        {% if product.handle contains 'gift-card' %}
+          <h4 class="Card__title">gift card</h4>
+          <div class="Card__type"><a href="{{ product.url | within: collection }}">{{ product.title | remove: 'Gift Card' | remove: 'gift card' }}</a></div>
+        {% else %}
+          <div class="Card__type"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></div>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+    {% if showPrice %}
+      <div data-price-wrapper>
+        {% if on_sale %}
+          {% if product.price_varies %}
+            {%- assign sale_price = product.price | money -%}
+            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+          {% else %}
+            {% comment %} {{ 'products.product.on_sale' | t }} {% endcomment %}
+            {{ product.price | money }}
+            <span class="strikethrough">{{ product.compare_at_price | money }}</span>
+          {% endif %}
+        {% else %}
+          <span class="price">
+            {% if product.price_varies %}
+              {%- assign price = product.price | money -%}
+              {{ 'products.product.from_text_html' | t: price: price }}
+            {% else %}
+              {{ product.price | money }}
+            {% endif %}
+          </span>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    {% unless hideLooxRating %}
+    <div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
+    {% endunless %}
+
+    {% if showAddtoCart %}
+      {% include 'product-form' %}
+    {% endif %}
+
+  </div>
+  
+  {% if hasPlusIcon == true %}
+    </div>
+  {% endif %}
+  
+  {% if hasPlusIcon == true %}
+    <svg viewBox='0 0 20 20' class='icon icon--xl'>
+      <use xlink:href='#icon-plus'></use>
+    </svg>
+  {% endif %}
+
+  {% if showPreview == true %}
+    <div class="Modal Modal--large" data-component="Modal" data-identifier="product{{ product.id }}">
+      <div class="Modal__box">
+        <div class="Modal__header">
+          <span>{{ product.title }}</span>
+          <button type="button" class="Button Button--noLayout closeModal">
+            {% include 'icon-close' %}
+          </button>
+        </div>
+        <div class="Modal__content">
+          <div class="Container Product" data-component="ProductForm" data-action="modal">
+            {% include 'product-gallery' %}
+            {% include 'product-details' mode: 'preview' %}
+          </div>
+        </div>
+      </div>
+      <span class="backdrop"></span>
+    </div>
+  {% endif %}
+</div>

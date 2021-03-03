@@ -1,0 +1,242 @@
+/**
+* ----------------------------------------------------------------------------
+* NAV
+* ----------------------------------------------------------------------------
+*/
+.Nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+
+  .selected > a {
+    @include link-colors(gc(link, hover));
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  [class*='icon'] {
+    vertical-align: middle;
+    letter-spacing: 0;
+  }
+
+  .icon-fallback-text {
+    display: none;
+  }
+}
+
+.Nav--vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  .Nav__item {
+    display: block;
+    margin-bottom: .3em;
+  }
+  .Nav__submenu {
+    margin-top: 0.5em;
+    .Nav__item {
+      font-size: ms(2);
+      width: 100%;
+    }
+    a {
+      display: block;
+    }
+  }
+}
+
+// NAV ITEM -------------------------------------------------------------------
+.Nav__item {
+  // @include border(red);
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.Nav__item--main {
+  white-space: nowrap;
+
+  &[href="javascript:void(0);"] {
+    cursor: default;
+  }
+}
+
+// ============================================================================
+// NAV ASIDE
+// ============================================================================
+.Nav--aside {
+  $spacing: 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .Nav__item {
+    display: inline-block;
+    margin: 0;
+    padding: $spacing 0;
+    position: relative;
+    width: 100%;
+    a {
+      text-transform: none;
+      letter-spacing: 0;
+      @include link-colors(gc(text, neutral), gc(link, hover));
+    }
+  }
+
+  .is-active,
+  .Nav__item--active {
+    > a {
+      @include link-colors(gc(text, accent), gc(link, hover));
+    }
+  }
+
+  .Nav__submenu {
+    width: 100%;
+    margin-top: 0.8em;
+    margin-bottom: 1.5em;
+  }
+  .Nav {
+    // display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    .Nav__item {
+      padding: $spacing / 2 0;
+    }
+  }
+
+  .Nav__item--main {
+    > a {
+      font-size: ms(2);
+      font-weight: bold;
+    }
+  }
+  a {
+    display: block;
+    // padding: 0.5em $spacing;
+  }
+}
+
+// ============================================================================
+// NAV SOCIAL
+// ============================================================================
+
+// .Nav--social {
+//   justify-content: center;
+//   a {
+//     padding: 0.2em 0.6em;
+//   }
+//   .icon {
+//     font-size: ms(4);
+//   }
+//   .Main__sidebar & {
+//     justify-content: flex-start;
+//     margin-bottom: 3rem;
+//   }
+// }
+
+/**
+ * ----------------------------------------------------------------------------
+ * NAV ACCORDION
+ * ----------------------------------------------------------------------------
+ */
+
+ .Nav[data-component='AccordionMenu'] {
+  .Nav__submenu {
+    opacity: 1;
+    position: relative;
+    visibility: visible;
+    background: none;
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 220ms ease;
+    font-size: ms(0);
+  }
+  .is-active > .Nav__submenu {
+    height: auto;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * NAV--BAR
+ * ----------------------------------------------------------------------------
+ */
+.Nav--bar {
+  white-space: nowrap;
+
+  .Nav__item--main {
+    padding: 0 1em;
+  }
+
+  @include mq($until: tablet) {
+    display: block;
+    margin-bottom: space(el);
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * NAV--SECTOR
+ * Sequential nav for multiscreen workflows
+ * ----------------------------------------------------------------------------
+ */
+
+.Nav--sector {
+  margin-top: 3rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: ms(-2);
+  @include mq($until: tablet) {
+    display: block;
+  }
+}
+
+// ============================================================================
+// Pagination
+// ============================================================================
+.Nav--pagination {
+  margin-top: 6rem;
+  justify-content: center;
+  align-items: center;
+  .page.current,
+  .prev a,
+  .next a,
+  .page a {
+    margin: 0.1em;
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    border-radius: 2px;
+    font-size: ms(1);
+  }
+  .prev,
+  .next {
+    a {
+      font-size: ms(-1);
+      letter-spacing: 0;
+    }
+  }
+  .prev {
+    margin-right: 2rem;
+  }
+  .next {
+    margin-left: 2rem;
+  }
+  .page a {
+    &:hover {
+      background: transparentize(gc(brand), 0.8);
+      color: gc(brand);
+    }
+  }
+  .page.current {
+    background: gc(brand);
+    color: white;
+  }
+}

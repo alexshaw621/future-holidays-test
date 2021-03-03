@@ -1,0 +1,226 @@
+// .Loop--products {
+//   @include border(red);
+// }
+
+// ============================================================================
+// Common Elements
+// ============================================================================
+[data-price-wrapper] {
+  // color: gc(brand);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: ms(-2);
+}
+
+// ============================================================================
+// Loop
+// ============================================================================
+.Loop--products {
+  $spacing: 1rem;
+  .Card {
+    margin: $spacing;
+    flex-basis: calc(100% - #{$spacing * 2});
+    @include mq($from: tablet) {
+      flex-basis: calc(50% - #{$spacing * 2});
+    }
+    @include mq($from: desktop) {
+      flex-basis: calc(25% - #{$spacing * 2});
+    }
+    @include mq($from: desktopLarge) {
+      // padding: 0 #{$spacing * 3};
+    }
+  }
+}
+
+
+// ============================================================================
+// Card
+// ============================================================================
+
+.Card--product {
+  text-align: center;
+  .Card__figure {
+    img {
+      @include object-fit(contain, center);
+    }
+
+    .Badge--sale {
+      position: absolute;
+      top: 0%;
+      left: auto;
+      right: 2rem;
+      font-weight: 700;
+      transform: translateX(-50%);
+      background: gc(brand);
+      color: white;
+      padding: 0em;
+      text-align: center;
+      font-size: .71561rem;
+      width: 3.3rem;
+      height: 3.3rem;
+      line-height: 3.5rem;
+      border-radius: 50%;
+    }
+
+    .Badge--soldout {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-weight: 700;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 1em 2em;
+      font-size: .89445rem;
+    }
+  }
+
+  .Card__type {
+    color: #333333;
+    line-height: 1.3;
+    letter-spacing: 0;
+    font-size: ms(0);
+    margin-bottom: 1em;
+    text-transform: lowercase;
+  }
+  .Card__title {
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    text-transform: lowercase;
+    @include mq($until: desktopLarge) {
+      font-size: ms(4);
+    }
+  }
+
+  [data-price-wrapper] {
+    margin-bottom: $gutter-sm;
+  }
+  .loox-rating {
+    font-size: ms(-1);
+    color: gc(brand);
+  }
+  .strikethrough{
+    position: relative;
+    margin-left: 0.5em;
+    color: gc(text, muted);
+    &:after {
+      content:"";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: grey;
+    }
+  }
+}
+
+
+// ============================================================================
+// Related Products
+// ============================================================================
+.Section--relatedProducts {
+  padding-top: $gutter * 1.5;
+  padding-bottom: $gutter * 1.5;
+  text-align: center;
+
+  .Loop {
+    justify-content: center;
+    flex-flow: row;
+  }
+  .Loop.flickity-enabled {
+    // margin-left: 0;
+    // margin-right: 0;
+    // width: 100%;
+
+    .Card {
+      flex-basis: calc(50% - 2em);
+      max-width: calc(50% - 2em);
+      width: calc(50% - 2em);
+    }
+  }
+
+  .Card {
+    position: relative;
+    margin: 2em;
+    flex-basis: calc(50% - 2em);
+    max-width: calc(50% - 2em);
+    width: calc(50% - 2em);
+    background-color: $color-white;
+
+    &:last-of-type {
+      .icon {
+        display: none;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      right: -4em;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .Card__figure {
+    margin-top: $gutter-sm;
+
+    .Badge {
+      right: -2rem;
+
+      @include mq($until: desktop) {
+        top: -1rem;
+        right: -3rem;
+      }
+
+      @include mq($until: tablet) {
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+
+  @include mq($from: tablet) {
+    padding-top: $gutter * 3;
+    padding-bottom: $gutter * 3;
+
+    h2 {
+      color: $color-body-text;
+      font-size: 28px;
+      letter-spacing: 2.2px;
+      margin-top: 0;
+      margin-bottom: $gutter * 2;
+    }
+
+    .Card__figure {
+      margin: $gutter * 2;
+    }
+
+    .Card__title {
+      font-size: 27px;
+      color: $color-body-text;
+      letter-spacing: 2.1px;
+      margin-bottom: $gutter-sm * 2;
+    }
+
+    .Card__vendor {
+      margin-top: 0;
+      margin-bottom: $gutter-sm / 2;
+    }
+
+    [data-price-wrapper] {
+      font-size: 21px;
+      letter-spacing: 1.7px;
+      margin-bottom: $gutter-sm * 3;
+    }
+  }
+
+  @include mq($until: tabletLarge) {
+    .Button--huge {
+      font-size: 1rem;
+      padding: 0 1.6em;
+    }
+  }
+}

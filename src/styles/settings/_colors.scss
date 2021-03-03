@@ -1,0 +1,43 @@
+$colors: (
+  brand: (
+    base: hsla(177, 68%, 53%, 1)
+  ),
+  dark: (
+    base: hsla(0, 0%, 0%, 1),
+    base2: hsla(0, 0%, 13%, 1)
+  ),
+  neutral: (
+    base: hsla(210, 2%, 38%, 1)
+  ),
+  muted: (
+    base: hsla(93, 0%, 95%, 1),
+    base2: hsla(43, 33%, 92%, 1),
+    lines: hsla(43, 33%, 92%, 1)
+  ),
+  feedback: (
+    positive: hsla(90, 59%, 54%, 1)
+  ),
+  drawers: (
+    bg: hsla(0, 0%, 100%, 1),
+    text: hsl(0, 0%, 83%),
+    textHighlight: hsl(0, 0%, 98%),
+    titles: hsl(0, 0%, 100%)
+  ),
+  footer: (
+    bg: hsla(113, 0%, 97%, 1)
+  ),
+  text: (
+    base: hsla(0, 0%, 13%, 1),
+    black: hsla(0, 0%, 0%, 1),
+    primary: hsla(220, 7%, 26%, 1),
+    accent: hsla(0, 2%, 10%, 1),
+    neutral: hsla(109, 0%, 52%, 1),
+    muted: hsla(210, 10%, 62%, 1),
+    negative: hsla(8, 63%, 49%, 1)
+  ),
+  link: (
+    normal: hsla(220, 3%, 19%, 1),
+    hover: hsla(0, 2%, 10%, 1),
+    active: hsla(0, 0%, 27%, 1)
+  )
+);

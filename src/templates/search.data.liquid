@@ -1,0 +1,25 @@
+{% layout none %}
+{% paginate search.results by 50 %}
+  {% if search.performed %}
+    {% if search.results_count == 0 %}
+      <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+    {% else %}
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          {% assign product = item %}
+          {% include 'product-card' with { showPreview: false, showVendor: false, showAddtoCart: true, hideLooxRating: true, hasPlusIcon: true, hideiStockForm: true } %}
+        {% else %}
+          <div class="Card">
+            <div class="Card__details">
+              <h4 class="Card__title"><a href="{{ item.url | within: collection }}">{{ item.title }}</a></h4>
+              <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+
+{% endpaginate %}
+
+

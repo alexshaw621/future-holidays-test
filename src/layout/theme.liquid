@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <meta name="theme-color" content="{{ settings.color_accent }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%}
+
+  {%- capture seo_title -%}
+    {{ page_title }}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <meta name="google-site-verification" content="sIbUwlKPjhbx-ps2aSeSd2fQ9tfhKNraRBOA6_qPFZ0" />
+
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' | script_tag }}
+  
+  {% include 'social-meta-tags' %}
+  {% include 'style-tags', layout: 'theme' %}
+  {% include 'css-variables' %}
+  {% include 'head-scripts' %}
+  {% include 'script-tags', layout: 'theme' %}
+  
+  {{ content_for_header }}
+  
+  {% comment %} {%- include 'bold-common' -%} {% endcomment %}
+
+  {{ '//www.klaviyo.com/media/js/public/klaviyo_subscribe.js' | script_tag }}
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}" data-view="{{ template.suffix }}">
+
+  {% section 'header' %}
+
+  <main role="main" id="MainContent" class="MainContent">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  {% unless template contains 'email-sign-up' %}
+    {% include 'subscribeModal' %}
+  {% endunless %}
+  
+  <script type="text/javascript">
+    var _learnq = _learnq || [];
+    _learnq.push(['account', 'K7me6c']);
+
+    (function () {
+    var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+    b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+    var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+    })();
+  </script>
+
+  {% include 'iStock-notify-me' with 'iStockfooter' %}
+
+</body>
+</html>

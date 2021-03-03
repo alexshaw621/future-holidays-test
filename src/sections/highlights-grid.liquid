@@ -1,0 +1,48 @@
+<div class="Container Container--narrower">
+  <div class="Loop">
+    {% for block in section.blocks %}
+      <div class="highlight">
+        <h6 class="title">{{ block.settings.title }}</h6>
+        {% if block.settings.image != blank %}
+          <img class="figure"
+            src="{{ block.settings.image | img_url: '133x' }}"
+            srcset="{{ block.settings.image | img_url: '133x' }} 1x,
+                    {{ block.settings.image | img_url: '266x' }} 2x,
+                    {{ block.settings.image | img_url: '399x' }} 3x"
+            alt="{{ block.settings.image.alt }}"
+            />
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Highlights",
+    "class": "Section Section--highlights",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "highlight",
+        "name": "Highlight",
+        "settings": [
+          {
+            "label": "Title",
+            "id": "title",
+            "type": "text"
+          },
+          {
+            "label": "Icon",
+            "id": "image",
+            "type": "image_picker"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+        "name": "Highlights List",
+        "category": "Text"
+    }]
+  }
+{% endschema %}

@@ -1,0 +1,146 @@
+<!-- Sale banner -->
+<div class="Section--saleBanner {% if section.settings.layout == 'container' %}Container{% endif %}">
+    {% if section.settings.btn_link != blank %}
+      <a href="{{ section.settings.btn_link }}">
+    {% endif %}
+    <figure class="Section__figure">
+      <picture>
+        <source
+          data-srcset="{{ section.settings.cover_image_mobile | img_url: '400x' }} 400w, {{ section.settings.cover_image_mobile | img_url: '800x' }} 800w, {{ section.settings.cover_image_mobile | img_url: '1200x' }} 1200w"
+          media="(max-width: 750px)" />
+        <source
+          data-srcset="
+              {{ section.settings.cover_image | img_url: '1200x' }} 1200w,
+              {{ section.settings.cover_image | img_url: '1800x' }} 1800w,
+              {{ section.settings.cover_image | img_url: '2600x' }} 2600w,
+              {{ section.settings.cover_image | img_url: '3200x' }} 3200w"
+          data-sizes="auto"
+          media="(min-width: 750px)" />
+        <img
+          src="{{ section.settings.cover_image | img_url: '200x' }}"
+          class="lazyload" />
+      </picture>
+    </figure>
+
+    {% if section.settings.btn_link != blank %}
+      </a>
+    {% endif %}
+
+  {% comment %}
+  <div class="Section__content">
+    {% if section.settings.title != blank %}
+      <h2 data-aos="custom">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    <div class="Section__sales">
+      {% for block in section.blocks %}
+        <div class="Entry">
+          {% if block.settings.discount_percent != blank %}
+            <div class="Entry__percent">
+              {{ block.settings.discount_percent }}
+            </div>
+          {% endif %}
+
+          <div class="Entry__details">
+            {% if block.settings.description != blank %}
+              <div class="Entry__desc">
+                {{ block.settings.description }}
+              </div>
+            {% endif %}
+            {% if block.settings.discount_code != blank %}
+              <div class="Entry__code">
+                {{ block.settings.discount_code }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.btn_text != blank and section.settings.btn_link != blank %}
+      <a href="{{ section.settings.btn_link }}" class="Button Button--sale">{{ section.settings.btn_text }}</a>
+    {% endif %}
+  </div>
+  {% endcomment %}
+</div>
+
+{% schema %}
+  {
+    "name": "Sale banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cover"
+      },
+      {
+        "type": "image_picker",
+        "id": "cover_image",
+        "label": "Cover Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "cover_image_mobile",
+        "label": "Cover Image Mobile"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Cover Link"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "options": [
+          { "value": "full", "label": "Full Layout"},
+          { "value": "container", "label": "Container"}
+        ],
+        "label": "Layout",
+        "default": "container"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Black Friday Sale"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text",
+        "default": "Shop Now"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "sale_info",
+        "name": "Sale Info",
+        "settings": [
+          {
+            "type": "text",
+            "id": "discount_percent",
+            "label": "Discount Percent",
+            "default": "10%"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "off all orders"
+          },
+          {
+            "type": "textarea",
+            "id": "discount_code",
+            "label": "Discount Code",
+            "default": "use code: <span>black10</span>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Sale Banner",
+        "category": "Promotional"
+      }
+    ]
+  }
+{% endschema %}

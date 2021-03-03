@@ -1,0 +1,191 @@
+form {
+  margin: 0;
+}
+
+a,
+area,
+button,
+[role='button'],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+// input,
+// textarea,
+// select {
+//   font-size: 1.6rem;
+//   max-width: 100%;
+//   // border: 1px solid $color-border;
+//   border-radius: 0;
+
+//   &[disabled] {
+//     // border-color: $color-disabled-border;
+//     // background-color: $color-disabled;
+//     cursor: default;
+//   }
+// }
+
+button,
+input[type='submit'],
+label[for] {
+  cursor: pointer;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+// Force option color (affects IE only)
+// option {
+//   background-color: $color-body;
+//   color: $color-body-text;
+// }
+
+// .input-error {
+//   border-color: $color-error;
+//   background-color: $color-error-bg;
+//   color: $color-body-text;
+// }
+
+input,
+input[type='text'],
+input[type='email'],
+input[type='url'],
+input[type='password'],
+input[type='search'],
+input[type='date'],
+select,
+textarea {
+  border: mg($forms, input, border);
+  border-radius: mg($forms, input, radius);
+  background: mg($forms, input, background);
+  padding: mg($forms, input, padding);
+  outline: none;
+  font-weight: 400;
+  font-family: $f-sans;
+  font-size: mg($forms, input, font-size);
+  color: mg($forms, input, color);
+}
+input[type='date'] {
+  cursor: pointer;
+}
+input[type='text'],
+input[type='search'],
+input[type='number'],
+input[type='password'],
+input[type='email'],
+input[type='tel'],
+input[type='url'] {
+  height: mg($forms, input, height);
+  line-height: mg($forms, input, height);
+}
+
+input[type='submit'],
+input[type='checkbox'] {
+  width: auto;
+}
+
+input[type='file'] {
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+textarea {
+  padding: 1em 1.25em;
+  width: 100%;
+}
+
+select {
+  display: block;
+  // -webkit-appearance: none;
+  height: mg($forms, input, height);
+  line-height: mg($forms, input, height);
+}
+// select::-ms-expand {
+//   display: none;
+// }
+
+label {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  font-size: ms(-2);
+}
+
+.input-wrapper,
+.selector-wrapper {
+  margin-bottom: 1.2rem;
+  label {
+    width: 100%;
+    display: block;
+  }
+  select {
+    width: 100%;
+  }
+}
+
+.input-group {
+  display: flex;
+}
+
+.feedback {
+  &.feedback--error {
+    color: gc(text, negative);
+  }
+}
+
+form {
+  .errors {
+    text-align: center;
+    margin-bottom: 3rem;
+    // color: gc(text, negative);
+    color: gc(brand); // Requested from Yurie.
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #333333;
+  text-transform: lowercase;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #333333;
+  text-transform: lowercase;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #333333;
+  text-transform: lowercase;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #333333;
+  text-transform: lowercase;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  text-align: center;
+}

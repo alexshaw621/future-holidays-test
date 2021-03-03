@@ -1,0 +1,43 @@
+<div class="Container">
+  {% for block in section.blocks %}
+    <figure>
+      {%- assign image_object = block.settings.logo -%}
+      <img
+        data-sizes="auto"
+        data-src="{{ image_object | img_url: '100x' }}"
+        data-srcset="
+            {{ image_object | img_url: '100x' }} 100w,
+            {{ image_object | img_url: '200x' }} 200w,
+            {{ image_object | img_url: '400x' }} 400w,
+            {{ image_object | img_url: '800x' }} 800w"
+        class="lazyload fadeup" />
+    </figure>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "In the Press",
+    "class": "Section Section--inThePress",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "logo",
+        "name": "Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "In the Press",
+        "category": "Promotional"
+      }
+    ]
+  }
+{% endschema %}

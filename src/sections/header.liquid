@@ -1,0 +1,224 @@
+<section data-section-id="{{ section.id }}" data-section-type="header">
+  {%- if section.settings.announcement_bar_enabled -%}
+    {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
+      <div class="Header__announcement">
+        <div class="Container Container--narrower">
+          <div class="details">
+            <p>{{ section.settings.announcement_bar_text }}</p>
+            {% if section.settings.announcement_bar_link %}
+              <span class="divider">-</span><a href="{{ section.settings.announcement_bar_link }}" class="Nav__item">Learn More</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {%- endif -%}
+  
+  <header role="banner" class="Header__primary">
+    <div class="Container">
+      <div class="Header__nav u-show--untilDesktop">
+        <button class="Button Button--noLayout Button--icon" data-action="{ type: 'Drawer', target: 'mobileNav', action: 'toggle' }">
+          <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+            <use xlink:href='#icon-menu'></use>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="Header__brand">
+        <a href="/" class="logo-image">
+          <svg viewBox='0 0 185 50' class="u-hide--untilDesktop">
+            <use xlink:href='#Logo'></use>
+          </svg>
+          <svg viewBox='0 0 57 50' class="u-show--untilDesktop">
+            <use xlink:href='#logo-mobile'></use>
+          </svg>
+        </a>
+      </div>
+      <div class="Header__nav u-hide--untilDesktop">
+        <nav class="Nav Nav--main" role="navigation" data-component="MainNav">
+          {% include "menu-options" links: linklists[section.settings.menu].links %}
+        </nav>
+      </div>  
+      <div class="Header__utilities">
+        <button class="Button Button--noLayout" data-action="{ type: 'QuickSearch', target: 'mainSearchForm', action: 'toggle' }">
+          <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+            <use xlink:href='#icon-search'></use>
+          </svg>
+        </button>
+        <div class="MiniCart" data-component="MiniCart" data-logged-in="{{ customer.first_name }}"></div>
+      </div>
+    </div>
+  </header>
+
+  {% unless template contains 'product' or template == 'collection' %}
+  <div class="Header__secondary">
+    <div class="Container">
+      {% for block in section.blocks %}
+        <div class="Nav__item Nav__item--main Nav__item--level1">
+          <a href="{{ block.settings.link }}">
+            {% if block.settings.image != blank %}
+            <img
+                class="lazyload"
+                data-sizes="auto"
+                src="{{ block.settings.image | img_url: '10x' }}"
+                data-srcset="{{ block.settings.image | img_url: '65x' }} 1x, {{ block.settings.image | img_url: '65x', scale: 2 }} 2x"
+                alt="{{ block.settings.title }}"
+                />
+            {% endif %}
+            <span class="Nav__item__title">{{ block.settings.text }}</span>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endunless %}
+  
+</section>
+
+<div class="Drawer Drawer--left" data-component="Drawer" data-options="{position: 'left'}" data-identifier="mobileNav">
+  <div class="Drawer__box">
+    <div class="Drawer__content">
+      <a href="javascript:void(0);" class="btn-close-drawer">
+        <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+          <use xlink:href='#icon-plus'></use>
+        </svg>
+      </a>
+
+      <nav class="Nav Nav--main Nav--vertical" role="navigation" data-component="AccordionMenu">
+        {% include "menu-options" links: linklists[section.settings.menu].links %}
+      </nav>
+    </div>
+  </div>
+  <span class="backdrop"></span>
+</div>
+
+<form action="/search" method="get" role="search" class="SiteHeader__search" data-component="QuickSearch" data-identifier="mainSearchForm">
+  <input type="hidden" name="type" value="product" />
+  <label for="Search" class="label-hidden">
+    {{ 'general.search.placeholder' | t }}
+  </label>
+
+  <div class="Container">
+    <input type="search"
+      name="q"
+      id="Search"
+      value="{{ search.terms | escape }}"
+      placeholder="{{ 'general.search.placeholder' | t }}">
+
+    <button type="submit" class="Button Button--nolayout">
+      <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+      <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+        <use xlink:href='#icon-search'></use>
+      </svg>
+    </button>
+  </div>
+</form>
+
+{% schema %}
+  {
+    "name": "Header",
+    "class": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_enabled",
+        "label": "Show announcement",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_home_page_only",
+        "label": "Show on home page only",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "announcement_bar_text",
+        "label": "Announcement text",
+        "default": "Announce something here"
+      },
+      {
+        "type": "url",
+        "id": "announcement_bar_link",
+        "label": "Announcement link",
+        "info": "Optional"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "mobile_second_menu",
+        "name": "Mobile Second Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Menu Item Text"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Menu Item Link"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Menu Item Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "{{ shop.name }}",
+  {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo.width | append:'x' %}
+    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+  {% endif %}
+  "sameAs": [
+    "{{ settings.social_twitter_link }}",
+    "{{ settings.social_facebook_link }}",
+    "{{ settings.social_pinterest_link }}",
+    "{{ settings.social_instagram_link }}",
+    "{{ settings.social_tumblr_link }}",
+    "{{ settings.social_snapchat_link }}",
+    "{{ settings.social_youtube_link }}",
+    "{{ settings.social_vimeo_link }}"
+  ],
+  "url": "{{ shop.url }}{{ page.url }}"
+}
+</script>
+
+{% if template.name == 'index' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+{% endif %}

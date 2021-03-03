@@ -1,0 +1,166 @@
+.Footer {
+  margin-top: 4rem;
+
+  body#early-birds &,
+  body#sign-up-for-email & {
+    margin-top: 0;
+  }
+}
+
+.Footer__copyright {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  font-size: ms(-2);
+  text-align: center;
+}
+
+.Footer__nav {
+  .Container {
+    // border-top: 1px solid gc(dark);
+    max-width: 59rem;
+    margin: 0 auto;
+    padding-top: 3rem;
+    @include mq($from: desktop) {
+      padding-top: 4rem;
+    }
+  }
+}
+
+.Nav.Nav--footer {
+  margin-left: -0.25em;
+  margin-right: -0.25em;
+
+  a {
+    @include link-colors(gc(text), gc(text, accent));
+  }
+  > .Nav__item--main {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    text-align: center;
+
+    @include mq($from: tablet) {
+      flex: 0 0 20%;
+      max-width: 20em;
+      text-align: left;
+    }
+  }
+  .Nav__item--main > .Nav__item--main {
+    // font-weight: 600;
+    // font-size: ms(2);
+    font-size: 21px;
+    letter-spacing: 1.7px;
+    text-transform: lowercase;
+    color: #333333;
+
+    svg {
+      display: none;
+    }
+  }
+  .Nav__item {
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 2.15;
+    a {
+      color: gc(text, black);
+    }
+  }
+
+  .Nav__submenu {
+    margin-top: 1em;
+    @include mq($from: tablet) {
+      margin-top: 2em;
+    }
+
+    .Nav__item {
+      padding: 0;
+    }
+  }
+
+  .Nav {
+    flex-direction: column;
+  }
+  .Nav.Nav--social {
+    flex-direction: row;
+  }
+}
+
+.Nav.Nav--social {
+  margin-top: $gutter * 2;
+  justify-content: center;
+
+  .Nav__item {
+    font-size: ms(5);
+    padding: 0 0.3em;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+}
+
+.Footer__subscribe {
+  // background: gc(muted);
+  max-width: 51.25rem;
+  padding: $gutter * 2 $gutter-sm;
+  text-align: center;
+
+  body#early-birds & {
+    max-width: 54rem;
+  }
+
+  body#sign-up-for-email & {
+    padding-top: $gutter;
+    padding-bottom: $gutter;
+  }
+
+  .FormRow {
+    @include mq($until: tablet) {
+      width: 100%;
+      margin-top: 1em;
+    }
+  }
+
+  .Form__grid {
+    margin-bottom: 1.25rem;
+  }
+
+  .Button {
+    width: 100%;
+  }
+
+  label {
+    display: block;
+    font-size: 31px;
+    letter-spacing: 2.4px;
+    text-transform: lowercase;
+    margin: 0 0 $gutter * 2 0;
+    font-weight: normal;
+
+    body#sign-up-for-email & {
+      margin-bottom: $gutter;
+    }
+  }
+  input {
+    background: white;
+    border: solid 1px gc(text, black);
+    padding: $gutter-sm;
+    font-size: 21px;
+    line-height: 1.6;
+    height: auto;
+    // margin-bottom: $gutter-sm;
+  }
+
+  @include mq($until: tablet) {
+    padding-top: $gutter;
+    padding-bottom: $gutter;
+    label {
+      font-size: ms(2);
+      margin-bottom: $gutter;
+    }
+    input {
+      padding: $gutter / 2;
+      font-size: ms(2);
+    }
+  }
+}

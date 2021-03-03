@@ -1,0 +1,42 @@
+<div class="Card Card--blog">
+  <figure class="Card__figure">
+    {% if article.image %}
+      <a href="{{ article.url }}">
+        <img
+          data-sizes="auto"
+          data-src="{{ article.image.src | img_url: '400x' }}"
+          data-srcset="
+              {{ article.image.src | img_url: '400x' }} 400w,
+              {{ article.image.src | img_url: '800x' }} 800w,
+              {{ article.image.src | img_url: '1600x' }} 1600w"
+          class="lazyload fadeup mainImg"
+          alt="{{ article.title }}" />
+        </a>
+    {% endif %}
+  </figure>
+  <div class="Card__details">
+    <h3 class="Card__title">
+      <a href="{{ article.url }}">{{ article.title }}</a>
+    </h3>
+    {% comment %} <div class="Card__meta">
+      <span class="author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+      <span class="date">
+        on {{ article.published_at | time_tag: format: 'month_day_year' }}
+      </span>
+    </div> {% endcomment %}
+    {% comment %} <div class="Card__intro">
+      {% if article.excerpt.size > 0 %}
+        {{ article.excerpt }}
+      {% else %}
+        {{ article.content | strip_html | truncate: 150 }}
+      {% endif %}
+    </div>
+    {% if article.tags.size > 0 %}
+      <ul class="tags" aria-label="{{ 'blogs.article.tags' | t }}">
+        {% for tag in article.tags %}
+          <li><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %} {% endcomment %}
+  </div>
+</div>

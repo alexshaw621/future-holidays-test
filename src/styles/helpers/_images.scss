@@ -1,0 +1,51 @@
+img.fade-up {
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+  &.lazyloaded {
+    opacity: 1;
+  }
+}
+@mixin placeholder($ratio: 70%, $show-icon: true, $bc-color: gc(muted)) {
+  .placeholder {
+    display: block;
+    // background: $bc-color;
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      padding-top: $ratio; // ajustar para proporções do destaque
+    }
+    @if $show-icon {
+      i {
+        font-size: $f-size-xxl;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        color: darken($bc-color, 30%);
+      }
+    } @else {
+      i {
+        display: none;
+      }
+    }
+  }
+}
+
+/*
+  This mixin can be used to set the object-fit:
+  @include object-fit(contain);
+  or object-fit and object-position:
+  @include object-fit(cover, top);
+*/
+@mixin object-fit($fit: fill, $position: null) {
+  -o-object-fit: $fit;
+  object-fit: $fit;
+  @if $position {
+    -o-object-position: $position;
+    object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  } @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}

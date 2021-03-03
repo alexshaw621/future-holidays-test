@@ -1,0 +1,225 @@
+<div
+  class="Main"
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+  data-enable-history-state="true"
+  data-product-handle="{{ product.handle }}">
+
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
+  <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
+  <meta itemprop="brand" content="{{ product.vendor }}">
+  <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
+  <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+
+  <div
+    class="Main__content Product"
+    data-component="ProductForm"
+    data-product-type="{{ product.type }}"
+    data-product-handle="{{ product.handle }}">
+
+    <div class="ProductAddedBanner" data-component="ProductAddedBanner"></div>
+    
+    <div class="Container">
+      <div class="product-single">
+        <!-- Product Featured Image -->
+        <div class="product-main-craousel">
+          <figure class="product__image">
+            <img
+              data-sizes="auto"
+              src="{{ product.featured_image.src | img_url: '400x' }}"
+              data-srcset="
+                  {{ product.featured_image.src | img_url: '400x' }} 400w,
+                  {{ product.featured_image.src | img_url: '800x' }} 800w,
+                  {{ product.featured_image.src | img_url: '1600x' }} 1600w"
+              class="lazyload fadeup"
+              alt="{{ product.title }}" />
+          </figure>
+        </div>
+
+        <div class="product__info">
+          {% include 'product-details' %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Lifestyle Images -->
+    {% comment %}
+      Update below images with the provided images.
+    {% endcomment %}
+    <div class="product-thumbs" data-lifestyle-slider>
+      {% for image in product.images %}
+        {% if forloop.first or forloop.index == 2 %}
+          {% continue %}
+        {% endif %}
+        <img
+          data-sizes="auto"
+          src="{{ image.src | img_url: '400x' }}"
+          data-srcset="
+              {{ image.src | img_url: '400x' }} 400w,
+              {{ image.src | img_url: '800x' }} 800w,
+              {{ image.src | img_url: '1200x' }} 1600w"
+          class="product__image lazyload fadeup"
+          alt="{{ product.title }}" />
+      {% endfor %}
+    </div>
+
+    <div class="Container">
+      <!-- Product Accordion -->
+      <div class="tabs-container" data-component="Accordion">
+
+        <div class="Accordion__item">
+          <div class="Accordion__toggle">
+            <div class="Accordion__container">
+              <h6>{{ 'products.product.description' | t }}</h6>
+                <svg viewBox='0 0 20 20' class='icon icon--xl'>
+                  <use xlink:href='#icon-plus'></use>
+                </svg>
+            </div>
+          </div>
+
+          <div class="Accordion__content">
+            <div class="Accordion__contentWrapper">
+              {% for image in product.images %}
+                {% if forloop.index == 2 %}
+                  <figure class="Product__description__image">
+                    <img
+                      data-sizes="auto"
+                      src="{{ image.src | img_url: '400x' }}"
+                      data-srcset="
+                          {{ image.src | img_url: '400x' }} 400w,
+                          {{ image.src | img_url: '800x' }} 800w,
+                          {{ image.src | img_url: '1600x' }} 1600w"
+                      class="lazyload fadeup"
+                      alt="{{ product.title }}" />
+
+                    {% assign title_parts = product.title | split: ' - ' %}
+                    {% if title_parts.size > 1 %}
+                      <div class="Product__description__title">{{ title_parts[0]}}</div>
+                    {% else %}
+                      <div class="Product__description__title">{{ product.title }}</div>
+                    {% endif %}
+                  </figure>
+                {% endif %}
+              {% endfor %}
+
+              {% if main_description != blank %}
+                <div class="Product__mainDesc">{{ main_description }}</div>
+              {% endif %}
+
+              {{ product.description }}
+            </div>
+          </div>
+        </div>
+
+        <div id="product__reviews" class="Accordion__item">
+          <div class="Accordion__toggle">
+            <div class="Accordion__container">
+              <h6>{{ 'products.product.reviews' | t }}</h6>
+                <svg viewBox='0 0 20 20' class='icon icon--xl'>
+                  <use xlink:href='#icon-plus'></use>
+                </svg>
+            </div>
+          </div>
+
+          <div class="Accordion__content">
+            <div class="Accordion__contentWrapper">
+              <div id="looxReviews" data-product-id="{{product.id}}" class="page-width">{{ product.metafields.loox.reviews }}</div>
+            </div>
+          </div>
+        </div>
+
+        {% unless product.type == 'Gift Card' %}
+        <div class="Accordion__item">
+          <div class="Accordion__toggle">
+            <div class="Accordion__container">
+              <h6>{{ 'products.product.care' | t }}</h6>
+                <svg viewBox='0 0 20 20' class='icon icon--xl'>
+                  <use xlink:href='#icon-plus'></use>
+                </svg>
+            </div>
+          </div>
+
+          <div class="Accordion__content">
+            <div class="Accordion__contentWrapper">
+              <p class="u-textCenter">
+                {% if product.type == 'Baby Bib' %}
+                Machine wash in cold water. For best results, lay flat to dry. You may also tumble dry in low heat. In order to maintain a wrinkle-free bib after washing, it is recommended to iron the bib on medium heat.
+                {% elsif product.type == 'Car Seat Cover' %}
+                Machine wash in cold water. For best results, lay flat to dry. You may also tumble dry in low heat.
+                {% elsif product.type == 'Blanket' %}
+                Machine wash in cold water. For best results, lay flat to dry. You may also tumble dry in low heat.
+                {% elsif product.type == 'Crib Sheets' %}
+                Machine wash cold. Tumble dry low heat.
+                {% elsif product.type == 'Diaper Changing Pad Cover' %}
+                Machine wash cold. Tumble dry low heat.
+                {% elsif product.type == 'Quilt' %}
+                Machine wash cold. Tumble dry low heat.
+                {% elsif product.type == 'Gift Card' %}
+                {% else %}
+                <!-- Covers -->
+                Machine wash cold. Tumble dry low heat.
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endunless %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "text",
+        "id": "share_buttons_title",
+        "label": "Share buttons title",
+        "default": "share the love"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
+
+
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>

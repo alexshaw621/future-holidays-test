@@ -1,0 +1,160 @@
+// These values are the minimum and maximum viewport sizes to apply the font scaling
+$min_width: 400;
+$max_width: 800;
+// These values represent the range of fon-tsize to apply
+// These values effect the base font-size, headings and other elements will scale proportionally
+$min_font: 12;
+$max_font: 16;
+
+:root {
+  font-size: #{$min_font}px;
+}
+@media (min-width: #{$min_width}px) and (max-width: #{$max_width}px) {
+  :root {
+    font-size: calc(
+      #{$min_font}px + (#{$max_font} - #{$min_font}) *
+        ((100vw - #{$min_width}px) / (#{$max_width} - #{$min_width}))
+    );
+  }
+}
+@media (min-width: #{$max_width}px) {
+  :root {
+    font-size: #{$max_font}px;
+  }
+}
+
+body {
+  font-family: $f-sans;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5;
+  // color: gc(text, black);
+  color: $color-body-text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $f-sans;
+  color: gc(text, accent);
+  font-weight: normal;
+  .Main__aside & {
+    color: gc(text, neutral);
+  }
+}
+
+h1 {
+  font-size: $f-size-h1;
+
+  @include mq($until: tablet) {
+    font-size: $f-size-h1 / 1.3;
+  }
+}
+h2 {
+  font-size: $f-size-h2;
+
+  @include mq($until: tablet) {
+    font-size: $f-size-h2 / 1.3;
+  }
+}
+h3 {
+  font-size: $f-size-h3;
+
+  @include mq($until: tablet) {
+    font-size: $f-size-h3 / 1.3;
+  }
+}
+h4 {
+  font-size: $f-size-h4;
+  @include mq($until: tablet) {
+    font-size: $f-size-h4 / 1.1;
+  }
+}
+h5 {
+  font-size: $f-size-h5;
+  @include mq($until: tablet) {
+    font-size: $f-size-h5 / 1.3;
+  }
+}
+h6 {
+  font-size: $f-size-h6;
+  @include mq($until: tablet) {
+    font-size: $f-size-h6 / 1.3;
+  }
+}
+
+body,
+input,
+textarea,
+button,
+select {
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}
+
+a {
+  @include link-colors(gc(link, normal), gc(link, hover));
+  text-decoration: none;
+}
+
+a:focus {
+  color: inherit;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid gc(muted, lines);
+  margin: 2rem 0;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+
+  &.icon--md {
+    width: 1.25em;
+    height: 1.25em;
+  }
+  &.icon--lg {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  &.icon--xl {
+    width: 2em;
+    height: 2em;
+  }
+}
+
+blockquote {
+  font-size: ms(4);
+  text-transform: none;
+  margin: 2em auto;
+  max-width: 24em;
+  font-style: italic;
+}
+
+.title--dashed {
+  position: relative;
+}
+
+.title--dashed span {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  padding-right: $gutter-sm / 2;
+  padding-left: $gutter-sm / 2;
+  z-index: 1;
+}
+
+.title--dashed:after {
+  content:"";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 0.5em;
+  border-top: 1px solid #cccccc;
+}

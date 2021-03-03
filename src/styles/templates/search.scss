@@ -1,0 +1,19 @@
+.SearchBar {
+  display: flex;
+  justify-content: center;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  button,
+  input {
+    height: unset;
+  }
+  input {
+    flex-basis: 70%;
+    border: none;
+    background: gc(muted);
+    border-radius: 0;
+    margin: 0;
+  }
+}

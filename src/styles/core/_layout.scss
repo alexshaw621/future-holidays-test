@@ -1,0 +1,93 @@
+html {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+ * Container
+ * Layout container for layout major parts
+ */
+@mixin structural-container {
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+
+  @media (min-width: 96.75rem) {
+    max-width: map-get($layout, max-width);
+  }
+}
+
+@mixin full-width-container {
+  @include mq(1200px) {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+.Container {
+  @include structural-container;
+}
+
+.Container--narrow {
+  @media (min-width: 80rem) {
+    max-width: map-get($layout, max-width-narrow);
+  }
+}
+
+.Container--narrower {
+  @media (min-width: 80rem) {
+    max-width: map-get($layout, max-width-narrower);
+  }
+}
+
+.Container--narrowest {
+  @media (min-width: 80rem) {
+    max-width: 46rem;
+  }
+}
+
+.Container--wide {
+  @media (min-width: 112rem) {
+    max-width: map-get($layout, max-width-wide);
+  }
+}
+
+.Container--wider {
+  max-width: map-get($layout, max-width-wider);
+}
+
+.Container--widest {
+  max-width: map-get($layout, max-width-widest);
+}
+
+.PageContainer {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.MainContent {
+  background: white;
+  border-bottom: 1px solid transparent;
+}
+
+#col-main {
+  @include structural-container;
+}
+
+.template-page {
+  img {
+    object-fit: contain;
+    height: auto;
+  }
+}

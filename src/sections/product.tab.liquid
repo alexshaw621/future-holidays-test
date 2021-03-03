@@ -1,0 +1,383 @@
+{% comment %}
+Product Description Type
+- Type 1
+  https://copper-pearl.myshopify.com/admin/products/5462472451
+- Type 2-1
+  https://copper-pearl.myshopify.com/admin/products/1920705855558
+- Type 2-2
+  https://copper-pearl.myshopify.com/admin/products/39750369283
+- Type 3
+  https://copper-pearl.myshopify.com/admin/products/7847953411
+- Type 4
+  https://copper-pearl.myshopify.com/admin/products/1444585373766
+
+
+Note: Main description will be the first bullet point of the product description.
+{% endcomment %}
+{% assign desc_type = '' %}
+
+{% assign description = product.description %}
+{% if description contains '<li class="allCaps parent">' %}
+  {% assign descs = description | split: '<li class="allCaps parent">' %}
+  {% for desc in descs %}
+    {% if desc contains '<ul class="hidden">' %}
+      {% assign desc_array = desc | split: '<ul class="hidden">' %}
+      {% assign content = desc_array | last | split: '<li>' | last | split: '</li>' | first %}
+    {% else %}
+      {% if desc contains '<span style="font-weight: 400;">' %}
+        {% assign desc_array = desc | split: '<span style="font-weight: 400;">' %}
+        {% assign content = desc_array[1] %}
+        {% assign desc_type = '2_1' %}
+      {% else %}
+        {% assign desc_array = desc | split: ' – ' %}
+        {% assign content = desc_array[1] %}
+      {% endif %}
+    {% endif %}
+
+    {% if forloop.index == 2 %}
+      {% assign main_description = content | strip_html %}
+    {% endif %}
+  {% endfor %}
+
+{% elsif description contains '<li style="font-weight: 400;"><span style="font-weight: 400;">' %}
+  {% assign descs = description | split: '<li style="font-weight: 400;"><span style="font-weight: 400;">' %}
+  {% for desc in descs %}
+    {% assign desc_array = desc | split: '-' %}
+    {% if desc contains '<ul>' %}
+      {% continue %}
+    {% endif %}
+    {% if forloop.index == 2 %}
+      {% assign main_description = desc_array[1] | strip_html %}
+    {% endif %}
+  {% endfor %}
+
+{% else %}
+  {% assign descs = description | split: '<li>' %}
+  {% for desc in descs %}
+    {% if desc contains '<ul>' %}
+      {% continue %}
+    {% endif %}
+    {% if forloop.index == 2 %}
+      {% assign main_description = desc | strip_html %}
+    {% endif %}
+  {% endfor %}
+
+{% endif %}
+
+
+<div
+  class="Main"
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+  data-enable-history-state="true"
+  data-product-handle="{{ product.handle }}"
+  itemscope itemtype="http://schema.org/Product">
+
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
+  <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
+  <meta itemprop="brand" content="{{ product.vendor }}">
+  <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
+  <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+
+  {% if product.metafields.loox.num_reviews %}
+    <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+      <meta itemprop="ratingValue" content="{{ product.metafields.loox.avg_rating }}"/>
+      <meta itemprop="ratingCount" content="{{ product.metafields.loox.num_reviews }}"/>
+    </div>
+  {% endif %}
+
+  <div
+    class="Main__content Product"
+    data-component="ProductForm"
+    data-product-type="{{ product.type }}"
+    data-product-handle="{{ product.handle }}">
+
+    <div class="Container">
+      <div class="product-single">
+        <!-- Product Featured Image -->
+        <div class="product-main-craousel">
+          <figure class="product__image">
+            <img
+              data-sizes="auto"
+              src="{{ product.featured_image.src | img_url: '400x' }}"
+              data-srcset="
+                  {{ product.featured_image.src | img_url: '400x' }} 400w,
+                  {{ product.featured_image.src | img_url: '800x' }} 800w,
+                  {{ product.featured_image.src | img_url: '1600x' }} 1600w"
+              class="lazyload fadeup"
+              alt="{{ product.title }}" />
+          </figure>
+        </div>
+
+        <div class="product__info">
+          {% include 'product-details' %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Lifestyle Images -->
+    {% comment %}
+      Update below images with the provided images.
+    {% endcomment %}
+    <div class="product-thumbs" data-lifestyle-slider>
+      {% for image in product.images %}
+        {% if forloop.first or forloop.index == 2 %}
+          {% continue %}
+        {% endif %}
+        <img
+          data-sizes="auto"
+          src="{{ image.src | img_url: '400x' }}"
+          data-srcset="
+              {{ image.src | img_url: '400x' }} 400w,
+              {{ image.src | img_url: '800x' }} 800w,
+              {{ image.src | img_url: '1200x' }} 1600w"
+          class="product__image lazyload fadeup"
+          alt="{{ product.title }}" />
+      {% endfor %}
+    </div>
+
+    <!-- Product Tabs -->
+    <div class="tabs-container" data-component="Tab">
+      <ul class="tabs">
+        <li class="tab__link active">
+          <a href="" id="tab__link__description">description</a>
+        </li>
+        <li class="tab__link tab__link--review">
+          <a href="" id="tab__link__reviews">reviews</a>
+        </li>
+        {% unless product.handle contains 'gift-card' %}
+        <li class="tab__link">
+          <a href="" id="tab__link__care">care</a>
+        </li>
+        {% endunless %}
+      </ul>
+
+      <div class="tabs-content">
+        <div class="tabs-panel active" data-index="0">
+          {% for image in product.images %}
+            {% if forloop.index == 2 %}
+              <figure class="Product__description__image">
+                <img
+                  data-sizes="auto"
+                  src="{{ image.src | img_url: '400x' }}"
+                  data-srcset="
+                      {{ image.src | img_url: '400x' }} 400w,
+                      {{ image.src | img_url: '800x' }} 800w,
+                      {{ image.src | img_url: '1600x' }} 1600w"
+                  class="lazyload fadeup"
+                  alt="{{ product.title }}" />
+
+                {% assign title_parts = product.title | split: ' - ' %}
+                {% if title_parts.size > 1 %}
+                  <div class="Product__description__title">{{ title_parts[0]}}</div>
+                {% else %}
+                  <div class="Product__description__title">{{ product.title }}</div>
+                {% endif %}
+              </figure>
+            {% endif %}
+          {% endfor %}
+
+          {% if main_description != blank %}
+            <div class="Product__mainDesc">{{ main_description }}</div>
+          {% endif %}
+
+          {% assign description = product.description %}
+          {% if description contains '<li class="allCaps parent">' %}
+            {% assign descs = description | split: '<li class="allCaps parent">' %}
+            <div class="Product__features" {% if desc_type != '2_1' %}data-component="Accordion"{% endif %}>
+              {% for desc in descs %}
+                {% if desc contains '<ul class="hidden">' %}
+                  <!-- Type 1 -->
+                  {% assign desc_array = desc | split: '<ul class="hidden">' %}
+                  {% assign title = desc | split: '<ul class="hidden">' | first %}
+                  {% assign content = desc_array | last | split: '<li>' | last | split: '</li>' | first %}
+                {% else %}
+                  <!-- Type 2 -->
+                  {% if desc contains '<span style="font-weight: 400;">' %}
+                    {% assign desc_array = desc | split: '<span style="font-weight: 400;">' %}
+                    {% assign title = desc_array[1] | remove: '</li>' | remove: '</span>' %}
+                  {% else %}
+                    {% assign desc_array = desc | split: ' – ' %}
+                    {% assign title = desc_array[0] %}
+                    {% assign content = desc_array[1] %}
+                  {% endif %}
+                {% endif %}
+
+                {% if forloop.first or forloop.index == 2 %}
+                  {% continue %}
+                {% endif %}
+
+                <div class="Accordion__item">
+                  <div class="Accordion__toggle {% unless desc_type != '2_1' %}default-cursor{% endunless %}">
+                    <div class="Accordion__container">
+                      <h6>{{ title | strip_html }}</h6>
+
+                      {% if desc_type != '2_1' %}
+                        <svg viewBox='0 0 20 20' class='icon icon--xl'>
+                          <use xlink:href='#icon-plus'></use>
+                        </svg>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  {% if desc_type != '2_1' %}
+                    <div class="Accordion__content">
+                      <div class="Accordion__contentWrapper">{{ content | strip_html }}</div>
+                    </div>
+                  {% endif %}
+
+                </div>
+              {% endfor %}
+            </div>
+          {% elsif description contains '<li style="font-weight: 400;"><span style="font-weight: 400;">' %}
+            {% assign descs = description | split: '<li style="font-weight: 400;"><span style="font-weight: 400;">' %}
+            <div class="Product__features" data-component="Accordion">
+              <!-- Type 3 -->
+              {% for desc in descs %}
+                {% if desc contains '<ul>' or forloop.index == 2 %}
+                  {% continue %}
+                {% endif %}
+
+                {% assign desc_array = desc | split: '-' %}
+                <div class="Accordion__item">
+                  <div class="Accordion__toggle">
+                    <div class="Accordion__container">
+                      <h6>{{ desc_array[0] | strip_html }}</h6>
+                      <svg viewBox='0 0 20 20' class='icon icon--xl'>
+                        <use xlink:href='#icon-plus'></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="Accordion__content">
+                    <div class="Accordion__contentWrapper">{{ desc_array[1] | strip_html }}</div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            {% assign descs = description | split: '<li>' %}
+            <div class="Product__features">
+              <!-- Type 4 -->
+              {% for desc in descs %}
+                {% if desc contains '<ul>' or forloop.index == 2 %}
+                  {% continue %}
+                {% endif %}
+
+                <div class="Accordion__item">
+                  <div class="Accordion__toggle default-cursor">
+                    <div class="Accordion__container">
+                      <h6>{{ desc | strip_html }}</h6>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="tabs-panel tabs-panel--review" data-index="1">
+          {% if product.metafields.loox.num_reviews %}
+            <script id="looxSchemaJson" type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Product",
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "{{ product.metafields.loox.avg_rating }}",
+                    "reviewCount": "{{ product.metafields.loox.num_reviews }}"
+                },
+                "name": "{{ product.title }}"
+            }
+            </script>
+            {% endif %}
+
+          <div id="looxReviews" data-product-id="{{product.id}}" class="page-width">{{ product.metafields.loox.reviews }}</div>
+        </div>
+
+        {% unless product.handle contains 'gift-card' %}
+        <div class="tabs-panel" data-index="2">
+          <p class="u-textCenter">
+            {% if product.type == 'Baby Bib' %}
+            Machine wash in cold water. For best results, lay flat to dry. You may also tumble dry in low heat. In order to maintain a wrinkle-free bib after washing, it is recommended to iron the bib on medium heat.
+            {% elsif product.type == 'Car Seat Cover' %}
+            Machine wash in cold water. For best results, lay flat to dry. You may also tumble dry in low heat.
+            {% elsif product.type == 'Blanket' %}
+            Machine wash in cold water. For best results, lay flat to dry. You may also tumble dry in low heat.
+            {% elsif product.type == 'Crib Sheets' %}
+            Machine wash cold. Tumble dry low heat.
+            {% elsif product.type == 'Diaper Changing Pad Cover' %}
+            Machine wash cold. Tumble dry low heat.
+            {% elsif product.type == 'Quilt' %}
+            Machine wash cold. Tumble dry low heat.
+            {% else %}
+            <!-- Covers -->
+            Machine wash cold. Tumble dry low heat.
+            {% endif %}
+          </p>
+
+          {% comment %}
+          {%- if product.metafields.product_details.care != blank -%}
+            {{ product.metafields.product_details.care }}
+          {%- endif -%}
+          {% endcomment %}
+        </div>
+        {% endunless %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "text",
+        "id": "share_buttons_title",
+        "label": "Share buttons title",
+        "default": "share the love"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
+
+
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>

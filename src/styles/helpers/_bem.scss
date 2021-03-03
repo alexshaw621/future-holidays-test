@@ -1,0 +1,32 @@
+// BEM Mixins for SASS
+// http://www.sitepoint.com/structuring-css-class-selectors-with-sass/
+
+@mixin new($block) {
+  @at-root .#{$block} {
+    @content;
+  }
+}
+
+@mixin is($element) {
+  .is-#{$element} & {
+    @content;
+  }
+}
+
+@mixin has($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+@mixin when($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+@mixin when-inside($selector) {
+  #{$selector} & {
+    @content;
+  }
+}

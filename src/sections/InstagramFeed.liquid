@@ -1,0 +1,66 @@
+{% if section.settings.show_instagram_feeds %}
+  <!-- Instagram section -->
+  <div class="Section Section--instagram">
+    {% if section.settings.instagram_feeds_title != blank %}
+      <h3>{{ section.settings.instagram_feeds_title }}</h3>
+    {% endif %}
+
+    <div class="media" id="instafeed" data-component="InstagramFeed"></div>
+  </div>
+  <!-- /Instagram section -->
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Instagram Feed",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_instagram_feeds",
+        "label": "Show Instagram",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "instagram_feeds_title",
+        "label": "Instagram section title"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Instagram Feed",
+        "category": "Promotional"
+      }
+    ]
+  }
+{% endschema %}
+
+
+{% comment %}
+{% if section.settings.use_instafeed %}
+  <div id="insta-feed"></div>
+{% else %}
+  <div class="Section Section--instagram">
+    {% for block in section.blocks %}
+      <figure>
+        <a href="{{ block.settings.link | default: 'javascript:void(0);'}}">
+          {%- assign image_object = block.settings.image -%}
+          <img
+            data-sizes="auto"
+            data-src="{{ image_object | img_url: '100x' }}"
+            data-srcset="
+                {{ image_object | img_url: '100x' }} 100w,
+                {{ image_object | img_url: '200x' }} 200w,
+                {{ image_object | img_url: '400x' }} 400w,
+                {{ image_object | img_url: '800x' }} 800w,
+                {{ image_object | img_url: '1200x' }} 1200w"
+            class="lazyload fadeup" />
+          <svg viewBox='0 0 20 20' class='icon' width='1em' height='1em'>
+            <use xlink:href='#icon-instagram'></use>
+          </svg>
+        </a>
+      </figure>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endcomment %}

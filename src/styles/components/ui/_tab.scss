@@ -1,0 +1,83 @@
+// Tab
+.tabs-container {
+  max-width: 1000px;
+  margin: $gutter * 3.5 auto;
+
+  @include mq($until: 1200px) {
+    max-width: 90%;
+  }
+
+  @include mq($until: tablet) {
+    margin-top: $gutter;
+    margin-bottom: $gutter;
+  }
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+.tabs li:not(:last-child) {
+  margin-right: 4em;
+}
+
+.tabs li a {
+  display: block;
+  position: relative;
+  padding: $gutter / 3 0;
+  transition: all 0.1s ease-in-out;
+  border-bottom: 1px solid transparent;
+  font-size: 29px;
+}
+
+.tabs li.active a,
+.tabs li a:hover {
+  opacity: 1;
+  color: $color-accent;
+  border-bottom: 1px solid $color-accent;
+}
+
+.tabs-content {
+  position: relative;
+  z-index: 2;
+  margin-top: 3em;
+}
+
+.tabs-panel {
+  display: none;
+}
+
+.tabs-panel.active {
+  display: block;
+}
+
+.tabs-panel p + div {
+  margin-top: 15px;
+}
+
+@include mq($until: tablet) {
+  // .tabs {
+  //   flex-direction: column;
+  // }
+
+  // .tabs li {
+  //   width: 100%;
+  // }
+
+  .tabs li:not(:last-child) {
+    margin-right: 2em;
+  }
+
+  .tabs li a {
+    border-radius: 0;
+    font-size: ms(4);
+    opacity: 1;
+  }
+
+  .tabs-content {
+    margin-top: 1em;
+  }
+}

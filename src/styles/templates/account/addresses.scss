@@ -1,0 +1,18 @@
+// .template-addresses {
+//   main {
+//     background: gc(muted);
+//   }
+// }
+
+.Card.address {
+  border-bottom: 2px solid gc(muted, lines);
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  .Card__details {
+    flex-basis: 30%;
+  }
+  .Card__media {
+    flex-basis: 70%;
+    padding-left: 2rem;
+  }
+}

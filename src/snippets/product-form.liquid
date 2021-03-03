@@ -1,0 +1,59 @@
+
+
+
+{% form 'product', product, class: "Product__form" %}
+
+  {% comment %} {% include 'product-siblings' %} {% endcomment %}
+  {% include 'product-form-dropdown-options' %}
+
+  <select name="id" class="no-js" data-product-select>
+    {% for variant in product.variants %}
+      <option
+        {% if variant == current_variant %}selected="selected"{% endif %}
+        value="{{ variant.id }}">
+          {{ variant.title }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <input type="hidden" id="Quantity" name="quantity" value="1" min="1"> 
+  {% comment %}
+    <div class="input-wrapper quantity-input-set" data-component="QuantityInput">
+    <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+    <input type="number" id="Quantity" name="quantity" value="1" min="1"> 
+  {% endcomment %}
+
+  <div class="product-actions">
+    <button
+      type="submit"
+      name="add"
+      class='Button Button--primary Button--huge'
+      data-add-to-cart
+      data-component="CartButton"
+      {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+        <span data-add-to-cart-text>
+          {% if current_variant.available %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </span>
+        <div class="loader"></div>
+    </button>
+
+    {% unless hideiStockForm %}
+      {% include 'iStock-notify-me' %}
+    {% endunless %}
+  </div>
+
+  {% if section.settings.enable_payment_button %}
+    {{ form | payment_button }}
+  {% endif %}
+
+  {% unless product == empty %}
+    <script type="application/json" data-product-json>
+      {{ product | json }}
+    </script>
+  {% endunless %}
+
+{% endform %}

@@ -1,0 +1,49 @@
+// ============================================================================
+// Common Elements
+// ============================================================================
+
+// ============================================================================
+// Loop
+// ============================================================================
+// .Loop--collections {
+//   @include border(red);
+// }
+
+// ============================================================================
+// Card
+// ============================================================================
+.Card--collection {
+  background: white;
+  box-shadow: hsla(228, 22%, 11%, 0.1) 0 2px 9px;
+  .Card__figure {
+    // @include border(red);
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-top: 100%;
+    }
+  }
+  .Card__details {
+    text-align: center;
+    padding: 2.6em 2em;
+  }
+  .Card__title {
+    text-transform: lowercase;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg {
+      margin-left: 0.3em;
+    }
+  }
+
+  @include mq($until: desktop) {
+    width: 50%;
+  }
+  @include mq($until: tablet) {
+    width: 100%;
+  }
+}

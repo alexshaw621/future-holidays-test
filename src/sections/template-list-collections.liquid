@@ -1,0 +1,61 @@
+<div class="Main">
+  <div class="Main__hero Container Container--wider">
+  </div>
+  <div class="Container">
+    <header class="Main__header">
+      <h1>{{ page.title }}</h1>
+    </header>
+    <div class="Main__content rte">
+      <div class="Loop Loop--collections">
+        {% comment %}
+          Show Default collections by default.
+          Hide default collections.
+        {% endcomment %}
+
+        {% comment %}
+          {% for collection in collections %}
+            {% unless collection.handle == 'frontpage' %}
+              {% include 'collection-card' %}
+            {% endunless %}
+          {% endfor %}
+        {% endcomment %}
+
+        {% comment %}
+          Add more collections with block.
+        {% endcomment %}
+        {% for block in section.blocks %}
+          {% if block.type == 'collection' %}
+            {% include 'collection-card', passed_image: block.settings.cover_image %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+
+{
+  "name": "List Collections",
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "Image",
+          "info": "If filled in, will be used instead of the collection main image"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}
